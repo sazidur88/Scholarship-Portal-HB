@@ -1,15 +1,18 @@
 @extends('layouts.web')
 
 @section('custom_styles')
-<style>
-    .nice-select {
-	width: 100%;
-	}
+    <style>
+        .nice-select {
+            width: 100%;
+        }
 
-.nice-select .list {
-	width: 100%
-	}
+        .nice-select .list {
+            width: 100%
+        }
+
     </style>
+
+
 @endsection
 
 @section('content')
@@ -34,6 +37,35 @@
     </section>
 
     <section class="account-section ptb-100">
+
+        <div class="container">
+            <h1>Cascading Dropdown Location of Bangladesh</h1>
+            <h3>Create Form</h3>
+            <form name="" id="" action="" method="">
+                <!-- This hidden input field is necessary for the js file. -->
+                <input type="hidden" id="form_type_dropdown" value="CREATE">
+                <!-- Value = "CREATE" for create form and value = "EDIT" for edit form. -->
+                <label>Division:</label>
+                <select name="division_dropdown" id="division_dropdown">
+                    <option selected="selected">Please select division</option>
+                </select>
+                <br><br>
+                <label>District:</label>
+                <select name="district_dropdown" id="district_dropdown">
+                    <option selected="selected">Please select district</option>
+                </select>
+                <br><br>
+                <label>Upazila:</label>
+                <select name="upazila_dropdown" id="upazila_dropdown">
+                    <option selected="selected">Please select upazila</option>
+                </select>
+                <br><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+
+
+
         <div class="container">
             <div class="row">
 
@@ -97,7 +129,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="gender">Gender</label>
-                                        <select name="gender"id="gender">
+                                        <select name="gender" id="gender">
                                             <option value="">Select</option>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
@@ -128,7 +160,7 @@
                                     <div class="form-group">
                                         <label for="class_degree">Select Class<span
                                                 class="text-danger font-weight-bold">*</span></label>
-                                        <select name="class_degree"  id="class_degree">
+                                        <select name="class_degree" id="class_degree">
                                             {{-- <option value="">Select</option> --}}
                                             <option value="Class-1">Class-1</option>
                                             <option value="Class-2">Class-2</option>
@@ -175,7 +207,7 @@
                                             placeholder="Your Institution">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6" id="position">
                                     <div class="form-group">
                                         <label>Class Position</label>
                                         <input type="text" name="position" class="form-control"
@@ -209,25 +241,16 @@
 
 
 
-                            <h3>Address</h3>
+                            <h3>Present Address</h3>
                             <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Address Type</label>
-                                        <select name="address_type" id="address_type">
-                                            {{-- <option value="">Select</option> --}}
-                                            <option value="present">Present</option>
-                                            <option value="parmanent">Parmanent</option>
-                                        </select>
-                                    </div>
-                                </div>
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <!-- This hidden input field is necessary for the js file. -->
                                         <input type="hidden" id="form_type" value="CREATE">
                                         <!-- Value = "CREATE" for create form and value = "EDIT" for edit form. -->
                                         <label>Division:</label>
-                                        <select  name="division" id="division">
+                                        <select name="division" id="division">
                                             <option selected="selected" name="division">Please select division</option>
                                         </select>
                                         <br><br>
@@ -237,7 +260,7 @@
                                     <div class="form-group">
                                         <label>District:</label>
                                         <select name="district" id="district">
-                                          <option selected="selected">Please select district</option>
+                                            <option selected="selected">Please select district</option>
                                         </select>
                                     </div>
                                 </div>
@@ -245,11 +268,64 @@
                                     <div class="form-group">
                                         <label>Upazila:</label>
                                         <select name="upazila" id="upazila">
-                                          <option selected="selected">Please select upazila</option>
+                                            <option selected="selected">Please select upazila</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Area</label>
+                                        <input type="text" name="area" class="form-control" placeholder="Your Area">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    {{-- <button type="submit" class="account-btn">Edit</button> --}}
+                                    <button type="submit" class="account-btn">Save</button>
+                                </div>
+                            </div>
+
+                            <h3>Parmanent Address</h3>
+                            <div class="row">
+                                <div class="col-md-12" style="margin-bottom: 18px;">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="trigger"
+                                            name="question">
+                                        <label class="form-check-label" for="trigger">
+                                            Same as Present Address
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6" id="hidden_fields">
+                                    <div class="form-group">
+                                        <!-- This hidden input field is necessary for the js file. -->
+                                        <input type="hidden" id="form_type" value="CREATE">
+                                        <!-- Value = "CREATE" for create form and value = "EDIT" for edit form. -->
+                                        <label>Division:</label>
+                                        <select name="division" id="division">
+                                            <option selected="selected" name="division">Please select division</option>
+                                        </select>
+                                        <br><br>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" id="hidden_fields">
+                                    <div class="form-group">
+                                        <label>District:</label>
+                                        <select name="district" id="district">
+                                            <option selected="selected">Please select district</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" id="hidden_fields">
+                                    <div class="form-group">
+                                        <label>Upazila:</label>
+                                        <select name="upazila" id="upazila">
+                                            <option selected="selected">Please select upazila</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" id="hidden_fields">
                                     <div class="form-group">
                                         <label>Area</label>
                                         <input type="text" name="area" class="form-control" placeholder="Your Area">
@@ -309,6 +385,33 @@
 @section('custom_js')
 
     <script src="{{ asset('assets/js/class-level-option.js') }}"></script>
-    <script src="{{ asset('assets/js/bd-location.js') }}"></script>
+
+
+    <script>
+        $(function() {
+            // Get the form fields and hidden div
+            var checkbox = $("#trigger");
+            var hidden = $("#hidden_fields");
+
+            // Hide the fields.
+            // Use JS to do this in case the user doesn't have JS
+            hidden.hide();
+
+            // Setup an event listener for when the state of the
+            // checkbox changes.
+            checkbox.change(function() {
+                // Check to see if the checkbox is checked.
+                if (checkbox.is(":checked")) {
+                    // Show the hidden fields.
+                    hidden.hide();
+                    // Populate the input.
+                } else {
+
+                    hidden.show();
+
+                }
+            });
+        });
+    </script>
 
 @endsection

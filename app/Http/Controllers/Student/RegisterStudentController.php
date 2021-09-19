@@ -7,6 +7,7 @@ use App\Models\Address;
 use App\Models\Student;
 use App\Models\Degree;
 use App\Models\User;
+use App\Models\Location;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -30,7 +31,10 @@ class RegisterStudentController extends Controller
     public function create()
     {
         // $user_id = Auth::user()->id;
-        return view('web.student.student-profile-create');
+        $locations = Location::all();
+        return view('web.student.student-profile-create',[
+            'locations' => $locations,
+        ]);
     }
 
     /**

@@ -6,6 +6,8 @@
     <meta charset="utf-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="{{ asset('assets/js/bd-location.js') }}"></script>
+
 
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.min.css')}}">
@@ -70,7 +72,7 @@
 
 
 
-    <script src="{{asset('assets/js/jquery.min.js')}}"></script>
+    {{-- <script src="{{asset('assets/js/jquery.min.js')}}"></script> --}}
     <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery.nice-select.min.js')}}"></script>
