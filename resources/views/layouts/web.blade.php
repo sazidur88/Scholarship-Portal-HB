@@ -72,7 +72,7 @@
 
 
 
-    {{-- <script src="{{asset('assets/js/jquery.min.js')}}"></script> --}}
+    <script src="{{asset('assets/js/jquery.min.js')}}"></script>
     <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery.nice-select.min.js')}}"></script>

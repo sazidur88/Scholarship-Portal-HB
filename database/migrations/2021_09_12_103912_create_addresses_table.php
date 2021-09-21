@@ -23,6 +23,7 @@ class CreateAddressesTable extends Migration
             $table->string('addressable_type');
             $table->string('address_type')->nullable();
             $table->string('model_type')->nullable();
+            $table->boolean('same_as_present')->default(0);
             $table->string('status')->nullable();
             $table->timestamps();
         });

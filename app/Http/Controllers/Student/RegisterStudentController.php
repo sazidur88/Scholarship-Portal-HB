@@ -98,7 +98,7 @@ class RegisterStudentController extends Controller
 
 
         $address = new Address();
-        $address->address_type = $request->address_type;
+        $address->address_type = $request->address_type_present;
         $address->model_type = "STUDENT";
         $address->status = "ACTIVE";
         $student->address()->save($address);

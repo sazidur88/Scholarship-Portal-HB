@@ -1,3 +1,4 @@
+$(document).ready(function(){
 $("#level").change(function () {
 
     if ($(this).val() == "school") {
@@ -19,4 +20,13 @@ $("#level").change(function () {
         $('#position').hide();
     }
 });
+});
 $("#level").trigger("change");
+
+
+var level = document.getElementById("level").value;
+level.onclick = function () {
+
+
+}
+
