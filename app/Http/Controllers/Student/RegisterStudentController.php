@@ -7,8 +7,8 @@ use App\Models\Address;
 use App\Models\Student;
 use App\Models\Degree;
 use App\Models\User;
-use App\Models\Location;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class RegisterStudentController extends Controller
@@ -31,10 +31,7 @@ class RegisterStudentController extends Controller
     public function create()
     {
         // $user_id = Auth::user()->id;
-        $locations = Location::all();
-        return view('web.student.student-profile-create',[
-            'locations' => $locations,
-        ]);
+        return view('web.student.student-profile-create');
     }
 
     /**
@@ -82,6 +79,7 @@ class RegisterStudentController extends Controller
             'level' => 'required',
             'class_degree' => 'required',
             'institution' => 'required',
+            'marks_cgpa' => 'required',
             'year' => 'required',
         ]);
 
@@ -96,12 +94,34 @@ class RegisterStudentController extends Controller
         $degree->year = $request->year;
         $degree->save();
 
+        $this->validate($request, [
+            'division_present' => 'required',
+            'district_present' => 'required',
+            'upazila_present' => 'required',
+            'area_present' => 'required',
+        ]);
 
         $address = new Address();
-        $address->address_type = $request->address_type_present;
-        $address->model_type = "STUDENT";
+        $address->division = $request->division_present;
+        $address->district = $request->district_present;
+        $address->upazila = $request->upazila_present;
+        $address->area = $request->area_present;
+        $address->address_type = "PRESENT";
+        $address->same_as_present = $request->has('same_as_present');
         $address->status = "ACTIVE";
         $student->address()->save($address);
+
+        $same_as_present = $request->same_as_present;
+        if ($same_as_present == 0) {
+            $address = new Address();
+            $address->division = $request->division_permanent;
+            $address->district = $request->district_permanent;
+            $address->upazila = $request->upazila_permanent;
+            $address->area = $request->area_permanent;
+            $address->address_type = "PERMANENT";
+            $address->status = "ACTIVE";
+            $student->address()->save($address);
+        }
 
 
         return redirect()->route('student_profile', Auth::user()->id);
@@ -119,13 +139,31 @@ class RegisterStudentController extends Controller
         $user_data = User::findOrfail($user_id);
         $student_data = User::find($user_id)->student_information;
 
+        // $x = $student_data->id;
+        // $y = Student::find($x);
+        // $addresses = $y ->student_address();
+        // dd ($user_data);
+
         if (!$student_data)
             return redirect()->route('student_profile_create');
         else
-            return view('web.student.student-profile', [
-                'user_data' => $user_data,
-                'student_data' => $student_data,
-            ]);
+            $academic_data = DB::table('students as student')
+                ->WHERE('student.id', $student_data->id)
+                ->LEFTJOIN('degrees as degree', 'degree.st_id', '=', 'student.id')
+                ->SELECT(
+                    'degree.level', 'degree.class_degree', 'degree.institution',
+                    'degree.institution',
+                    'degree.position',
+                    'degree.marks_cgpa',
+                    'degree.semester',
+                    'degree.year',
+                )
+                ->first();
+        return view('web.student.student-profile', [
+            'user_data' => $user_data,
+            'student_data' => $student_data,
+            'academic_data' => $academic_data,
+        ]);
     }
 
     /**

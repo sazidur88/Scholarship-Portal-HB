@@ -37,60 +37,180 @@
 
 
                 <div class="col-lg-8">
-                    <div class="candidate-info-text">
+                    {{-- <div class="candidate-info-text">
                         <h3>About Me</h3>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
                             the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
                             of type and scrambled it to make a type specimen book. It has survived not only five centuries,
                             but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                    </div>
+                    </div> --}}
                     <div class="candidate-info-text candidate-education">
-                        <h3>Education</h3>
+                        <h3>Personal Information</h3>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="education-info">
-                                    <h4>School</h4>
-                                    <p>Amherst School, USA</p>
-                                    <span>2000-2010</span>
-                                </div>
-                                <div class="education-info">
-                                    <h4>College</h4>
-                                    <p>Swarthmore College, USA</p>
-                                    <span>2010-2012</span>
-                                </div>
-                                <div class="education-info">
-                                    <h4>University</h4>
-                                    <p>Princeton University, USA</p>
-                                    <span>2012-2016</span>
+                                    <h4>Name</h4>
+                                    <p>{{ $student_data->name }}</p>
+                                    {{-- <span>2000-2010</span> --}}
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="education-info">
-                                    <h4>School</h4>
-                                    <p>Amherst School, USA</p>
-                                    <span>2000-2010</span>
+                                    <h4>Email</h4>
+                                    <p>{{ $student_data->email }}</p>
                                 </div>
+                            </div>
+                            <div class="col-md-6">
                                 <div class="education-info">
-                                    <h4>College</h4>
-                                    <p>Swarthmore College, USA</p>
-                                    <span>2010-2012</span>
+                                    <h4>Phone</h4>
+                                    <p>{{ $student_data->phone }}</p>
                                 </div>
+                            </div>
+                            <div class="col-md-6">
                                 <div class="education-info">
-                                    <h4>University</h4>
-                                    <p>Princeton University, USA</p>
-                                    <span>2012-2016</span>
+                                    <h4>Date of Birth</h4>
+                                    <p>{{ (new DateTime($student_data->dob))->format('d-M-Y') }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="education-info">
+                                    <h4>Father's Name</h4>
+                                    <p>{{ $student_data->father_name }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="education-info">
+                                    <h4>Mother's Name</h4>
+                                    <p>{{ $student_data->mother_name }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="education-info">
+                                    <h4>Gender</h4>
+                                    <p>{{ $student_data->gender }}</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="candidate-info-text candidate-experience">
-                            <h3>Experience</h3>
-                            <ul>
-                                <li>Proficient in HTML, CSS, Server-Scripting, C/C++, and Oracle</li>
-                                <li>Experience with SEO</li>
-                                <li>Experience Teaching Web Development</li>
-                                <li>Knowledgeable in Online Advertising</li>
-                                <li>Expert in LAMP Web Service Stacks</li>
-                            </ul>
+                        <br>                        
+                    </div>
+                    <div class="candidate-info-text candidate-education">
+                        <h3>Educational Information</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="education-info">
+                                    <h4>Level</h4>
+                                    <p>{{ $academic_data->level }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="education-info">
+                                    <h4>Institution</h4>
+                                    <p>{{ $academic_data->institution }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="education-info">
+                                    <h4>Class / Degree</h4>
+                                    <p>{{ $academic_data->class_degree }}</p>
+                                    @if ($academic_data->semester)
+                                        <span>{{ $academic_data->semester }} Semester</span>
+                                    @endif
+                                </div>
+                            </div>
+                            @if ($academic_data->position)
+                                <div class="col-md-6">
+                                    <div class="education-info">
+                                        <h4>Position</h4>
+                                        <p>{{ $academic_data->position }}</p>
+                                        <span>2000-2010</span>
+                                    </div>
+                                </div>
+                            @endif
+
+                        </div>
+                    </div>
+                    <div class="candidate-info-text candidate-education">
+                        <h3>Residential Information</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="education-info">
+                                    <h4>Level</h4>
+                                    <p>{{ $academic_data->level }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="education-info">
+                                    <h4>Institution</h4>
+                                    <p>{{ $academic_data->institution }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="education-info">
+                                    <h4>Class / Degree</h4>
+                                    <p>{{ $academic_data->class_degree }}</p>
+                                    @if ($academic_data->semester)
+                                        <span>{{ $academic_data->semester }} Semester</span>
+                                    @endif
+                                </div>
+                            </div>
+                            @if ($academic_data->position)
+                                <div class="col-md-6">
+                                    <div class="education-info">
+                                        <h4>Position</h4>
+                                        <p>{{ $academic_data->position }}</p>
+                                        <span>2000-2010</span>
+                                    </div>
+                                </div>
+                            @endif
+
+                        </div>
+                    </div>
+                    <div class="candidate-info-text candidate-experience">
+                        <h3>Experience</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="education-info">
+                                    <h4>Name</h4>
+                                    <p>{{ $student_data->name }}</p>
+                                    {{-- <span>2000-2010</span> --}}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="education-info">
+                                    <h4>Email</h4>
+                                    <p>{{ $student_data->email }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="education-info">
+                                    <h4>Phone</h4>
+                                    <p>{{ $student_data->phone }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="education-info">
+                                    <h4>Date of Birth</h4>
+                                    <p>{{ (new DateTime($student_data->dob))->format('d-M-Y') }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="education-info">
+                                    <h4>Father's Name</h4>
+                                    <p>{{ $student_data->father_name }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="education-info">
+                                    <h4>Mother's Name</h4>
+                                    <p>{{ $student_data->mother_name }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="education-info">
+                                    <h4>Gender</h4>
+                                    <p>{{ $student_data->gender }}</p>
+                                </div>
+                            </div>
                         </div>
                         <div class="candidate-info-text candidate-skill">
                             <h3>Skills</h3>
@@ -113,6 +233,8 @@
                         </div>
                     </div>
                 </div>
+
+            </div>
     </section>
 
 

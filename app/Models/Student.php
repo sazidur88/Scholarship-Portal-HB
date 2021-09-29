@@ -15,11 +15,17 @@ class Student extends Model
         return $this->morphMany(Address::class, 'addressable');
     }
 
+    public function student_address()
+    {
+        return  $this->address();
+    }
+
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
     
     
     protected static function booted()

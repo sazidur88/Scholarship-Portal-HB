@@ -26,7 +26,8 @@ a:focus {
 
 p {
     font-size: 17px;
-    color: #707070;
+    /* color: #707070; */
+    color: #555;
     line-height: 1.8
 }
 
@@ -3107,8 +3108,8 @@ h3 {
 }
 
 .candidate-info-text.candidate-education .education-info h4 {
-    font-size: 20px;
-    margin-bottom: 10px
+    font-size: 16px;
+    margin-bottom: 5px
 }
 
 .candidate-info-text.candidate-education .education-info p {

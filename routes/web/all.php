@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\Admin\ManageRolesController;
-use App\Http\Controllers\Admin\ManageUsersController;
 use App\Http\Controllers\CommonControllers\DashboardController;
 use App\Http\Controllers\student\RegisterStudentController;
 use Illuminate\Support\Facades\Artisan;

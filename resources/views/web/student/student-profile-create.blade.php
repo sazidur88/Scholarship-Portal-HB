@@ -122,9 +122,9 @@
                                         <label for="level">Level <span class="text-danger font-weight-bold">*</span></label>
                                         <select class="form-control" name="level" id="level">
                                             {{-- <option value="">Select</option> --}}
-                                            <option value="school">School</option>
-                                            <option value="college">College</option>
-                                            <option value="university">University</option>
+                                            <option value="School">School</option>
+                                            <option value="College">College</option>
+                                            <option value="University">University</option>
                                         </select>
                                     </div>
                                 </div>
@@ -182,14 +182,14 @@
                                 <div class="col-md-6" id="position">
                                     <div class="form-group">
                                         <label>Class Position</label>
-                                        <input type="text" name="position" class="form-control"
+                                        <input type="number" name="position" class="form-control"
                                             placeholder="Your Class Position">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6" id="marks_cgpa">
                                     <div class="form-group">
                                         <label>Marks/CGPA</label>
-                                        <input type="text" name="marks_cgpa" class="form-control" placeholder="CGPA">
+                                        <input type="number" step=0.01 name="marks_cgpa" class="form-control" placeholder="CGPA">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -201,7 +201,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Year</label>
-                                        <input type="text" name="year" class="form-control" placeholder="Year">
+                                        <input type="number" name="year" class="form-control" placeholder="Year">
                                     </div>
                                 </div>
 
@@ -212,7 +212,7 @@
                             </div>
 
 
-
+                            <br>
                             <h3>Present Address</h3>
                             <div class="row">
 
@@ -220,32 +220,33 @@
                                     <div class="form-group">
                                         <input type="hidden" id="form_type_present" value="CREATE">
                                         <label>Division:</label>
-                                        <select class="form-control" id="division_present">
-                                            <option selected>Please select division</option>
-                                          </select>
-                                      </div>
+                                        <select class="form-control" id="division_present" name="division_present">
+                                            <option value="">Please select division</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>District:</label>
-                                        <select class="form-control" id="district_present">
+                                        <select class="form-control" id="district_present" name="district_present">
                                             <option selected>Please select district</option>
-                                          </select>
-                                      </div>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Upazila:</label>
-                                        <select class="form-control" id="upazila_present">
+                                        <select class="form-control" id="upazila_present" name="upazila_present">
                                             <option selected>Please select upazila</option>
-                                          </select>
-                                      </div>
+                                        </select>
+                                    </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Area</label>
-                                        <input type="text" name="area" class="form-control" placeholder="Your Area">
+                                        <input type="text" name="area_present" class="form-control"
+                                            placeholder="House and Area details">
                                     </div>
                                 </div>
 
@@ -255,7 +256,8 @@
                                 </div>
                             </div>
 
-                            <h3>Parmanent Address</h3>
+                            <br>
+                            <h3>Permanent Address</h3>
                             <div class="row">
                                 <div class="col-md-12" style="margin-bottom: 18px;">
                                     <div class="form-check">
@@ -270,19 +272,18 @@
                                 <div class="col-md-6" id="division_check">
                                     <div class="form-group">
                                         <!-- This hidden input field is necessary for the js file. -->
-                                        <input type="hidden" id="form_type" value="CREATE">
+                                        <input type="hidden" id="form_type_permanent" value="CREATE">
                                         <!-- Value = "CREATE" for create form and value = "EDIT" for edit form. -->
                                         <label>Division:</label>
-                                        <select name="division" id="division">
+                                        <select class="form-control" name="division_permanent" id="division_permanent">
                                             <option selected="selected" name="division">Please select division</option>
                                         </select>
-                                        <br><br>
                                     </div>
                                 </div>
                                 <div class="col-md-6" id="district_check">
                                     <div class="form-group">
                                         <label>District:</label>
-                                        <select name="district" id="district">
+                                        <select class="form-control" name="district_permanent" id="district_permanent">
                                             <option selected="selected">Please select district</option>
                                         </select>
                                     </div>
@@ -290,7 +291,7 @@
                                 <div class="col-md-6" id="upazila_check">
                                     <div class="form-group">
                                         <label>Upazila:</label>
-                                        <select name="upazila" id="upazila">
+                                        <select class="form-control" name="upazila_permanent" id="upazila_permanent">
                                             <option selected="selected">Please select upazila</option>
                                         </select>
                                     </div>
@@ -298,7 +299,8 @@
                                 <div class="col-md-6" id="area_check">
                                     <div class="form-group">
                                         <label>Area</label>
-                                        <input type="text" name="area" class="form-control" placeholder="Your Area">
+                                        <input type="text" name="area_permanent" class="form-control"
+                                            placeholder="Your Area">
                                     </div>
                                 </div>
 
@@ -307,43 +309,7 @@
                                     <button type="submit" class="account-btn">Save</button>
                                 </div>
                             </div>
-                        </form>
-
-
-
-                        {{-- <h3>Social links</h3>
-                        <form class="candidates-sociak">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>Facebook</label>
-                                        <input type="text" class="form-control" placeholder="www.facebook.com/user">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>Twitter</label>
-                                        <input type="number" class="form-control" placeholder="www.twitter.com/user">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>Linkedin</label>
-                                        <input type="text" class="form-control" placeholder="www.Linkedin.com/user">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>Github</label>
-                                        <input type="text" class="form-control" placeholder="www.Github.com/user">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <button type="submit" class="account-btn">Edit</button>
-                                    <button type="submit" class="account-btn">Save</button>
-                                </div>
-                            </div>
-                        </form> --}}
+                        </form>                       
                     </div>
                 </div>
             </div>
@@ -353,6 +319,13 @@
 @endsection
 
 @section('custom_js')
+    <script>
+        this.getField("myField").display = display.visible;
+        this.getField("myField").required = true;
+
+        this.getField("myField").display = display.hidden;
+        this.getField("myField").required = false;
+    </script>
 
     <script src="{{ asset('assets/js/class-level-option.js') }}"></script>
     <script>
@@ -365,17 +338,14 @@
 
     <script>
         $(function() {
-            // Get the form fields and hidden div
+            // Get the form fields 
             var checkbox = $("#trigger");
             var division = $("#division_check");
             var district = $("#district_check");
             var upazila = $("#upazila_check");
             var area = $("#area_check");
 
-            //Taking Present address values 
-            // var division_pre = document.getElementById("areaA");
-
-            // Hide the fields.
+            // Show the fields.
             // Use JS to do this in case the user doesn't have JS
             division.show();
             district.show();
@@ -387,19 +357,17 @@
             checkbox.change(function() {
                 // Check to see if the checkbox is checked.
                 if (checkbox.is(":checked")) {
-                    // Show the hidden fields.
+                    // Hide the visible fields.
                     division.hide();
                     district.hide();
                     upazila.hide();
                     area.hide();
                     // Populate the input.
                 } else {
-
                     division.show();
                     district.show();
                     upazila.show();
                     area.show();
-
                 }
             });
         });
