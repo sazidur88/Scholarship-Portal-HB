@@ -11,7 +11,7 @@ $("#level").change(function () {
         $('#college').show();
         $('#position').show();
         $('#marks_cgpa').show();
-        $('#school').hide();    
+        $('#school').hide();
         $('#university').hide();
 
     } else {

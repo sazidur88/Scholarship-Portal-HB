@@ -74,7 +74,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Your Phone</label>
-                                        <input type="number" name="phone" class="form-control" placeholder="Your Phone"
+                                        <input type="phone" pattern="[0]+[1]+[7/8/9/6/5/4/3]+[0-9]{8}" name="phone"
+                                            class="form-control" placeholder="Your Phone"
                                             value="{{ auth()->user()->phone }}" required>
                                     </div>
                                 </div>
@@ -93,9 +94,29 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        <label>Father's Profession</label>
+                                        <input type="text" name="father_profession" class="form-control"
+                                            placeholder="Your Father's Profession">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
                                         <label>Mother's Name</label>
+                                        <input type="text" name="mother_profession" class="form-control"
+                                            placeholder="Your Mother's Profession">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Mother's Profession</label>
                                         <input type="text" name="mother_name" class="form-control"
                                             placeholder="Your Mother's Name">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Siblings and their status</label>
+                                        <textarea name="mother_name" class="form-control" placeholder="Write details" rows="20" cols="200" style="max-height: 80px; height: 80px"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -122,9 +143,9 @@
                                         <label for="level">Level <span class="text-danger font-weight-bold">*</span></label>
                                         <select class="form-control" name="level" id="level">
                                             {{-- <option value="">Select</option> --}}
-                                            <option value="School">School</option>
-                                            <option value="College">College</option>
-                                            <option value="University">University</option>
+                                            <option value="school">School</option>
+                                            <option value="college">College</option>
+                                            <option value="university">University / Diploma</option>
                                         </select>
                                     </div>
                                 </div>
@@ -186,10 +207,11 @@
                                             placeholder="Your Class Position">
                                     </div>
                                 </div>
-                                <div class="col-md-6" id="marks_cgpa">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Marks/CGPA</label>
-                                        <input type="number" step=0.01 name="marks_cgpa" class="form-control" placeholder="CGPA">
+                                        <input type="number" step=0.01 name="marks_cgpa" class="form-control"
+                                            placeholder="CGPA">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -201,7 +223,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Year</label>
-                                        <input type="number" name="year" class="form-control" placeholder="Year">
+                                        <input type="number" min="2010" max="2050" step="1" value="2021" name="year"
+                                            class="form-control">
                                     </div>
                                 </div>
 
@@ -309,7 +332,7 @@
                                     <button type="submit" class="account-btn">Save</button>
                                 </div>
                             </div>
-                        </form>                       
+                        </form>
                     </div>
                 </div>
             </div>
@@ -319,21 +342,22 @@
 @endsection
 
 @section('custom_js')
-    <script>
+    {{-- <script>
         this.getField("myField").display = display.visible;
         this.getField("myField").required = true;
 
         this.getField("myField").display = display.hidden;
         this.getField("myField").required = false;
-    </script>
+    </script> --}}
 
-    <script src="{{ asset('assets/js/class-level-option.js') }}"></script>
     <script>
         $('#trigger').on('change', function() {
             this.value = this.checked ? 1 : 0;
             // alert(this.value);
         }).change();
     </script>
+
+    <script src="{{ asset('assets/js/class-level-option.js') }}"></script>
 
 
     <script>

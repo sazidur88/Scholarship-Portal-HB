@@ -91,8 +91,9 @@
                                 </div>
                             </div>
                         </div>
-                        <br>                        
+                        <br>
                     </div>
+
                     <div class="candidate-info-text candidate-education">
                         <h3>Educational Information</h3>
                         <div class="row">
@@ -122,119 +123,90 @@
                                     <div class="education-info">
                                         <h4>Position</h4>
                                         <p>{{ $academic_data->position }}</p>
-                                        <span>2000-2010</span>
                                     </div>
                                 </div>
                             @endif
 
                         </div>
                     </div>
+
                     <div class="candidate-info-text candidate-education">
-                        <h3>Residential Information</h3>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="education-info">
-                                    <h4>Level</h4>
-                                    <p>{{ $academic_data->level }}</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="education-info">
-                                    <h4>Institution</h4>
-                                    <p>{{ $academic_data->institution }}</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="education-info">
-                                    <h4>Class / Degree</h4>
-                                    <p>{{ $academic_data->class_degree }}</p>
-                                    @if ($academic_data->semester)
-                                        <span>{{ $academic_data->semester }} Semester</span>
-                                    @endif
-                                </div>
-                            </div>
-                            @if ($academic_data->position)
-                                <div class="col-md-6">
-                                    <div class="education-info">
-                                        <h4>Position</h4>
-                                        <p>{{ $academic_data->position }}</p>
-                                        <span>2000-2010</span>
+                        <h3>Present Address</h3>
+                        @forelse ($addresses as $address)
+                            @if ($address->address_type == 'PRESENT')
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="education-info">
+                                            <h4>Division</h4>
+                                            <p>{{ $address->division }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="education-info">
+                                            <h4>District</h4>
+                                            <p>{{ $address->district }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="education-info">
+                                            <h4>Upazila</h4>
+                                            <p>{{ $address->district }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="education-info">
+                                            <h4>Area</h4>
+                                            <p>{{ $address->area }}</p>
+                                        </div>
                                     </div>
                                 </div>
                             @endif
+                        @empty
+                        @endforelse
+                    {{-- </div>
 
-                        </div>
-                    </div>
-                    <div class="candidate-info-text candidate-experience">
-                        <h3>Experience</h3>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="education-info">
-                                    <h4>Name</h4>
-                                    <p>{{ $student_data->name }}</p>
-                                    {{-- <span>2000-2010</span> --}}
+                    <div class="candidate-info-text candidate-education"> --}}
+                        <h3>Permanent Address</h3>
+                        @forelse ($addresses as $address)
+                            @if ($address->address_type == 'PERMANENT')
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="education-info">
+                                            <h4>Division</h4>
+                                            <p>{{ $address->division }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="education-info">
+                                            <h4>District</h4>
+                                            <p>{{ $address->district }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="education-info">
+                                            <h4>Upazila</h4>
+                                            <p>{{ $address->district }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="education-info">
+                                            <h4>Area</h4>
+                                            <p>{{ $address->area }}</p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="education-info">
-                                    <h4>Email</h4>
-                                    <p>{{ $student_data->email }}</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="education-info">
-                                    <h4>Phone</h4>
-                                    <p>{{ $student_data->phone }}</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="education-info">
-                                    <h4>Date of Birth</h4>
-                                    <p>{{ (new DateTime($student_data->dob))->format('d-M-Y') }}</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="education-info">
-                                    <h4>Father's Name</h4>
-                                    <p>{{ $student_data->father_name }}</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="education-info">
-                                    <h4>Mother's Name</h4>
-                                    <p>{{ $student_data->mother_name }}</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="education-info">
-                                    <h4>Gender</h4>
-                                    <p>{{ $student_data->gender }}</p>
-                                </div>
+                            @endif
+                        @empty
+                        <div class="col-md-6">
+                            <div class="education-info">
+                                <h4>Same as Present Address</h4>
                             </div>
                         </div>
-                        <div class="candidate-info-text candidate-skill">
-                            <h3>Skills</h3>
-                            <ul>
-                                <li>HTMl</li>
-                                <li>CSS</li>
-                                <li>JS</li>
-                                <li>PHP</li>
-                                <li>Oracle</li>
-                                <li>C/C++</li>
-                                <li>SQL</li>
-                                <li>Ruby</li>
-                            </ul>
-                        </div>
-                        <div class="candidate-info-text text-center">
-                            <div class="theme-btn">
-                                <a href="#" class="default-btn">Hire Me</a>
-                                <a href="#" class="default-btn">Download CV</a>
-                            </div>
-                        </div>
+                        @endforelse
                     </div>
                 </div>
-
             </div>
+        </div>
     </section>
 
 

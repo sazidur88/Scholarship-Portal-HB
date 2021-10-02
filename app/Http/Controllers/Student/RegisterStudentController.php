@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Http\Controllers\Student;
 
@@ -136,33 +136,24 @@ class RegisterStudentController extends Controller
     public function show($id)
     {
         $user_id = Auth::user()->id;
-        $user_data = User::findOrfail($user_id);
         $student_data = User::find($user_id)->student_information;
-
-        // $x = $student_data->id;
-        // $y = Student::find($x);
-        // $addresses = $y ->student_address();
-        // dd ($user_data);
 
         if (!$student_data)
             return redirect()->route('student_profile_create');
         else
+            $addresses = $student_data->address;
             $academic_data = DB::table('students as student')
                 ->WHERE('student.id', $student_data->id)
                 ->LEFTJOIN('degrees as degree', 'degree.st_id', '=', 'student.id')
-                ->SELECT(
-                    'degree.level', 'degree.class_degree', 'degree.institution',
-                    'degree.institution',
-                    'degree.position',
-                    'degree.marks_cgpa',
-                    'degree.semester',
-                    'degree.year',
-                )
+                ->SELECT('degree.level', 'degree.class_degree', 'degree.institution',
+                    'degree.institution', 'degree.position', 'degree.marks_cgpa',
+                    'degree.semester','degree.year')
                 ->first();
+
         return view('web.student.student-profile', [
-            'user_data' => $user_data,
             'student_data' => $student_data,
             'academic_data' => $academic_data,
+            'addresses' => $addresses,
         ]);
     }
 
