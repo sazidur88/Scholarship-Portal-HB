@@ -13,5 +13,5 @@ Route::view('/student/student-dashboard','web.student.student-dashboard')->name(
 Route::GET('/student/student-profile-create',[RegisterStudentController::class, 'create'])->name('student_profile_create')->middleware('auth');
 Route::POST('student/store-information',[RegisterStudentController::class, 'store'])->name('store_student_information')->middleware('auth');
 Route::GET('/student/student-profile/{student_id}',[RegisterStudentController::class, 'show'])->name('student_profile')->middleware('auth');
-
+Route::GET('/student/student-profile-edit/{student_id}', [RegisterStudentController::class, 'edit'])->name('student_edit')->middleware('auth');
 

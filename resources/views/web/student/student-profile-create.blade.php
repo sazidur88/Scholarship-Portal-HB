@@ -1,7 +1,7 @@
 @extends('layouts.web')
 
 @section('custom_styles')
-    <style>
+    {{-- <style>
         .nice-select {
             width: 100%;
         }
@@ -10,7 +10,7 @@
             width: 100%
         }
 
-    </style>
+    </style> --}}
 
 
 @endsection
@@ -59,7 +59,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Your Name</label>
+                                        <label>Your Full Name</label>
                                         <input type="text" name="name" class="form-control" placeholder="Your Name"
                                             value="{{ auth()->user()->name }}" required>
                                     </div>
@@ -89,34 +89,35 @@
                                     <div class="form-group">
                                         <label>Father's Name</label>
                                         <input type="text" name="father_name" class="form-control"
-                                            placeholder="Your Father's Name">
+                                            placeholder="Your Father's Name" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Father's Profession</label>
                                         <input type="text" name="father_profession" class="form-control"
-                                            placeholder="Your Father's Profession">
+                                            placeholder="Your Father's Profession" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Mother's Name</label>
-                                        <input type="text" name="mother_profession" class="form-control"
-                                            placeholder="Your Mother's Profession">
+                                        <input type="text" name="mother_name" class="form-control"
+                                            placeholder="Your Mother's Profession" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Mother's Profession</label>
-                                        <input type="text" name="mother_name" class="form-control"
-                                            placeholder="Your Mother's Name">
+                                        <input type="text" name="mother_profession" class="form-control"
+                                            placeholder="Your Mother's Name" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Siblings and their status</label>
-                                        <textarea name="mother_name" class="form-control" placeholder="Write details" rows="20" cols="200" style="max-height: 80px; height: 80px"></textarea>
+                                        <label>Siblings and their status (if any)</label>
+                                        <textarea name="siblings" class="form-control" placeholder="Write details"
+                                            style="max-height: 80px; height: 80px"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -137,7 +138,7 @@
 
                             <br>
                             <h3>Academic information</h3>
-                            <div class="row">
+                            <div class="row dynm_field">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="level">Level <span class="text-danger font-weight-bold">*</span></label>
@@ -195,9 +196,9 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Institution</label>
+                                        <label for="institution">Institution</label>
                                         <input type="text" name="institution" class="form-control"
-                                            placeholder="Your Institution">
+                                            placeholder="Your Institution" id="institution">
                                     </div>
                                 </div>
                                 <div class="col-md-6" id="position">
@@ -227,6 +228,81 @@
                                             class="form-control">
                                     </div>
                                 </div>
+                                {{-- <div class=""> --}}
+                                    <div class="col-md-6 ">
+                                        <div class="form-group">
+                                            <label>Significant Achievement 1</label>
+                                            <textarea name="achievement[]" class="form-control"
+                                                placeholder=" (e.g., athlete, debater, organizer, etc.)"></textarea>
+                                        </div>
+                                    </div>
+                                {{-- </div> --}}
+
+
+                                <div class="col-md-12">
+                                    {{-- <button type="submit" class="account-btn">Edit</button> --}}
+                                    {{-- <button type="submit" class="account-btn">Save</button> --}}
+                                </div>
+                            </div>
+                            <a href="javascript:void(0);" class="add_button" title="Add Achievements"><i class="bx bx-plus">Add Achievements</i></a>
+
+
+                            <br>
+                            <br>
+                            <h3>Reference Details</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Reference name</label>
+                                        <input type="text" name="reference_name" class="form-control" placeholder="Enter reference name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Profession</label>
+                                        <input type="text" name="reference_profession" class="form-control" placeholder="Enter profession" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Contact Number</label>
+                                        <input type="phone" name="reference_phone" class="form-control" placeholder="Enter contact number" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    {{-- <button type="submit" class="account-btn">Edit</button> --}}
+                                    {{-- <button type="submit" class="account-btn">Save</button> --}}
+                                </div>
+                            </div>
+                            <br>
+
+                            <h3>Financial Information</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Family Income (Monthly)</label>
+                                        <input type="number" name="family_income" class="form-control" placeholder="Enter monthly family income" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Income Source</label>
+                                        <input type="text" name="income_source" class="form-control" placeholder="Enter income source" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Any Other Scholarship</label>
+                                        <textarea name="other_scholarship" class="form-control" placeholder="Please write details (if any)" style="max-height: 80px; height: 80px"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Reason for Financial Support</label>
+                                        <textarea name="reason" class="form-control" placeholder="Please write details" style="max-height: 80px; height: 80px"></textarea>
+                                    </div>
+                                </div>
 
                                 <div class="col-md-12">
                                     {{-- <button type="submit" class="account-btn">Edit</button> --}}
@@ -234,11 +310,9 @@
                                 </div>
                             </div>
 
-
                             <br>
                             <h3>Present Address</h3>
                             <div class="row">
-
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <input type="hidden" id="form_type_present" value="CREATE">
@@ -342,6 +416,39 @@
 @endsection
 
 @section('custom_js')
+
+    <script type="text/javascript">
+        let clicks = 1;
+        $(document).ready(function() {
+            var maxField = 5; //Input fields increment limitation
+            var addButton = $('.add_button'); //Add button selector
+            var wrapper = $('.field_wrapper'); //Input field wrapper
+            var more = $('.dynm_field'); //Input field wrapper
+
+            var x = 1; //Initial field counter is 1
+
+            //Once add button is clicked
+            $(addButton).click(function() {
+                clicks += 1;
+                var fieldHTML =
+                    '<div class="col-md-6"><div class="form-group"><label>Significant Achievement '+clicks +'</label><textarea  id="" name="achievement[]" class="form-control" placeholder=" (e.g., athlete, debater, organizer, etc.)"></textarea></div><a href="javascript:void(0);" class="remove_button"><i class="fa fa-close text-danger">Remove</i></a></div>'; //New input field html
+                //Check maximum number of input fields
+                if (x < maxField) {
+                    x++; //Increment field counter
+                    $(more).append(fieldHTML); //Add field html
+                }
+                console.log(x);
+            });
+
+            //Once remove button is clicked
+            $(more).on('click', '.remove_button', function(e) {
+                e.preventDefault();
+                $(this).parent('div').remove(); //Remove field html
+                x--; //Decrement field counter
+                clicks--;
+            });
+        });
+    </script>
     {{-- <script>
         this.getField("myField").display = display.visible;
         this.getField("myField").required = true;

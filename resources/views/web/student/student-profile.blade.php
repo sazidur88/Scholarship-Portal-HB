@@ -49,7 +49,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="education-info">
-                                    <h4>Name</h4>
+                                    <h4>Full Name</h4>
                                     <p>{{ $student_data->name }}</p>
                                     {{-- <span>2000-2010</span> --}}
                                 </div>
@@ -80,10 +80,30 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="education-info">
+                                    <h4>Father's Profession</h4>
+                                    <p>{{ $student_data->father_profession }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="education-info">
                                     <h4>Mother's Name</h4>
                                     <p>{{ $student_data->mother_name }}</p>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="education-info">
+                                    <h4>Mother's Profession</h4>
+                                    <p>{{ $student_data->mother_profession }}</p>
+                                </div>
+                            </div>
+                            @if ($student_data->siblings)
+                                <div class="col-md-12">
+                                    <div class="education-info">
+                                        <h4>Siblings and their status</h4>
+                                        <p>{{ $student_data->siblings }}</p>
+                                    </div>
+                                </div>
+                            @endif
                             <div class="col-md-6">
                                 <div class="education-info">
                                     <h4>Gender</h4>
@@ -91,7 +111,78 @@
                                 </div>
                             </div>
                         </div>
-                        <br>
+
+                        <div class="col-md-12">
+                            <a href="{{ route('student_edit', ['student_id' => $student_data->id]) }}"><button
+                                    type="submit" class="profile-btn">Edit</button></a>
+                        </div>
+                    </div>
+
+                    <div class="candidate-info-text candidate-education">
+                        <h3>Reference Information</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="education-info">
+                                    <h4>Reference Name</h4>
+                                    <p>{{ $student_data->reference_name }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="education-info">
+                                    <h4>Reference Profession</h4>
+                                    <p>{{ $student_data->reference_profession }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="education-info">
+                                    <h4>Reference Contact No.</h4>
+                                    <p>{{ $student_data->reference_phone }}</p>
+                                </div>
+                            </div>
+                            @if ($academic_data->position)
+                                <div class="col-md-6">
+                                    <div class="education-info">
+                                        <h4>Position</h4>
+                                        <p>{{ $academic_data->position }}</p>
+                                    </div>
+                                </div>
+                            @endif
+
+                        </div>
+                    </div>
+
+                    <div class="candidate-info-text candidate-education">
+                        <h3>Financial Information</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="education-info">
+                                    <h4>Family Income (Tk. Monthly)</h4>
+                                    <p>{{ $student_data->family_income }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="education-info">
+                                    <h4>Income Source</h4>
+                                    <p>{{ $student_data->income_source }}</p>
+                                </div>
+                            </div>
+                            @if ($student_data->other_scholarship)
+                                <div class="col-md-12">
+                                    <div class="education-info">
+                                        <h4>Other Scholarship</h4>
+                                        <p>{{ $student_data->other_scholarship }}</p>
+                                    </div>
+                                </div>
+                            @endif
+
+                            <div class="col-md-12">
+                                <div class="education-info">
+                                    <h4>Reason</h4>
+                                    <p>{{ $student_data->reason }}</p>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
 
                     <div class="candidate-info-text candidate-education">
@@ -126,6 +217,15 @@
                                     </div>
                                 </div>
                             @endif
+                            @forelse ($achievements as $achievement)
+                                <div class="col-md-6">
+                                    <div class="education-info">
+                                        <h4>Achievement {{ $loop->index + 1 }}</h4>
+                                        <p>{{ $achievement->achievement }}</p>
+                                    </div>
+                                </div>
+                            @empty
+                            @endforelse
 
                         </div>
                     </div>
@@ -163,9 +263,7 @@
                             @endif
                         @empty
                         @endforelse
-                    {{-- </div>
 
-                    <div class="candidate-info-text candidate-education"> --}}
                         <h3>Permanent Address</h3>
                         @forelse ($addresses as $address)
                             @if ($address->address_type == 'PERMANENT')
@@ -197,12 +295,14 @@
                                 </div>
                             @endif
                         @empty
-                        <div class="col-md-6">
-                            <div class="education-info">
-                                <h4>Same as Present Address</h4>
-                            </div>
-                        </div>
                         @endforelse
+                        @if ($address->same_as_present == '1')
+                            <div class="col-md-6">
+                                <div class="education-info">
+                                    <h4>Same as Present Address</h4>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

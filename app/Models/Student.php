@@ -26,6 +26,11 @@ class Student extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function achievements()
+    {
+        return $this->hasMany(Achievement::class);
+    }
+
     
     
     protected static function booted()

@@ -1,0 +1,25 @@
+Your Full Name
+Your Email
+Your Phone
+Date of Birth
+Father's Name
+Father's Profession
+Mother's Name
+Mother's Profession
+Gender
+
+Level *
+Select Class*
+Institution
+Class Position
+Marks/CGPA
+Year
+
+Reference name
+Profession
+Contact Number
+Family Income (Monthly)
+Income Source
+Reason for Financial Support
+
+Present Address

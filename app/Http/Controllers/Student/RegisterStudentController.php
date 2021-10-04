@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers\Student;
 
@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Address;
 use App\Models\Student;
 use App\Models\Degree;
+use App\Models\Achievement;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -69,10 +70,26 @@ class RegisterStudentController extends Controller
         $student->email = $request->email;
         $student->phone = $request->phone;
         $student->dob = $request->dob;
+
         $student->father_name = $request->father_name;
+        $student->father_profession = $request->father_profession;
         $student->mother_name = $request->mother_name;
+        $student->mother_profession = $request->mother_profession;
+        $student->siblings = $request->siblings;
+
         $student->gender = $request->gender;
+
+        $student->reference_name = $request->reference_name;
+        $student->reference_profession = $request->reference_profession;
+        $student->reference_phone = $request->reference_phone;
+
+        $student->family_income = $request->family_income;
+        $student->income_source = $request->income_source;
+        $student->other_scholarship = $request->other_scholarship;
+        $student->reason = $request->reason;
+
         $student->save();
+
 
 
         $this->validate($request, [
@@ -93,6 +110,20 @@ class RegisterStudentController extends Controller
         $degree->semester = $request->semester;
         $degree->year = $request->year;
         $degree->save();
+
+
+        $achievement_input = request('achievement');
+        if ($achievement_input) {
+            $student_achievement = collect();
+            for ($i = 0; $i < count($achievement_input); $i++) {
+                $achievement = new Achievement();
+                $achievement->achievement = $achievement_input[$i];
+
+                $student_achievement->push($achievement);
+            }
+            $student->achievements()->saveMany($student_achievement);
+        }
+
 
         $this->validate($request, [
             'division_present' => 'required',
@@ -142,18 +173,19 @@ class RegisterStudentController extends Controller
             return redirect()->route('student_profile_create');
         else
             $addresses = $student_data->address;
-            $academic_data = DB::table('students as student')
-                ->WHERE('student.id', $student_data->id)
-                ->LEFTJOIN('degrees as degree', 'degree.st_id', '=', 'student.id')
-                ->SELECT('degree.level', 'degree.class_degree', 'degree.institution',
-                    'degree.institution', 'degree.position', 'degree.marks_cgpa',
-                    'degree.semester','degree.year')
-                ->first();
+            $achievements = Student::find($student_data->id)->achievements;
+        $academic_data = DB::table('students as student')
+            ->WHERE('student.id', $student_data->id)
+            ->LEFTJOIN('degrees as degree', 'degree.st_id', '=', 'student.id')
+            ->SELECT('degree.level', 'degree.class_degree', 'degree.institution', 'degree.institution',
+                    'degree.position', 'degree.marks_cgpa', 'degree.semester','degree.year')
+            ->first();
 
         return view('web.student.student-profile', [
             'student_data' => $student_data,
             'academic_data' => $academic_data,
             'addresses' => $addresses,
+            'achievements' => $achievements,
         ]);
     }
 
@@ -163,9 +195,23 @@ class RegisterStudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($student_id)
     {
-        //
+        $student_data = Student::findOrFail($student_id);
+        $addresses = $student_data->address;
+        $academic_data = DB::table('students as student')
+
+            ->WHERE('student.id', $student_data->id)
+            ->LEFTJOIN('degrees as degree', 'degree.st_id', '=', 'student.id')
+            ->SELECT('degree.level', 'degree.class_degree', 'degree.institution', 'degree.institution',
+                    'degree.position', 'degree.marks_cgpa', 'degree.semester','degree.year')
+            ->first();
+
+        return view('web.student.student-profile-edit', [
+            'student_data' => $student_data,
+            'academic_data' => $academic_data,
+            'addresses' => $addresses,
+        ]);
     }
 
     /**

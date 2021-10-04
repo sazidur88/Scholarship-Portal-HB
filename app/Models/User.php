@@ -1,10 +1,6 @@
 <?php
 
-
-
 namespace App\Models;
-
-
 
 use App\Scopes\TenantScope;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -20,7 +16,6 @@ class User extends Authenticatable
 {
 
     use HasFactory, Notifiable, HasRoles;
-
 
 
     /**

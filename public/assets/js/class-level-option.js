@@ -1,13 +1,13 @@
 $("#level").change(function () {
 
-    if ($(this).val() == "school") {
+    if ($(this).val() == "School") {
         $('#school').show();
         $('#position').show();
         $('#marks_cgpa').show();
         $('#college').hide();
         $('#university').hide();
 
-    } else if ($(this).val() == "college") {
+    } else if ($(this).val() == "College") {
         $('#college').show();
         $('#position').show();
         $('#marks_cgpa').show();
