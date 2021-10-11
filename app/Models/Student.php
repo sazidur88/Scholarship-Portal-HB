@@ -31,6 +31,11 @@ class Student extends Model
         return $this->hasMany(Achievement::class);
     }
 
+    public function degree_information()
+    {
+        return $this->hasOne(Degree::class);
+    }
+
     
     
     protected static function booted()

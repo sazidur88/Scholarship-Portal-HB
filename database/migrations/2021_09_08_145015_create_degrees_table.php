@@ -15,15 +15,26 @@ class CreateDegreesTable extends Migration
     {
         Schema::create('degrees', function (Blueprint $table) {
             $table->id();
-            $table->string('st_id')->nullable();
+            $table->unsignedBigInteger('student_id')->nullable();
             $table->string('level')->nullable();
             $table->string('class_degree')->nullable();
+
             $table->string('institution')->nullable();
             $table->string('position')->nullable();
             $table->string('marks_cgpa')->nullable();
             $table->string('semester')->nullable();
             $table->string('year')->nullable();
+
+            $table->string('ssc_year')->nullable();
+            $table->string('ssc_institution')->nullable();
+            $table->string('ssc_gpa')->nullable();
+            $table->string('hsc_year')->nullable();
+            $table->string('hsc_institution')->nullable();
+            $table->string('hsc_gpa')->nullable();
             $table->timestamps();
+
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
+
         });
     }
 

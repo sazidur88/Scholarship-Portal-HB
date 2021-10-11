@@ -112,10 +112,6 @@
                             </div>
                         </div>
 
-                        <div class="col-md-12">
-                            <a href="{{ route('student_edit', ['student_id' => $student_data->id]) }}"><button
-                                    type="submit" class="profile-btn">Edit</button></a>
-                        </div>
                     </div>
 
                     <div class="candidate-info-text candidate-education">
@@ -217,6 +213,60 @@
                                     </div>
                                 </div>
                             @endif
+                            <div class="col-md-6">
+                                <div class="education-info">
+                                    <h4>Marks/GPA/CGPA</h4>
+                                    <p>{{ $academic_data->marks_cgpa }}</p>
+                                </div>
+                            </div>
+                            @if ($academic_data->ssc_year)
+                                <div class="col-md-6">
+                                    <div class="education-info">
+                                        <h4>SSC Passing Year</h4>
+                                        <p>{{ $academic_data->ssc_year }}</p>
+                                    </div>
+                                </div>
+                            @endif
+                            @if ($academic_data->ssc_institution)
+                                <div class="col-md-6">
+                                    <div class="education-info">
+                                        <h4>SSC Institution Name</h4>
+                                        <p>{{ $academic_data->ssc_institution }}</p>
+                                    </div>
+                                </div>
+                            @endif
+                            @if ($academic_data->ssc_gpa)
+                                <div class="col-md-6">
+                                    <div class="education-info">
+                                        <h4>SSC GPA</h4>
+                                        <p>{{ $academic_data->ssc_gpa }}</p>
+                                    </div>
+                                </div>
+                            @endif
+                            @if ($academic_data->hsc_year)
+                                <div class="col-md-6">
+                                    <div class="education-info">
+                                        <h4>HSC Passing Year</h4>
+                                        <p>{{ $academic_data->hsc_year }}</p>
+                                    </div>
+                                </div>
+                            @endif
+                            @if ($academic_data->hsc_institution)
+                                <div class="col-md-6">
+                                    <div class="education-info">
+                                        <h4>HSC Institution Name</h4>
+                                        <p>{{ $academic_data->hsc_institution }}</p>
+                                    </div>
+                                </div>
+                            @endif
+                            @if ($academic_data->hsc_gpa)
+                                <div class="col-md-6">
+                                    <div class="education-info">
+                                        <h4>HSC GPA</h4>
+                                        <p>{{ $academic_data->hsc_gpa }}</p>
+                                    </div>
+                                </div>
+                            @endif
                             @forelse ($achievements as $achievement)
                                 <div class="col-md-6">
                                     <div class="education-info">
@@ -232,77 +282,81 @@
 
                     <div class="candidate-info-text candidate-education">
                         <h3>Present Address</h3>
-                        @forelse ($addresses as $address)
-                            @if ($address->address_type == 'PRESENT')
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="education-info">
-                                            <h4>Division</h4>
-                                            <p>{{ $address->division }}</p>
-                                        </div>
+                        @forelse ($addresses_present as $address)
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="education-info">
+                                        <h4>Division</h4>
+                                        <p>{{ $address->division }}</p>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="education-info">
-                                            <h4>District</h4>
-                                            <p>{{ $address->district }}</p>
-                                        </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="education-info">
+                                        <h4>District</h4>
+                                        <p>{{ $address->district }}</p>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="education-info">
-                                            <h4>Upazila</h4>
-                                            <p>{{ $address->district }}</p>
-                                        </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="education-info">
+                                        <h4>Upazila</h4>
+                                        <p>{{ $address->upazila }}</p>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="education-info">
-                                            <h4>Area</h4>
-                                            <p>{{ $address->area }}</p>
-                                        </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="education-info">
+                                        <h4>Area</h4>
+                                        <p>{{ $address->area }}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <h3>Permanent Address</h3>
+                            @if ($address->same_as_present == 1)
+                                <div class="col-md-6">
+                                    <div class="education-info">
+                                        <h4>Same as Present Address</h4>
                                     </div>
                                 </div>
                             @endif
                         @empty
                         @endforelse
 
-                        <h3>Permanent Address</h3>
-                        @forelse ($addresses as $address)
-                            @if ($address->address_type == 'PERMANENT')
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="education-info">
-                                            <h4>Division</h4>
-                                            <p>{{ $address->division }}</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="education-info">
-                                            <h4>District</h4>
-                                            <p>{{ $address->district }}</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="education-info">
-                                            <h4>Upazila</h4>
-                                            <p>{{ $address->district }}</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="education-info">
-                                            <h4>Area</h4>
-                                            <p>{{ $address->area }}</p>
-                                        </div>
+
+                        @forelse ($addresses_permanent as $address)
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="education-info">
+                                        <h4>Division</h4>
+                                        <p>{{ $address->division }}</p>
                                     </div>
                                 </div>
-                            @endif
-                        @empty
-                        @endforelse
-                        @if ($address->same_as_present == '1')
-                            <div class="col-md-6">
-                                <div class="education-info">
-                                    <h4>Same as Present Address</h4>
+                                <div class="col-md-6">
+                                    <div class="education-info">
+                                        <h4>District</h4>
+                                        <p>{{ $address->district }}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="education-info">
+                                        <h4>Upazila</h4>
+                                        <p>{{ $address->upazila }}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="education-info">
+                                        <h4>Area</h4>
+                                        <p>{{ $address->area }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        @endif
+                        @empty
+                        @endforelse
+
+                    </div>
+                    <div class="col-md-12">
+                        <a href="{{ route('student_edit', ['student_id' => $student_data->id]) }}"><button type="submit"
+                                class="profile-btn">Edit</button></a>
                     </div>
                 </div>
             </div>

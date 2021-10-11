@@ -5,21 +5,21 @@
                 <div class="counter-text">
                     <i class="flaticon-resume"></i>
                     <h2><span>1225</span></h2>
-                    <p>Job Posted</p>
+                    <p>Scholarship Posted</p>
                 </div>
             </div>
             <div class="col-lg-3 col-6">
                 <div class="counter-text">
                     <i class="flaticon-recruitment"></i>
                     <h2><span>145</span></h2>
-                    <p>Job Filed</p>
+                    <p>Scholarship Filed</p>
                 </div>
             </div>
             <div class="col-lg-3 col-6">
                 <div class="counter-text">
                     <i class="flaticon-portfolio"></i>
                     <h2><span>170</span></h2>
-                    <p>Company</p>
+                    <p>Organizations</p>
                 </div>
             </div>
             <div class="col-lg-3 col-6">

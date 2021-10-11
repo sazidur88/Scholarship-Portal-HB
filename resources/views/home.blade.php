@@ -17,7 +17,7 @@
     @include('web.home-page.why-choose-us')
 
     {{-- Category  --}}
-    @include('web.home-page.category')
+    {{-- @include('web.home-page.category') --}}
 
     {{-- Jobs  --}}
     @include('web.home-page.jobs')
@@ -41,7 +41,7 @@
     @include('web.home-page.pricing-plan')
 
     {{-- News-Article-Blog  --}}
-    @include('web.home-page.news')
+    {{-- @include('web.home-page.news') --}}
 
 @endsection
 

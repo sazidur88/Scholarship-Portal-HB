@@ -40,7 +40,7 @@
                     <div class="profile-thumb">
                         <img src="{{ asset('assets/img/account.jpg') }}" alt="account holder image">
                         <h3>{{Auth::user()->name}}</h3>
-                        <p>Web Developer</p>
+                        <p>Scholarship Candidate</p>
                     </div>
                     <ul>
                         <li>

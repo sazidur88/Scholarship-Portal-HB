@@ -16,10 +16,12 @@ class CreateAchievementsTable extends Migration
         Schema::create('achievements', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('student_id')->nullable();
+
             $table->string('achievement')->nullable();            
             $table->timestamps();
 
-            $table->foreign('st_id')->references('id')->on('students')->onDelete('cascade');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
+
 
         });
     }

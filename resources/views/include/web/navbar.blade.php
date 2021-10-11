@@ -9,12 +9,13 @@
     <div class="main-nav">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="index.html">
-                    <img src="{{asset('assets/img/logo.png')}}" alt="logo">
+                <a class="navbar-brand" href="/">
+                    <img src="{{ asset('assets/img/logo.png') }}" alt="logo">
+                    {{-- <p style="font-family: 'Montserrat', sans-serif; color: white;margin: 0 auto; font-size: large">Scholarship Portal</p> --}}
                 </a>
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav m-auto">
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="#" class="nav-link dropdown-toggle active">Home</a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item">
@@ -33,11 +34,23 @@
                                     <a href="index-five.html" class="nav-link">Home Five</a>
                                 </li>
                             </ul>
+                        </li> --}}
+                        <li class="nav-item">
+                            <a href="/" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="about.html" class="nav-link">About</a>
+                            <a href="#" class="nav-link">About</a>
                         </li>
                         <li class="nav-item">
+                            <a href="#" class="nav-link">Scholarships</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Companies</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">News</a>
+                        </li>
+                        {{-- <li class="nav-item">
                             <a href="#" class="nav-link dropdown-toggle">Jobs</a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item">
@@ -56,8 +69,8 @@
                                     <a href="job-details.html" class="nav-link">Job Details</a>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="nav-item">
+                        </li> --}}
+                        {{-- <li class="nav-item">
                             <a href="#" class="nav-link dropdown-toggle">Candidates</a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item">
@@ -67,8 +80,8 @@
                                     <a href="candidate-details.html" class="nav-link">Candidates Details</a>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="nav-item">
+                        </li> --}}
+                        {{-- <li class="nav-item">
                             <a href="#" class="nav-link dropdown-toggle">Pages</a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item">
@@ -122,8 +135,8 @@
                                     <a href="terms-condition.html" class="nav-link">Terms & Conditions</a>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="nav-item">
+                        </li> --}}
+                        {{-- <li class="nav-item">
                             <a href="#" class="nav-link dropdown-toggle">Blog</a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item">
@@ -136,7 +149,7 @@
                                     <a href="blog-details.html" class="nav-link">Blog Details</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <a href="contact.html" class="nav-link">Contact Us</a>
                         </li>
@@ -164,12 +177,13 @@
                                             Dashboard</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ route('student_profile', auth()->user()->id)}}" class="nav-link">My
+                                        <a href="{{ route('student_profile', auth()->user()->id) }}"
+                                            class="nav-link">My
                                             Profile</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">Logout</a>
+                                                document.getElementById('logout-form').submit();">Logout</a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                             class="d-none">
                                             @csrf

@@ -1,7 +1,7 @@
 <div class="testimonial-style-two ptb-100">
     <div class="container">
         <div class="section-title text-center">
-            <h2>What Client’s Say About Us</h2>
+            <h2>What Candidates Say About Us</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                 et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
         </div>

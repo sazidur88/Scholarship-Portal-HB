@@ -2,13 +2,14 @@
     <div class="account-information">
         <div class="profile-thumb">
             <img src="{{ asset('assets/img/account.jpg') }}" alt="account holder image">
-            <h3>{{auth()->user()->name}}</h3>
-            <p>Web Developer</p>
+            <h3>{{ auth()->user()->name }}</h3>
+            <p>Scholarship Candidate</p>
         </div>
         <ul>
             @can('student-can')
                 <li>
-                    <a  href="{{ route('student_dashboard') }}" class="{{ (\Request::route()->getName() == 'student_dashboard') ? 'active' : '' }}">
+                    <a href="{{ route('student_dashboard') }}"
+                        class="{{ \Request::route()->getName() == 'student_dashboard' ? 'active' : '' }}">
                         <i class='bx bxs-dashboard'></i>
                         Dashboard
                     </a>
@@ -16,7 +17,8 @@
             @endcan
             @can('student-can')
                 <li>
-                    <a href="{{ route('student_profile', auth()->user()->id) }}" class="{{ (\Request::route()->getName() == 'student_profile') ? 'active' : '' }}">
+                    <a href="{{ route('student_profile', auth()->user()->id) }}"
+                        class="{{ \Request::route()->getName() == 'student_profile' ? 'active' : '' }}">
                         <i class='bx bx-user'></i>
                         My Profile
                     </a>
@@ -24,8 +26,9 @@
             @endcan
 
             <li>
-                <a href="#">
-                    <i class='bx bxs-file-doc'></i>
+                <a href="#"
+                    class="">
+                    <i class='bx bx-user'></i>
                     Edit Profile
                 </a>
             </li>
@@ -36,7 +39,8 @@
                 </a>
             </li>
             <li>
-                <a href="{{route('edit_user_info')}}" class="{{ (\Request::route()->getName() == 'edit_user_info') ? 'active' : '' }}">
+                <a href="{{ route('edit_user_info') }}"
+                    class="{{ \Request::route()->getName() == 'edit_user_info' ? 'active' : '' }}">
                     <i class='bx bx-cog'></i>
                     Settings
                 </a>

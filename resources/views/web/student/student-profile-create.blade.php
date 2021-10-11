@@ -1,17 +1,7 @@
 @extends('layouts.web')
 
 @section('custom_styles')
-    {{-- <style>
-        .nice-select {
-            width: 100%;
-        }
-
-        .nice-select .list {
-            width: 100%
-        }
-
-    </style> --}}
-
+    <link href="{{ asset('assets/css/bs-datepicker.min.css') }}" rel="stylesheet">
 
 @endsection
 
@@ -144,18 +134,18 @@
                                         <label for="level">Level <span class="text-danger font-weight-bold">*</span></label>
                                         <select class="form-control" name="level" id="level">
                                             {{-- <option value="">Select</option> --}}
-                                            <option value="school">School</option>
-                                            <option value="college">College</option>
-                                            <option value="university">University / Diploma</option>
+                                            <option value="School">School</option>
+                                            <option value="College">College</option>
+                                            <option value="University/Diploma">University / Diploma</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6" id="school">
                                     <div class="form-group">
-                                        <label for="class_degree">Select Class<span
+                                        <label for="class_degree_sch">Select Class<span
                                                 class="text-danger font-weight-bold">*</span></label>
-                                        <select class="form-control" name="class_degree" id="class_degree">
-                                            {{-- <option value="">Select</option> --}}
+                                        <select class="form-control" name="class_degree_sch" id="class_degree_sch">
+                                            <option value="">Select</option>
                                             <option value="Class-1">Class-1</option>
                                             <option value="Class-2">Class-2</option>
                                             <option value="Class-3">Class-3</option>
@@ -171,10 +161,10 @@
                                 </div>
                                 <div class="col-md-6" id="college">
                                     <div class="form-group">
-                                        <label for="class_degree">Select Class<span
+                                        <label for="class_degree_col">Select Class<span
                                                 class="text-danger font-weight-bold">*</span></label>
-                                        <select class="form-control" name="class_degree" id="class_degree">
-                                            {{-- <option value="">Select</option> --}}
+                                        <select class="form-control" name="class_degree_col" id="class_degree_col">
+                                            <option value="">Select</option>
                                             <option value="Class-11">Class-11</option>
                                             <option value="Class-12">Class-12</option>
                                         </select>
@@ -182,10 +172,10 @@
                                 </div>
                                 <div class="col-md-6" id="university">
                                     <div class="form-group">
-                                        <label for="class_degree">Degree Year<span
+                                        <label for="class_degree_uni">Degree Year<span
                                                 class="text-danger font-weight-bold">*</span></label>
-                                        <select class="form-control" name="class_degree" id="class_degree">
-                                            {{-- <option value="">Select</option> --}}
+                                        <select class="form-control" name="class_degree_uni" id="class_degree_uni">
+                                            <option value="">Select</option>
                                             <option value="1st Year">1st Year</option>
                                             <option value="2nd Year">2nd Year</option>
                                             <option value="3rd Year">3rd Year</option>
@@ -194,6 +184,7 @@
                                         </select>
                                     </div>
                                 </div>
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="institution">Institution</label>
@@ -203,14 +194,14 @@
                                 </div>
                                 <div class="col-md-6" id="position">
                                     <div class="form-group">
-                                        <label>Class Position</label>
+                                        <label>Class Position/Roll</label>
                                         <input type="number" name="position" class="form-control"
                                             placeholder="Your Class Position">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Marks/CGPA</label>
+                                        <label>Marks/GPA/CGPA</label>
                                         <input type="number" step=0.01 name="marks_cgpa" class="form-control"
                                             placeholder="CGPA">
                                     </div>
@@ -224,19 +215,56 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Year</label>
-                                        <input type="number" min="2010" max="2050" step="1" value="2021" name="year"
-                                            class="form-control">
+                                        <input type="text" class="form-control" name="year" id="datepicker"/>
                                     </div>
                                 </div>
-                                {{-- <div class=""> --}}
-                                    <div class="col-md-6 ">
-                                        <div class="form-group">
-                                            <label>Significant Achievement 1</label>
-                                            <textarea name="achievement[]" class="form-control"
-                                                placeholder=" (e.g., athlete, debater, organizer, etc.)"></textarea>
-                                        </div>
+                                <div class="col-md-6" id="ssc_year">
+                                    <div class="form-group">
+                                        <label>SSC Passing Year</label>
+                                            <input type="text" class="form-control" name="ssc_year" id="datepicker-1"/>
                                     </div>
-                                {{-- </div> --}}
+                                </div>
+                                <div class="col-md-6" id="ssc_institution">
+                                    <div class="form-group">
+                                        <label>SSC Institution Name</label>
+                                        <input type="text" name="ssc_institution" class="form-control"
+                                            placeholder="SSC Institution Name" id="ssc_institution">
+                                    </div>
+                                </div>
+                                <div class="col-md-6" id="ssc_gpa">
+                                    <div class="form-group">
+                                        <label>SSC GPA</label>
+                                        <input type="number" step=0.01 name="ssc_gpa" class="form-control"
+                                            placeholder="SSC GPA">
+                                    </div>
+                                </div>
+                                <div class="col-md-6" id="hsc_year">
+                                    <div class="form-group">
+                                        <label>HSC Passing Year</label>
+                                            <input type="text" class="form-control" name="hsc_year" id="datepicker-2"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" id="hsc_institution">
+                                    <div class="form-group">
+                                        <label>HSC Institution Name</label>
+                                        <input type="text" name="hsc_institution" class="form-control"
+                                            placeholder="HSC Institution Name" id="hsc_institution">
+                                    </div>
+                                </div>
+                                <div class="col-md-6" id="hsc_gpa">
+                                    <div class="form-group">
+                                        <label>HSC GPA</label>
+                                        <input type="number" step=0.01 name="hsc_gpa" class="form-control"
+                                            placeholder="HSC GPA">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 ">
+                                    <div class="form-group">
+                                        <label>Significant Achievement 1</label>
+                                        <textarea name="achievement[]" class="form-control"
+                                            placeholder=" (e.g., athlete, debater, organizer, etc.)"></textarea>
+                                    </div>
+                                </div>
 
 
                                 <div class="col-md-12">
@@ -244,7 +272,8 @@
                                     {{-- <button type="submit" class="account-btn">Save</button> --}}
                                 </div>
                             </div>
-                            <a href="javascript:void(0);" class="add_button" title="Add Achievements"><i class="bx bx-plus">Add Achievements</i></a>
+                            <a href="javascript:void(0);" class="add_button" title="Add Achievements"><i
+                                    class="bx bx-plus">Add Achievements</i></a>
 
 
                             <br>
@@ -254,19 +283,22 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Reference name</label>
-                                        <input type="text" name="reference_name" class="form-control" placeholder="Enter reference name" required>
+                                        <input type="text" name="reference_name" class="form-control"
+                                            placeholder="Enter reference name" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Profession</label>
-                                        <input type="text" name="reference_profession" class="form-control" placeholder="Enter profession" required>
+                                        <input type="text" name="reference_profession" class="form-control"
+                                            placeholder="Enter profession" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Contact Number</label>
-                                        <input type="phone" name="reference_phone" class="form-control" placeholder="Enter contact number" required>
+                                        <input type="phone" name="reference_phone" class="form-control"
+                                            placeholder="Enter contact number" required>
                                     </div>
                                 </div>
 
@@ -282,25 +314,30 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Family Income (Monthly)</label>
-                                        <input type="number" name="family_income" class="form-control" placeholder="Enter monthly family income" required>
+                                        <input type="number" name="family_income" class="form-control"
+                                            placeholder="Enter monthly family income" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Income Source</label>
-                                        <input type="text" name="income_source" class="form-control" placeholder="Enter income source" required>
+                                        <input type="text" name="income_source" class="form-control"
+                                            placeholder="Enter income source" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Any Other Scholarship</label>
-                                        <textarea name="other_scholarship" class="form-control" placeholder="Please write details (if any)" style="max-height: 80px; height: 80px"></textarea>
+                                        <textarea name="other_scholarship" class="form-control"
+                                            placeholder="Please write details (if any)"
+                                            style="max-height: 80px; height: 80px"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Reason for Financial Support</label>
-                                        <textarea name="reason" class="form-control" placeholder="Please write details" style="max-height: 80px; height: 80px"></textarea>
+                                        <textarea name="reason" class="form-control" placeholder="Please write details"
+                                            style="max-height: 80px; height: 80px"></textarea>
                                     </div>
                                 </div>
 
@@ -311,13 +348,15 @@
                             </div>
 
                             <br>
+
                             <h3>Present Address</h3>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <input type="hidden" id="form_type_present" value="CREATE">
                                         <label>Division:</label>
-                                        <select class="form-control" id="division_present" name="division_present">
+                                        <select class="form-control" id="division_present" name="division_present"
+                                            required>
                                             <option value="">Please select division</option>
                                         </select>
                                     </div>
@@ -325,7 +364,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>District:</label>
-                                        <select class="form-control" id="district_present" name="district_present">
+                                        <select class="form-control" id="district_present" name="district_present"
+                                            required>
                                             <option selected>Please select district</option>
                                         </select>
                                     </div>
@@ -333,7 +373,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Upazila:</label>
-                                        <select class="form-control" id="upazila_present" name="upazila_present">
+                                        <select class="form-control" id="upazila_present" name="upazila_present"
+                                            required>
                                             <option selected>Please select upazila</option>
                                         </select>
                                     </div>
@@ -416,6 +457,27 @@
 @endsection
 
 @section('custom_js')
+    <script src="{{ asset('assets/js/bs-datepicker.min.js') }}"></script>
+<script>
+    $("#datepicker").datepicker({
+        format: "yyyy",
+        viewMode: "years",
+        minViewMode: "years",
+        autoclose: true //to close picker once year is selected
+    });
+    $("#datepicker-1").datepicker({
+        format: "yyyy",
+        viewMode: "years",
+        minViewMode: "years",
+        autoclose: true //to close picker once year is selected
+    });
+    $("#datepicker-2").datepicker({
+        format: "yyyy",
+        viewMode: "years",
+        minViewMode: "years",
+        autoclose: true //to close picker once year is selected
+    });
+</script>
 
     <script type="text/javascript">
         let clicks = 1;
@@ -431,7 +493,9 @@
             $(addButton).click(function() {
                 clicks += 1;
                 var fieldHTML =
-                    '<div class="col-md-6"><div class="form-group"><label>Significant Achievement '+clicks +'</label><textarea  id="" name="achievement[]" class="form-control" placeholder=" (e.g., athlete, debater, organizer, etc.)"></textarea></div><a href="javascript:void(0);" class="remove_button"><i class="fa fa-close text-danger">Remove</i></a></div>'; //New input field html
+                    '<div class="col-md-6"><div class="form-group"><label>Significant Achievement ' +
+                    clicks +
+                    '</label><textarea  id="" name="achievement[]" class="form-control" placeholder=" (e.g., athlete, debater, organizer, etc.)"></textarea></div><a href="javascript:void(0);" class="remove_button"><i class="fa fa-close text-danger">Remove</i></a></div>'; //New input field html
                 //Check maximum number of input fields
                 if (x < maxField) {
                     x++; //Increment field counter
