@@ -215,13 +215,17 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Year</label>
-                                        <input type="text" class="form-control" name="year" id="datepicker"/>
+                                        <input type="text" class="form-control" name="year" id="datepicker" />
                                     </div>
+                                </div>
+
+                                <div class="" id="ssc_next">
+                                    <hr style="height:2px;border-width:0;">
                                 </div>
                                 <div class="col-md-6" id="ssc_year">
                                     <div class="form-group">
                                         <label>SSC Passing Year</label>
-                                            <input type="text" class="form-control" name="ssc_year" id="datepicker-1"/>
+                                        <input type="text" class="form-control" name="ssc_year" id="datepicker-1" />
                                     </div>
                                 </div>
                                 <div class="col-md-6" id="ssc_institution">
@@ -238,10 +242,13 @@
                                             placeholder="SSC GPA">
                                     </div>
                                 </div>
+                                <div class="" id="hsc_next">
+                                    <hr style="height:2px;border-width:0;">
+                                </div>
                                 <div class="col-md-6" id="hsc_year">
                                     <div class="form-group">
                                         <label>HSC Passing Year</label>
-                                            <input type="text" class="form-control" name="hsc_year" id="datepicker-2"/>
+                                        <input type="text" class="form-control" name="hsc_year" id="datepicker-2" />
                                     </div>
                                 </div>
                                 <div class="col-md-6" id="hsc_institution">
@@ -257,6 +264,9 @@
                                         <input type="number" step=0.01 name="hsc_gpa" class="form-control"
                                             placeholder="HSC GPA">
                                     </div>
+                                </div>
+                                <div class="" id="sig_ach">
+                                    <hr style="height:2px;border-width:0;">
                                 </div>
                                 <div class="col-md-6 ">
                                     <div class="form-group">
@@ -407,38 +417,44 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6" id="division_check">
-                                    <div class="form-group">
-                                        <!-- This hidden input field is necessary for the js file. -->
-                                        <input type="hidden" id="form_type_permanent" value="CREATE">
-                                        <!-- Value = "CREATE" for create form and value = "EDIT" for edit form. -->
-                                        <label>Division:</label>
-                                        <select class="form-control" name="division_permanent" id="division_permanent">
-                                            <option selected="selected" name="division">Please select division</option>
-                                        </select>
+                                <div class="row" id="permanent_address">
+
+                                    <div class="col-md-6" id="division_check">
+                                        <div class="form-group">
+                                            <!-- This hidden input field is necessary for the js file. -->
+                                            <input type="hidden" id="form_type_permanent" value="CREATE">
+                                            <!-- Value = "CREATE" for create form and value = "EDIT" for edit form. -->
+                                            <label>Division:</label>
+                                            <select class="form-control" name="division_permanent"
+                                                id="division_permanent">
+                                                <option selected="selected" name="division">Please select division
+                                                </option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6" id="district_check">
-                                    <div class="form-group">
-                                        <label>District:</label>
-                                        <select class="form-control" name="district_permanent" id="district_permanent">
-                                            <option selected="selected">Please select district</option>
-                                        </select>
+                                    <div class="col-md-6" id="district_check">
+                                        <div class="form-group">
+                                            <label>District:</label>
+                                            <select class="form-control" name="district_permanent"
+                                                id="district_permanent">
+                                                <option selected="selected">Please select district</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6" id="upazila_check">
-                                    <div class="form-group">
-                                        <label>Upazila:</label>
-                                        <select class="form-control" name="upazila_permanent" id="upazila_permanent">
-                                            <option selected="selected">Please select upazila</option>
-                                        </select>
+                                    <div class="col-md-6" id="upazila_check">
+                                        <div class="form-group">
+                                            <label>Upazila:</label>
+                                            <select class="form-control" name="upazila_permanent" id="upazila_permanent">
+                                                <option selected="selected">Please select upazila</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6" id="area_check">
-                                    <div class="form-group">
-                                        <label>Area</label>
-                                        <input type="text" name="area_permanent" class="form-control"
-                                            placeholder="Your Area">
+                                    <div class="col-md-6" id="area_check">
+                                        <div class="form-group">
+                                            <label>Area</label>
+                                            <input type="text" name="area_permanent" class="form-control"
+                                                placeholder="Your Area">
+                                        </div>
                                     </div>
                                 </div>
 
@@ -458,26 +474,26 @@
 
 @section('custom_js')
     <script src="{{ asset('assets/js/bs-datepicker.min.js') }}"></script>
-<script>
-    $("#datepicker").datepicker({
-        format: "yyyy",
-        viewMode: "years",
-        minViewMode: "years",
-        autoclose: true //to close picker once year is selected
-    });
-    $("#datepicker-1").datepicker({
-        format: "yyyy",
-        viewMode: "years",
-        minViewMode: "years",
-        autoclose: true //to close picker once year is selected
-    });
-    $("#datepicker-2").datepicker({
-        format: "yyyy",
-        viewMode: "years",
-        minViewMode: "years",
-        autoclose: true //to close picker once year is selected
-    });
-</script>
+    <script>
+        $("#datepicker").datepicker({
+            format: "yyyy",
+            viewMode: "years",
+            minViewMode: "years",
+            autoclose: true //to close picker once year is selected
+        });
+        $("#datepicker-1").datepicker({
+            format: "yyyy",
+            viewMode: "years",
+            minViewMode: "years",
+            autoclose: true //to close picker once year is selected
+        });
+        $("#datepicker-2").datepicker({
+            format: "yyyy",
+            viewMode: "years",
+            minViewMode: "years",
+            autoclose: true //to close picker once year is selected
+        });
+    </script>
 
     <script type="text/javascript">
         let clicks = 1;
@@ -532,20 +548,14 @@
 
 
     <script>
-        $(function() {
+        $(window).on('load', function() {
             // Get the form fields 
             var checkbox = $("#trigger");
-            var division = $("#division_check");
-            var district = $("#district_check");
-            var upazila = $("#upazila_check");
-            var area = $("#area_check");
+            var permanent_address = $("#permanent_address");
 
             // Show the fields.
             // Use JS to do this in case the user doesn't have JS
-            division.show();
-            district.show();
-            upazila.show();
-            area.show();
+            permanent_address.show();
 
             // Setup an event listener for when the state of the
             // checkbox changes.
@@ -553,16 +563,10 @@
                 // Check to see if the checkbox is checked.
                 if (checkbox.is(":checked")) {
                     // Hide the visible fields.
-                    division.hide();
-                    district.hide();
-                    upazila.hide();
-                    area.hide();
+                    permanent_address.hide();
                     // Populate the input.
                 } else {
-                    division.show();
-                    district.show();
-                    upazila.show();
-                    area.show();
+                    permanent_address.show();
                 }
             });
         });

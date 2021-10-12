@@ -199,7 +199,7 @@ class RegisterStudentController extends Controller
             return redirect()->route('student_profile_create');
         else
             $addresses_present = $student_data->address->where("address_type", "PRESENT");
-            $addresses_permanent = $student_data->address->where("address_type", "PERMANENT");
+        $addresses_permanent = $student_data->address->where("address_type", "PERMANENT");
         // dd( $addresses);
 
         $academic_data = Student::find($student_data->id)->degree_information;
@@ -227,6 +227,10 @@ class RegisterStudentController extends Controller
         $student_data = Student::findOrFail($student_id);
         $addresses_present = $student_data->address->where("address_type", "PRESENT");
         $addresses_permanent = $student_data->address->where("address_type", "PERMANENT");
+
+        // $trigger_value = $student_data->address->where("address_type", "PRESENT")->same_as_present;
+        // dd($addresses_present->same_as_present);
+
         $academic_data = Student::find($student_data->id)->degree_information;
         $achievements = Student::find($student_data->id)->achievements;
 
@@ -360,26 +364,35 @@ class RegisterStudentController extends Controller
         $address->save();
 
 
-        
+
 
         $permanent_address_id = $request->permanent_address_id;
         $same_as_present = $request->has('same_as_present');
-        // dd($same_as_present);
         if ($same_as_present == 1) {
-            // $permanent_address = Address::where("id", $permanent_address_id)->get();
-            $permanent_address = Address::find($permanent_address_id);
-            $permanent_address->delete();
+            $student->address()->where("id", $permanent_address_id)->delete();
         } else if ($same_as_present == NULL) {
-            $permanent_address =  new Address();
-            $permanent_address->division = $request->division_permanent;
-            $permanent_address->district = $request->district_permanent;
-            $permanent_address->upazila = $request->upazila_permanent;
-            $permanent_address->area = $request->area_permanent;
-            $permanent_address->address_type = "PERMANENT";
-            $permanent_address->status = "ACTIVE";
-            $student->address()->save($permanent_address);
-
-        }
+            if ($permanent_address_id) {
+                $permanent_address = Address::find($permanent_address_id);
+                $permanent_address->division = $request->division_permanent;
+                $permanent_address->district = $request->district_permanent;
+                $permanent_address->upazila = $request->upazila_permanent;
+                $permanent_address->area = $request->area_permanent;
+                $permanent_address->address_type = "PERMANENT";
+                $permanent_address->same_as_present = $request->has('same_as_present');
+                $permanent_address->status = "ACTIVE";
+                $student->address()->save($permanent_address);
+            }else {
+                $permanent_address = new Address();
+                $permanent_address->division = $request->division_permanent;
+                $permanent_address->district = $request->district_permanent;
+                $permanent_address->upazila = $request->upazila_permanent;
+                $permanent_address->area = $request->area_permanent;
+                $permanent_address->address_type = "PERMANENT";
+                $permanent_address->same_as_present = $request->has('same_as_present');
+                $permanent_address->status = "ACTIVE";
+                $student->address()->save($permanent_address);
+            }
+        } 
 
 
         return redirect()->route('student_profile', ['student_id' => $student_id]);
