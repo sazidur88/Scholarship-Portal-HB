@@ -428,7 +428,7 @@
                                             value="{{ $present->same_as_presen }}" name="same_as_present"
                                             @if (old('same_as_present', $present->same_as_present)) checked @endif>
 
-                                        <label class="form-check-label" for="trigger">Same as Present Address</label>
+                                        <label class="form-check-label" for="trigger">Same as Present Address (Tick, if yes)</label>
                                     </div>
                                 </div>
                             @empty
@@ -480,7 +480,49 @@
                                         </div>
                                     </div>
                                 @empty
+                                    <div class="row" id="permanent_address_new">
+
+                                        <div class="col-md-6" id="division_check">
+                                            <div class="form-group">
+                                                <!-- This hidden input field is necessary for the js file. -->
+                                                <input type="hidden" id="form_type_permanent" value="CREATE">
+                                                <!-- Value = "CREATE" for create form and value = "EDIT" for edit form. -->
+                                                <label>Division:</label>
+                                                <select class="form-control" name="division_permanent"
+                                                    id="division_permanent">
+                                                    <option selected="selected" name="division">Please select division
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="district_check">
+                                            <div class="form-group">
+                                                <label>District:</label>
+                                                <select class="form-control" name="district_permanent"
+                                                    id="district_permanent">
+                                                    <option selected="selected">Please select district</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="upazila_check">
+                                            <div class="form-group">
+                                                <label>Upazila:</label>
+                                                <select class="form-control" name="upazila_permanent"
+                                                    id="upazila_permanent">
+                                                    <option selected="selected">Please select upazila</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="area_check">
+                                            <div class="form-group">
+                                                <label>Area</label>
+                                                <input type="text" name="area_permanent" class="form-control"
+                                                    placeholder="Your Area">
+                                            </div>
+                                        </div>
+                                    </div>
                                 @endforelse
+
                             </div>
 
                             <div class="col-md-12">
@@ -542,10 +584,12 @@
             // Get the form fields 
             var checkbox = $("#trigger");
             var permanent_address = $("#permanent_address");
+            var permanent_address_new = $("#permanent_address_new");
 
             // Show the fields.
             // Use JS to do this in case the user doesn't have JS
             permanent_address.show();
+            permanent_address_new.show();
 
             // Setup an event listener for when the state of the
             // checkbox changes.
@@ -554,9 +598,11 @@
                 if (checkbox.is(":checked")) {
                     // Hide the visible fields.
                     permanent_address.hide();
+                    permanent_address_new.hide();
                     // Populate the input.
                 } else {
                     permanent_address.show();
+                    permanent_address_new.show();
                 }
             });
         });

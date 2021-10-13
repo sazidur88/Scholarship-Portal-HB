@@ -45,7 +45,7 @@
                             but also the leap into electronic typesetting, remaining essentially unchanged.</p>
                     </div> --}}
                     <div class="candidate-info-text candidate-education">
-                        <h3>Personal Information</h3>
+                        <h3><i class='bx bx-user-circle'></i> Personal Information</h3>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="education-info">
@@ -115,7 +115,7 @@
                     </div>
 
                     <div class="candidate-info-text candidate-education">
-                        <h3>Reference Information</h3>
+                        <h3><i class='bx bx-link'></i> Reference Information</h3>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="education-info">
@@ -148,7 +148,7 @@
                     </div>
 
                     <div class="candidate-info-text candidate-education">
-                        <h3>Financial Information</h3>
+                        <h3><i class='bx bx-money'></i> Financial Information</h3>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="education-info">
@@ -182,7 +182,7 @@
                     </div>
 
                     <div class="candidate-info-text candidate-education">
-                        <h3>Educational Information</h3>
+                        <h3><i class='bx bx-book-reader'></i> Educational Information</h3>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="education-info">
@@ -281,7 +281,7 @@
                     </div>
 
                     <div class="candidate-info-text candidate-education">
-                        <h3>Present Address</h3>
+                        <h3><i class='bx bx-home'></i> Present Address</h3>
                         @forelse ($addresses_present as $address)
                             <div class="row">
                                 <div class="col-md-6">
@@ -311,7 +311,7 @@
                             </div>
 
 
-                            <h3>Permanent Address</h3>
+                            <h3><i class='bx bx-home'></i> Permanent Address</h3>
                             @if ($address->same_as_present == 1)
                                 <div class="col-md-6">
                                     <div class="education-info">
@@ -356,7 +356,7 @@
                     </div>
                     <div class="col-md-12">
                         <a href="{{ route('student_edit', ['student_id' => $student_data->id]) }}"><button type="submit"
-                                class="profile-btn">Edit</button></a>
+                                class="profile-btn"><i class="bx bxs-edit"></i> Edit</button></a>
                     </div>
                 </div>
             </div>

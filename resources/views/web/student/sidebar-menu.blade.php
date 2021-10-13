@@ -1,7 +1,7 @@
 <div class="col-md-4" style="padding-bottom: 15px">
     <div class="account-information">
         <div class="profile-thumb">
-            <img src="{{ asset('assets/img/account.jpg') }}" alt="account holder image">
+            <img src="{{ asset('assets/img/account.jpg') }}" alt="account holder image"><i class="bx bxs-camera"></i> 
             <h3>{{ auth()->user()->name }}</h3>
             <p>Scholarship Candidate</p>
         </div>
@@ -21,6 +21,15 @@
                         class="{{ \Request::route()->getName() == 'student_profile' ? 'active' : '' }}">
                         <i class='bx bx-user'></i>
                         My Profile
+                    </a>
+                </li>
+            @endcan
+            @can('student-can')
+                <li>
+                    <a href="{{ route('student_document')}}"
+                        class="{{ \Request::route()->getName() == 'student_document' ? 'active' : '' }}">
+                        <i class='bx bx-user'></i>
+                        Documents
                     </a>
                 </li>
             @endcan

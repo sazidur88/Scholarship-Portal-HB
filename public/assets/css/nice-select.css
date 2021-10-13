@@ -25,8 +25,7 @@
     -ms-user-select: none;
     user-select: none;
     white-space: nowrap;
-    width: auto;
-    /* margin-bottom: 18px; */
+    width: auto
 }
 
 .nice-select:hover {

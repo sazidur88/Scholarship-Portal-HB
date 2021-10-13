@@ -14,10 +14,19 @@ class Student extends Model
     {
         return $this->morphMany(Address::class, 'addressable');
     }
-
     public function student_address()
     {
         return  $this->address();
+    }
+
+    public function documents()
+    {
+        return $this->morphMany(Address::class, 'documentable');
+    }
+
+    public function student_documents()
+    {
+        return  $this->documents();
     }
 
 
