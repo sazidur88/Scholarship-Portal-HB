@@ -37,6 +37,8 @@
 
 
                 <div class="col-lg-8">
+                    @include('include.messages')
+
                     {{-- <div class="candidate-info-text">
                         <h3>About Me</h3>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been

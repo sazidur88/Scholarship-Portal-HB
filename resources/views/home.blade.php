@@ -20,7 +20,7 @@
     {{-- @include('web.home-page.category') --}}
 
     {{-- Jobs  --}}
-    @include('web.home-page.jobs')
+    @include('web.home-page.scholarship')
 
     {{-- Top Companies  --}}
     @include('web.home-page.top-companies')
@@ -29,7 +29,7 @@
     @include('web.home-page.looking-for-job')
 
     {{-- featured candidates  --}}
-    @include('web.home-page.featured-candidates')
+    {{-- @include('web.home-page.featured-candidates') --}}
 
     {{-- Counter Section  --}}
     @include('web.home-page.counter-section')
@@ -38,7 +38,7 @@
     @include('web.home-page.testimonial')
 
     {{-- pricing plan  --}}
-    @include('web.home-page.pricing-plan')
+    {{-- @include('web.home-page.pricing-plan') --}}
 
     {{-- News-Article-Blog  --}}
     {{-- @include('web.home-page.news') --}}

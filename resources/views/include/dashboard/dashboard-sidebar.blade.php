@@ -59,6 +59,14 @@
                     </a>
                 </li>
                 @endcan
+                <li class="nav-item">
+                    <a href="{{route('manage_permissions.index')}}" class="nav-link">
+                        <i class="nav-icon fas fa-user-secret"></i>
+                        <p>
+                            Manage Permissions
+                        </p>
+                    </a>
+                </li>
 
 
 {{--                <li class="nav-item">--}}

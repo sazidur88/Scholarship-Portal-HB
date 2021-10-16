@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Tenant;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -81,8 +82,16 @@ class ManageUsersController extends Controller
         $user = User::find($id);
         $roles = Role::pluck('name','name')->all();
         $userRole = $user->roles->pluck('name','name')->all();
+        
+        $tenants = Tenant::pluck('name','id')->all();
+        $tenant_id = $user->tenant_id;
 
-        return view('admin.manage_users.manage_users_edit',compact('user','roles','userRole'));
+
+        // dd($userTenants);   
+
+
+
+        return view('admin.manage_users.manage_users_edit',compact('user','roles','userRole','tenants','tenant_id'));
     }
 
     /**
@@ -99,13 +108,17 @@ class ManageUsersController extends Controller
             'email' => 'email|unique:users,email,'.$id,
             'phone' => 'required|numeric|unique:users,phone,'.$id,
             'password' => 'same:confirm-password',
-            'roles' => 'required'
+            'roles' => 'required',
+            'tenant' => 'required'
         ]);
 
         $input = $request->all();
         if(empty($input['password'])){
             $input = Arr::except($input,array('password'));
         }
+
+        // $input = $request->tenant;
+
 
         $user = User::find($id);
         $user->update($input);

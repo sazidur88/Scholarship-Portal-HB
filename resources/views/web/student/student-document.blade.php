@@ -38,79 +38,132 @@
 
                 <div class="col-md-8">
 
-
                     <div class="row">
-                        <div class="account-details">
+                        <div class="job-style-two account-details">
+
+                            <div class="display-message">
+                                @if (count($errors) > 0)
+                                    <div class="alert alert-danger">
+                                        @foreach ($errors->all() as $error)
+                                            {{ $error }}
+                                        @endforeach
+                                    </div>
+                                @endif
+                            </div>
+
+
+                            @include('include.messages')
+
                             <h5 class="text-center text-danger" style="margin-bottom: 30px;">Please upload the necessary
                                 Documents </h5>
-
                             <div class="basic-info">
                                 <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                <form method="POST" class="basic-info" action="{{ route('student_document_upload') }}"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
 
-                                <div class="col-md-12 text-center">
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal" data-bs-whatever="@mdo">Upload Document</button>
-                                </div>
+                                    <div class="dynm_field">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="type">Document Type</label>
+                                                    <select class="form-control" name="type" id="type" required>
+                                                        <option value="">Select</option>
+                                                        <option value="Birth Certificate/NID">Birth Certificate/NID</option>
+                                                        <option value="Studentship Certificate">Studentship Certificate
+                                                        </option>
+                                                        <option value="SSC Certificate">SSC Certificate</option>
+                                                        <option value="HSC Certificate">HSC Certificate</option>
+                                                        <option value="Other">Other</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+                                                    <label>Choose Document</label>
+                                                    <input type="file" id="document" name="document" class="form-control" required>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><br>
+                                    <div class="col-md-12 text-center">
+                                        <button type="submit" class="btn btn-danger">Upload Document</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div><br>
-                    <div class="row">
-                        <div class="account-details">
-                            <h5 class="text-center text-danger" style="margin-bottom: 30px;">Your Uploaded Document/s</h5>
-                            <div class="basic-info">
-                                <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
 
-                                
+                    <div class="row">
+                        <section class="job-style-two job-list-section pt-50 pb-70">
+                            <h2 class="text-center text-dark" style="margin-bottom: 30px;">Uploaded Documents</h2>
+                            <div class="container">
+                                @forelse ($documents as $document)
+                                    <div class="job-card-two">
+                                        <div class="row align-items-center">
+                                            <div class="col-lg-8 col-md-6">
+                                                <div class="job-info">
+                                                    <h3><a href="{{ url('storage/uploaded_file/student_document/' . $document->document_url) }}"
+                                                            target="_blank">{{ $loop->index + 1 }}.
+                                                            {{ $document->type }}</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="job-info">
+
+                                                    <button class="btn btn-secondary"><a class="text-light"
+                                                            href="{{ url('storage/uploaded_file/student_document/' . $document->document_url) }}"
+                                                            target="_blank" class="default-btn">View</a></button>
+
+                                                    <button type="button" class="btn btn-danger delete_document_modal"
+                                                        data-target="#delete_document_modal"
+                                                        data-document_id="{{ $document->id }}">Delete</button>
+
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @empty
+                                <h5 class="text-center text-danger" style="margin-top: 30px;">No document found!</h5>
+                                @endforelse
+
                             </div>
-                        </div>
+                        </section>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+
+    {{-- ------------------------Delete User Modal---------------------------- --}}
+    <div class="modal fade" id="delete_document_modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                    <h5 class="modal-title text-danger" id="exampleModalLabel">ATTENTION!!</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" class="basic-info" action="{{ route('student_document_upload') }}"
-                        enctype="multipart/form-data" >
+                    <form action="{{ route('student_document_delete') }}" method="POST">
                         @csrf
-                        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                        <div class="text-center my-3">
+                            <i class="fas fa-trash fa-4x text-danger" aria-hidden="true"></i>
+                        </div>
+                        <div class="text-center display-5 font-weight-bold">
+                            Are You Sure ?
+                        </div>
 
-                        <div class="dynm_field">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="type">Document Type</label>
-                                        <select class="form-control" name="type[]" id="type" required>
-                                            <option value="">Select</option>
-                                            <option value="Birth Certificate/NID">Birth Certificate/NID</option>
-                                            <option value="Studentship Certificate">Studentship Certificate</option>
-                                            <option value="SSC Certificate">SSC Certificate</option>
-                                            <option value="HSC Certificate">HSC Certificate</option>
-                                            <option value="Other">Other</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="form-group">
-                                        <label>Choose Document 1:</label>
-                                        <input type="file" id="document" name="document[]" class="form-control" required>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><br>
-                        <a href="javascript:void(0);" class="add_button" title="Add Document"><i class="fa fa-plus"
-                                aria-hidden="true"><i class="bx bxs-file-plus"></i> Add More Files</i></a>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-danger"><i class="bx bx-upload"></i> Upload</button>
+                        <input type="hidden" id="document_id" name="document_id" value="">
+                        <div class="modal-footer justify-content-center">
+                            {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+                            <button type="submit" class="btn btn-danger">Delete</button>
                         </div>
                     </form>
                 </div>
@@ -125,39 +178,12 @@
 
 @section('custom_js')
     <script src="{{ asset('assets/js/jquery.nice-select.min.js') }}"></script>
-
-    <script type="text/javascript">
-        let clicks = 1;
-        $(document).ready(function() {
-            var maxField = 5; //Input fields increment limitation
-            var addButton = $('.add_button'); //Add button selector
-            var wrapper = $('.field_wrapper'); //Input field wrapper
-            var more = $('.dynm_field'); //Input field wrapper
-
-            var x = 1; //Initial field counter is 1
-
-            //Once add button is clicked
-            $(addButton).click(function() {
-                clicks += 1;
-                var fieldHTML =
-                    '<div class="row" style="margin-top:15px"><div class="col-md-4"><div class="form-group"> <label for="type">Document Type</label> <select class="form-control" name="type" id="type" required> <option value="">Select</option>  <option value="Birth Certificate/NID">Birth Certificate/NID</option> <option value="Studentship Certificate">Studentship Certificate</option><option value="SSC Certificate">SSC Certificate</option> <option value="HSC Certificate">HSC Certificate</option><option value="Other">Other</option>     </select>  </div> </div><div class="col-md-8"><div class="form-group"> <label>Choose Document ' +
-                    clicks +
-                    ':</label><input type="file" id="document" name="document[]" class="form-control" required></div> </div><a href="javascript:void(0);" class="remove_button"><i class="fa fa-close text-danger">Remove</i></a></div>'; //New input field html
-                //Check maximum number of input fields
-                if (x < maxField) {
-                    x++; //Increment field counter
-                    $(more).append(fieldHTML); //Add field html
-                }
-                console.log(x);
-            });
-
-            //Once remove button is clicked
-            $(more).on('click', '.remove_button', function(e) {
-                e.preventDefault();
-                $(this).parent('div').remove(); //Remove field html
-                x--; //Decrement field counter
-                clicks--;
-            });
+    {{-- ------------Delete Payment Script-------------- --}}
+    <script>
+        $(document).on('click', '.delete_document_modal', function() {
+            var document_id = $(this).attr('data-document_id');
+            $('#document_id').val(document_id);
+            $('#delete_document_modal').modal('show');
         });
     </script>
 

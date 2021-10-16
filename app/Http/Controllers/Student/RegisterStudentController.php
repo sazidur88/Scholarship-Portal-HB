@@ -8,9 +8,15 @@ use App\Models\Student;
 use App\Models\Degree;
 use App\Models\Achievement;
 use App\Models\User;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+
+use Spatie\Permission\Traits\HasRoles;
+
+
 
 class RegisterStudentController extends Controller
 {
@@ -45,6 +51,7 @@ class RegisterStudentController extends Controller
     {
         // dd($request->all());
 
+
         $this->validate($request, [
             'user_id' => 'required',
             'name' => 'required',
@@ -58,16 +65,16 @@ class RegisterStudentController extends Controller
         ]);
 
         // Generating Student Unique ID
-        $ldate = date('ym');
-        $latest_user = User::latest()->first();
-        $latest_user_id = $latest_user->id + 1;
-        $last_digit = sprintf("%03d", $latest_user_id);
-        $sid = $ldate . $last_digit;
+        // $ldate = date('ym');
+        // $latest_user = User::latest()->first();
+        // $latest_user_id = $latest_user->id + 1;
+        // $last_digit = sprintf("%03d", $latest_user_id);
+        // $sid = $ldate . $last_digit;
 
 
         $student = new Student();
         $student->user_id = $request->user_id;
-        $student->sid = $sid;
+        // $student->sid = $sid;
         $student->name = $request->name;
         $student->email = $request->email;
         $student->phone = $request->phone;
@@ -89,12 +96,7 @@ class RegisterStudentController extends Controller
         $student->income_source = $request->income_source;
         $student->other_scholarship = $request->other_scholarship;
         $student->reason = $request->reason;
-
-
         $student->save();
-
-
-
 
 
 
@@ -179,8 +181,15 @@ class RegisterStudentController extends Controller
 
         $degree->save();
 
+        $user = User::find($request->user_id);
+        $role = Role::findOrCreate('STUDENT');
+        $permission = Permission::findOrCreate('student-can');
+        
+        $role->givePermissionTo($permission);
+        $user->assignRole($role);
 
-        return redirect()->route('student_profile', Auth::user()->id);
+
+        return redirect()->route('student_profile', Auth::user()->id)->with('success','Congratulations! Profile created succesfully.');
     }
 
     /**
@@ -228,8 +237,6 @@ class RegisterStudentController extends Controller
         $addresses_present = $student_data->address->where("address_type", "PRESENT");
         $addresses_permanent = $student_data->address->where("address_type", "PERMANENT");
 
-        // $trigger_value = $student_data->address->where("address_type", "PRESENT")->same_as_present;
-        // dd($addresses_present->same_as_present);
 
         $academic_data = Student::find($student_data->id)->degree_information;
         $achievements = Student::find($student_data->id)->achievements;
@@ -243,6 +250,7 @@ class RegisterStudentController extends Controller
             'addresses_permanent' => $addresses_permanent,
             'achievements' => $achievements,
         ]);
+
     }
 
     /**
@@ -254,7 +262,6 @@ class RegisterStudentController extends Controller
      */
     public function update(Request $request)
     {
-        // dd($request->all());
 
         $this->validate($request, [
             'name' => 'required',
@@ -264,7 +271,6 @@ class RegisterStudentController extends Controller
             'father_name' => 'required',
             'mother_name' => 'required',
             'gender' => 'required',
-            // 'same_as_parmanent'=>'required',       
         ]);
 
         $student_id = $request->input('student_id');
@@ -381,7 +387,7 @@ class RegisterStudentController extends Controller
                 $permanent_address->same_as_present = $request->has('same_as_present');
                 $permanent_address->status = "ACTIVE";
                 $student->address()->save($permanent_address);
-            }else {
+            } else {
                 $permanent_address = new Address();
                 $permanent_address->division = $request->division_permanent;
                 $permanent_address->district = $request->district_permanent;
@@ -392,10 +398,10 @@ class RegisterStudentController extends Controller
                 $permanent_address->status = "ACTIVE";
                 $student->address()->save($permanent_address);
             }
-        } 
+        }
 
 
-        return redirect()->route('student_profile', ['student_id' => $student_id]);
+        return redirect()->route('student_profile', ['student_id' => $student_id])->with('success','Profile updated succesfully');
     }
 
     /**

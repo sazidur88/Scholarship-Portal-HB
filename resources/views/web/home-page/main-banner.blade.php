@@ -9,7 +9,7 @@
                         labore et dolore magna aliqua. Quis ipsum suspendisse.</p>
                     <div class="theme-btn">
                         <a href="#" class="default-btn">Upload your CV</a>
-                        <a href="contact.html" class="default-btn">Contact Us</a>
+                        <a href="#" class="default-btn">Contact Us</a>
                     </div>
                 </div>
             </div>

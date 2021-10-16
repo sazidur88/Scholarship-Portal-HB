@@ -8,7 +8,7 @@
                         <div class="media-body">
                             <h5 class="mt-0">Looking For a scholarship?</h5>
                             <p>Your next role could be with one of these top leading organizations</p>
-                            <a href="job-list.html">
+                            <a href="#">
                                 Apply Now
                                 <i class='bx bx-chevrons-right'></i>
                             </a>
@@ -23,7 +23,7 @@
                         <div class="media-body">
                             <h5 class="mt-0">Are You giving scholarship?</h5>
                             <p>Your next role could be with one of these top leading organizations</p>
-                            <a href="post-job.html">
+                            <a href="#">
                                 Apply Now
                                 <i class='bx bx-chevrons-right'></i>
                             </a>

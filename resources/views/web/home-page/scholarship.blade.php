@@ -11,7 +11,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-1">
                             <div class="company-logo">
-                                <a href="job-details.html">
+                                <a href="#">
                                     <img src="assets/img/company-logo/1.png" alt="logo">
                                 </a>
                             </div>
@@ -19,7 +19,7 @@
                         <div class="col-md-8">
                             <div class="job-info">
                                 <h3>
-                                    <a href="job-details.html">Scholarship - 1</a>
+                                    <a href="#">Scholarship - 1</a>
                                 </h3>
                                 <ul>
                                     <li>
@@ -44,7 +44,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="theme-btn text-end">
-                                <a href="job-details.html" class="default-btn">
+                                <a href="#" class="default-btn">
                                     Details
                                 </a>
                             </div>
@@ -57,7 +57,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-1">
                             <div class="company-logo">
-                                <a href="job-details.html">
+                                <a href="#">
                                     <img src="assets/img/company-logo/2.png" alt="logo">
                                 </a>
                             </div>
@@ -65,7 +65,7 @@
                         <div class="col-md-8">
                             <div class="job-info">
                                 <h3>
-                                    <a href="job-details.html">Scholarship - 2</a>
+                                    <a href="#">Scholarship - 2</a>
                                 </h3>
                                 <ul>
                                     <li>
@@ -90,7 +90,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="theme-btn text-end">
-                                <a href="job-details.html" class="default-btn">
+                                <a href="#" class="default-btn">
                                     Details
                                 </a>
                             </div>
@@ -103,7 +103,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-1">
                             <div class="company-logo">
-                                <a href="job-details.html">
+                                <a href="#">
                                     <img src="assets/img/company-logo/3.png" alt="logo">
                                 </a>
                             </div>
@@ -111,7 +111,7 @@
                         <div class="col-md-8">
                             <div class="job-info">
                                 <h3>
-                                    <a href="job-details.html">Scholarship - 3</a>
+                                    <a href="#">Scholarship - 3</a>
                                 </h3>
                                 <ul>
                                     <li>
@@ -136,7 +136,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="theme-btn text-end">
-                                <a href="job-details.html" class="default-btn">
+                                <a href="#" class="default-btn">
                                     Details
                                 </a>
                             </div>
@@ -149,7 +149,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-1">
                             <div class="company-logo">
-                                <a href="job-details.html">
+                                <a href="#">
                                     <img src="assets/img/company-logo/4.png" alt="logo">
                                 </a>
                             </div>
@@ -157,7 +157,7 @@
                         <div class="col-md-8">
                             <div class="job-info">
                                 <h3>
-                                    <a href="job-details.html">Scholarship - 4</a>
+                                    <a href="#">Scholarship - 4</a>
                                 </h3>
                                 <ul>
                                     <li>
@@ -182,7 +182,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="theme-btn text-end">
-                                <a href="job-details.html" class="default-btn">
+                                <a href="#" class="default-btn">
                                     Details
                                 </a>
                             </div>
@@ -195,7 +195,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-1">
                             <div class="company-logo">
-                                <a href="job-details.html">
+                                <a href="#">
                                     <img src="assets/img/company-logo/5.png" alt="logo">
                                 </a>
                             </div>
@@ -203,7 +203,7 @@
                         <div class="col-md-8">
                             <div class="job-info">
                                 <h3>
-                                    <a href="job-details.html">Scholarship - 5</a>
+                                    <a href="#">Scholarship - 5</a>
                                 </h3>
                                 <ul>
                                     <li>
@@ -228,7 +228,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="theme-btn text-end">
-                                <a href="job-details.html" class="default-btn">
+                                <a href="#" class="default-btn">
                                     Details
                                 </a>
                             </div>

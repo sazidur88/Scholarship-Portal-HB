@@ -38,8 +38,8 @@
 
                 <div class="col-md-8">
                     <div class="account-details">
-                        <h5 class="text-center text-danger">Please provide the below information to Create your profile</h5>
-                        <br>
+                        <h4 class="text-center text-danger">Please provide the below information to Create your profile</h4>
+                        <hr>
 
                         <h3>Basic Information</h3>
                         <form class="basic-info" action="{{ route('store_student_information') }}" method="POST">

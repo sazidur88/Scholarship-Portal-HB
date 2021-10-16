@@ -21,7 +21,7 @@ class Student extends Model
 
     public function documents()
     {
-        return $this->morphMany(Address::class, 'documentable');
+        return $this->morphMany(Document::class, 'documentable');
     }
 
     public function student_documents()

@@ -77,10 +77,10 @@ class RegisterController extends Controller
         $user->photo_url = null;
         $user->save();
 
-        $role = Role::findOrCreate('STUDENT');
-        $permission = Permission::findOrCreate('student-can');
-        $role->givePermissionTo($permission);
-        $user->assignRole([$role->id]);
+        // $role = Role::findOrCreate('STUDENT');
+        // $permission = Permission::findOrCreate('student-can');
+        // $role->givePermissionTo($permission);
+        // $user->assignRole([$role->id]);
 
         return $user;
     }

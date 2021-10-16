@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Student;
 use App\Http\Controllers\Controller;
 use App\Models\Student;
 use App\Models\Document;
+use Illuminate\Support\Facades\File;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class StudentDocumentController extends Controller
@@ -24,10 +27,21 @@ class StudentDocumentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        // return view('web.student.student-document');
-        return view('web.student.student-document');
+
+        $user_id = Auth::user()->id;
+
+        $student_data = User::FindOrFail($user_id)->student_information;
+
+        if (!$student_data)
+            return redirect()->route('student_profile_create');
+        else
+            $documents = $student_data->documents;
+            
+        return view('web.student.student-document', [
+            'documents' => $documents,
+        ]);
     }
 
     /**
@@ -37,73 +51,35 @@ class StudentDocumentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-
     {
-        // dd($request->all());
-
 
         $user_id = $request->user_id;
         $student = Student::where('user_id', $user_id)->first();
 
         $request->validate([
-            'document' => 'mimes:pdf,jpg,png,jpeg',
+            'document' => 'mimes:pdf,jpg,png,jpeg | required',
         ]);
 
 
-        $doc_input = request('type');
-        if ($doc_input) {
-            $student_doc = collect();
-            for ($i = 0; $i < count($doc_input); $i++) {
+        if ($request->hasFile('document')) {
+            $document =  $request->file('document');
 
-                // if ($request->hasFile('document[$i]')) {
-                //     $document =  $request->file('document[$i]');
-                //     $document_url = $student->id . '_' . time() . '_' . $document->getClientOriginalName();
-                //     $document_title = $document->getClientOriginalName();
-        
-                //     $document->move(public_path('storage/uploaded_file/student_document'), $document_url);
-                // } else {
-                //     $document_url = '';
-                // }
+            $document_url = $student->id . '_' . time()   . '_' . $document->getClientOriginalName();
 
-                $document_new = new Document();
-                // $document_new->document_title = $document_title[$i];
-                $document_new->type = "test";
-                // $document_new->document_url = $document_url;
+            $document_title = pathinfo($document->getClientOriginalName(), PATHINFO_FILENAME);
 
-                // $student_doc->push($document_new);
-
-                $student->documents()->save($document_new);
-
-                // $achievement->achievement = $doc_input[$i];
-
-            }
-            // $student->documents()->saveMany($student_doc);
+            $document->move(public_path('storage/uploaded_file/student_document'), $document_url);
+        } else {
+            $document_url = '';
         }
 
+        $document = new Document();
+        $document->document_title = $document_title;
+        $document->type = $request->type;
+        $document->document_url = $document_url;
+        $student->documents()->save($document);
 
-
-
-        // if ($request->hasFile('document')) {
-        //     $document =  $request->file('document');
-        //     $document_url = $student->id . '_' . time() . '_' . $document->getClientOriginalName();
-        //     $document_title = $document->getClientOriginalName();
-
-        //     $document->move(public_path('storage/uploaded_file/student_document'), $document_url);
-        // } else {
-        //     $document_url = '';
-        // }
-
-
-        // $document = new Document();
-        // $document->document_title = $document_title;
-        // $document->type = $request->type;
-        // $document->document_url = $document_url;
-        // $student->documents()->save($document);
-
-        // return "success";
-
-
-
+        return redirect()->back()->with('success', 'Document uploaded succesfully');
     }
 
     /**
@@ -146,8 +122,18 @@ class StudentDocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $document_id = $request->document_id;
+        $document = Document::find($document_id);
+
+        // Deleting File from Storage
+        $file_path = public_path('storage/uploaded_file/student_document/' . $document->document_url);
+        $response = File::delete($file_path);
+
+        // Deleteing from DB
+        $document->delete();
+
+        return back()->with('success', 'Deleted Sucessfully!');
     }
 }

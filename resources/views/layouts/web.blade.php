@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/meanmenu.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/font-awesome.min.css')}}">
     <title>HB Scholarship Portal</title>
 
     <link rel="icon" type="image/png" href="{{asset('assets/img/favicon.png')}}">
@@ -82,6 +83,7 @@
     <script src="{{asset('assets/js/contact-form-script.js')}}"></script>
     <script src="{{asset('assets/js/meanmenu.js')}}"></script>
     <script src="{{asset('assets/js/custom.js')}}"></script>
+    <script src="{{asset('assets/js/fontawesome.min.js')}}"></script>
 
     
     {{-- Custom js  --}}

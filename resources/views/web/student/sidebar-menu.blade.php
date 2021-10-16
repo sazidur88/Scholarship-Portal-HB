@@ -1,12 +1,12 @@
 <div class="col-md-4" style="padding-bottom: 15px">
     <div class="account-information">
         <div class="profile-thumb">
-            <img src="{{ asset('assets/img/account.jpg') }}" alt="account holder image"><i class="bx bxs-camera"></i> 
+            <img src="{{ asset('assets/img/account.jpg') }}" alt="account holder image"><br>
+            <h2><i class="bx bxs-camera"></i></h2>
             <h3>{{ auth()->user()->name }}</h3>
             <p>Scholarship Candidate</p>
         </div>
         <ul>
-            @can('student-can')
                 <li>
                     <a href="{{ route('student_dashboard') }}"
                         class="{{ \Request::route()->getName() == 'student_dashboard' ? 'active' : '' }}">
@@ -14,8 +14,6 @@
                         Dashboard
                     </a>
                 </li>
-            @endcan
-            @can('student-can')
                 <li>
                     <a href="{{ route('student_profile', auth()->user()->id) }}"
                         class="{{ \Request::route()->getName() == 'student_profile' ? 'active' : '' }}">
@@ -23,7 +21,6 @@
                         My Profile
                     </a>
                 </li>
-            @endcan
             @can('student-can')
                 <li>
                     <a href="{{ route('student_document')}}"
@@ -32,21 +29,22 @@
                         Documents
                     </a>
                 </li>
-            @endcan
 
-            <li>
-                <a href="#"
-                    class="">
+            {{-- <li>
+                <a href="{{ route('student_edit')}}"
+                    class="{{ \Request::route()->getName() == 'student_edit' ? 'active' : '' }}">
                     <i class='bx bx-user'></i>
                     Edit Profile
                 </a>
-            </li>
+            </li> --}}
             <li>
                 <a href="#">
                     <i class='bx bx-briefcase'></i>
                     Applied Scholarships
                 </a>
             </li>
+            @endcan
+
             <li>
                 <a href="{{ route('edit_user_info') }}"
                     class="{{ \Request::route()->getName() == 'edit_user_info' ? 'active' : '' }}">

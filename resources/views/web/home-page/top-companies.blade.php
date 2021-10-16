@@ -9,7 +9,7 @@
             <div class="col-lg-3 col-sm-6">
                 <div class="company-card">
                     <div class="company-logo">
-                        <a href="job-grid.html">
+                        <a href="#">
                             <img src="assets/img/top-company/1.png" alt="company logo">
                         </a>
                     </div>
@@ -19,7 +19,7 @@
                             <i class='bx bx-location-plus'></i>
                             Green Lanes, London
                         </p>
-                        <a href="job-grid.html" class="company-btn">
+                        <a href="#" class="company-btn">
                             25 Open Position
                         </a>
                     </div>
@@ -28,7 +28,7 @@
             <div class="col-lg-3 col-sm-6">
                 <div class="company-card">
                     <div class="company-logo">
-                        <a href="job-grid.html">
+                        <a href="#">
                             <img src="assets/img/top-company/2.png" alt="company logo">
                         </a>
                     </div>
@@ -38,7 +38,7 @@
                             <i class='bx bx-location-plus'></i>
                             Park Avenue, Mumbai
                         </p>
-                        <a href="job-grid.html" class="company-btn">
+                        <a href="#" class="company-btn">
                             35 Open Position
                         </a>
                     </div>
@@ -47,7 +47,7 @@
             <div class="col-lg-3 col-sm-6">
                 <div class="company-card">
                     <div class="company-logo">
-                        <a href="job-grid.html">
+                        <a href="#">
                             <img src="assets/img/top-company/3.png" alt="company logo">
                         </a>
                     </div>
@@ -57,7 +57,7 @@
                             <i class='bx bx-location-plus'></i>
                             Betas Quence, London
                         </p>
-                        <a href="job-grid.html" class="company-btn">
+                        <a href="#" class="company-btn">
                             20 Open Position
                         </a>
                     </div>
@@ -66,7 +66,7 @@
             <div class="col-lg-3 col-sm-6">
                 <div class="company-card">
                     <div class="company-logo">
-                        <a href="job-grid.html">
+                        <a href="#">
                             <img src="assets/img/top-company/4.png" alt="company logo">
                         </a>
                     </div>
@@ -76,7 +76,7 @@
                             <i class='bx bx-location-plus'></i>
                             Wellesley Rd, London
                         </p>
-                        <a href="job-grid.html" class="company-btn">
+                        <a href="#" class="company-btn">
                             45 Open Position
                         </a>
                     </div>

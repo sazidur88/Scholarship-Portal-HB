@@ -35,6 +35,14 @@
 
                 <div class="col-md-8">
                     <div class="account-details">
+                        @if (count($errors) > 0)
+                            <div class="alert alert-danger">
+                                @foreach ($errors->all() as $error)
+                                    {{ $error }}
+                                @endforeach
+                            </div>
+                        @endif
+
                         <h3>Basic Information</h3>
                         <form class="basic-info" action="{{ route('student_update') }}" method="POST">
                             @csrf
@@ -45,7 +53,7 @@
                                     <div class="form-group">
                                         <label>Your Full Name</label>
                                         <input type="text" name="name" class="form-control" placeholder="Your Name"
-                                            value="{{ $student_data->name }}" required>
+                                            value="{{ $student_data->name }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -428,7 +436,8 @@
                                             value="{{ $present->same_as_presen }}" name="same_as_present"
                                             @if (old('same_as_present', $present->same_as_present)) checked @endif>
 
-                                        <label class="form-check-label" for="trigger">Same as Present Address (Tick, if yes)</label>
+                                        <label class="form-check-label" for="trigger">Same as Present Address (Tick, if
+                                            yes)</label>
                                     </div>
                                 </div>
                             @empty

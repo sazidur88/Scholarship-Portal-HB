@@ -14,6 +14,8 @@ class Document extends Model
         return $this->morphTo();
     }
 
+    
+
     protected static function booted()
     {
         static::addGlobalScope(new TenantScope);
