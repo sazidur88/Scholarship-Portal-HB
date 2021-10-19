@@ -72,10 +72,8 @@
                                 <td>{{ $permission->name }}</td>
                                 <td class="text-center">
                                     {{-- <a class="btn btn-sm btn-success" href="{{ route('manage_roles.show',$role->id) }}">Show</a> --}}
-                                    @can('permission-edit')
+                                    @can('superadmin-can')
                                         <a class="btn btn-sm btn-warning" href="{{ route('manage_permissions.edit',$permission->id) }}">Edit</a>
-                                    @endcan
-                                    @can('permission-delete')
                                         {!! Form::open(['method' => 'DELETE','route' => ['manage_permissions.destroy', $permission->id],'style'=>'display:inline']) !!}
                                         {!! Form::submit('Delete', ['class' => 'btn btn-sm btn-danger']) !!}
                                         {!! Form::close() !!}

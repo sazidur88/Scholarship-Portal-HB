@@ -3,6 +3,7 @@
 use App\Http\Controllers\CommonControllers\DashboardController;
 use App\Http\Controllers\student\RegisterStudentController;
 use App\Http\Controllers\student\StudentDocumentController;
+use App\Http\Controllers\Web\ScholarshipApplicationController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -21,4 +22,14 @@ Route::POST('/student/student-profile-update', [RegisterStudentController::class
 Route::GET('/student/student-document', [StudentDocumentController::class, 'Create'])->name('student_document')->middleware('auth');
 Route::POST('/student/student-document-upload', [StudentDocumentController::class, 'store'])->name('student_document_upload')->middleware('auth');
 Route::POST('/student/student-document-delete',[StudentDocumentController::class, 'destroy'])->name('student_document_delete')->middleware('auth');
-// Route::POST('/create_notice', [\App\Http\Controllers\Landing_Controllers\NoticeController::class, 'create_notice'])->name('create_notice')->middleware('auth');
+
+
+
+/*
+-----------------------------------------------------------
+ ==== Manage Web View Scholarship starts Here  ===
+-----------------------------------------------------------
+*/
+Route::GET('/available-scholarships', [ScholarshipApplicationController::class, 'index'])->name('available_scholarships');
+Route::GET('/available-scholarships-details/{scholarship_id}', [ScholarshipApplicationController::class, 'show'])->name('available_scholarships_details');
+Route::POST('/available-scholarships-apply', [ScholarshipApplicationController::class, 'store'])->name('available_scholarships_apply')->middleware('auth');

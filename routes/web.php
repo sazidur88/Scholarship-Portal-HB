@@ -3,6 +3,9 @@
 use App\Http\Controllers\Admin\ManageRolesController;
 use App\Http\Controllers\Admin\ManageUsersController;
 use App\Http\Controllers\Admin\ManagePermissionsController;
+use App\Http\Controllers\Admin\ManageTenantsController;
+use App\Http\Controllers\Tenant\TenantScholarshipController;
+use App\Http\Controllers\Tenant\ManageApplicationController;
 use App\Http\Controllers\CommonControllers\DashboardController;
 use App\Http\Controllers\CommonControllers\EditProfileController;
 use Illuminate\Support\Facades\Artisan;
@@ -77,28 +80,31 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('manage_roles', ManageRolesController::class);
     Route::resource('manage_users', ManageUsersController::class);
     Route::resource('manage_permissions', ManagePermissionsController::class);
+    Route::resource('manage_tenants', ManageTenantsController::class);
 });
 
 
 /*
 -----------------------------------------------------------
- ==== Manage Alumni starts Here  ===
+ ==== Manage Scholarship Posting starts Here  ===
 -----------------------------------------------------------
 */
-Route::GET('/manage-alumni/create/{user_id}', [AlumniController::class, 'create'])->name('manage_alumni.create_non_resource')->middleware('auth');
-Route::resource('manage_alumni', AlumniController::class)->middleware('auth');
-
-
+Route::GET('/manage-scholarships-index', [TenantScholarshipController::class, 'index'])->name('manage_scholarships_index')->middleware('auth');
+Route::GET('/manage-scholarships-create', [TenantScholarshipController::class, 'create'])->name('manage_scholarships_create')->middleware('auth');
+Route::POST('/manage-scholarships-store', [TenantScholarshipController::class, 'store'])->name('manage_scholarships_store')->middleware('auth');
+Route::GET('/manage-scholarships-edit/{scholarship_id}', [TenantScholarshipController::class, 'edit'])->name('manage_scholarships_edit')->middleware('auth');
+Route::POST('/manage-scholarships-update', [TenantScholarshipController::class, 'update'])->name('manage_scholarships_update')->middleware('auth');
+Route::POST('/manage-scholarships-delete', [TenantScholarshipController::class, 'destroy'])->name('manage_scholarships_delete')->middleware('auth');
+Route::POST('/manage-scholarships-status-change', [TenantScholarshipController::class, 'status'])->name('manage_scholarships_status_change')->middleware('auth');
 
 
 /*
 -----------------------------------------------------------
- ==== Manage ExStudents starts Here  ===
+ ==== Manage Applications starts Here  ===
 -----------------------------------------------------------
 */
+Route::GET('/manage-applications-index/{scholarship_id}', [ManageApplicationController::class, 'index'])->name('manage_applications_index')->middleware('auth');
 
-Route::get('/manage-ex-students-list', [ExStudentController::class,'index'])->middleware('auth')->name('manage_ex_students');
-Route::POST('/manage-ex-students/update-alumni-status', [ExStudentController::class,'update_alumni_status'])->middleware('auth')->name('manage_ex_students.update_alumni_status');
 
 
 

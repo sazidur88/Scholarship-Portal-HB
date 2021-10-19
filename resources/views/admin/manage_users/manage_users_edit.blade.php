@@ -1,6 +1,6 @@
 @extends('layouts.dashboard_layout')
 @section('custom_style')
-    <link href="{{ asset('/plugins/tables/css/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('/plugins/tables/css/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet"> --}}
 @endsection
 
 @section('page_errors')
@@ -46,9 +46,6 @@
                 <div class="card card-body">
                     {!! Form::model($user, ['method' => 'PATCH', 'route' => ['manage_users.update', $user->id]]) !!}
                     <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-30" style="padding-top:20px">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
@@ -94,19 +91,19 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Tenant:</strong>
-                                {!! Form::select('tenant_id', $tenants,$tenant_id,  ['class' => 'form-control']) !!}
-                                {{-- {!! Form::select('size', ['L' => 'Large', 'S' => 'Small'], 'S') !!} --}}
-                                {{-- <label for="usr">Tenant:</label>
-                                <select class="form-control" id="sel1" name="tenant">
-                                    @forelse($tenants as $tenant)
-                                        <option value="{{ $tenant->id }}">{{ $tenant->name }}</option>
-                                    @empty
-                                    @endforelse --}}
+
+                                @if ($tenant_id)
+                                    {!! Form::select('tenant_id', $tenants, $tenant_id, ['class' => 'form-control']) !!}
+                                @else
+                                    {!! Form::select('tenant_id', $tenants, null, ['class' => 'form-control']) !!}
+                                @endif
+
                             </div>
                         </div>
-                        
 
-
+                        <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-30" style="padding-top:20px">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
                     </div>
                     {!! Form::close() !!}
                 </div>
@@ -116,14 +113,7 @@
 @endsection
 
 @section('extra_js')
-    <script src="{{ asset('/plugins/tables/js/jquery.dataTables.min.js') }}"></script>
+    {{-- <script src="{{ asset('/plugins/tables/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('/plugins/tables/js/datatable/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('/plugins/tables/js/datatable-init/datatable-basic.min.js') }}"></script>
-
-    <script>
-        $(window).on('load', function() {
-            document.getElementById("sel1").value = "{{ $user->tenant_id }}";
-
-        });
-    </script>
+    <script src="{{ asset('/plugins/tables/js/datatable-init/datatable-basic.min.js') }}"></script> --}}
 @endsection

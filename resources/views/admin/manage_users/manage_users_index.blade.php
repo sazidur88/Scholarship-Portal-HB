@@ -37,6 +37,7 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Roles</th>
+                                <th>Tenant</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -54,6 +55,7 @@
                                             @endforeach
                                         @endif
                                     </td>
+                                    <td>{{ $user->tenant_id }}</td>
                                     <td class="text-center align-middle">
                                         <a class="btn btn-sm btn-primary" href="{{ route('manage_users.show',$user->id) }}" data-toggle="tooltip" data-placement="top" title="View"><i class="fa fa-eye"></i></a>
                                         <a class="btn btn-sm btn-warning" href="{{ route('manage_users.edit',$user->id) }}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>

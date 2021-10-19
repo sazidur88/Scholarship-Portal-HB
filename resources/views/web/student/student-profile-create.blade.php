@@ -37,6 +37,8 @@
 
 
                 <div class="col-md-8">
+                    @include('include.messages')
+
                     <div class="account-details">
                         <h4 class="text-center text-danger">Please provide the below information to Create your profile</h4>
                         <hr>

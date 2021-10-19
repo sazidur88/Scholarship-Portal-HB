@@ -28,8 +28,8 @@
                         <div class="col-md-12 mt-lg-4 mt-4">
                             <!-- Page Heading -->
                             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                                <h1 class="h2 mb-0 text-gray-800 text-info font-weight-bold">Edit Permission</h1>
-                                <a href="{{ route('manage_permissions.index') }}" class="d-none d-sm-inline-block btn-sm btn-danger shadow-sm"><i class="fa fa-backward"></i>
+                                <h1 class="h2 mb-0 text-gray-800 text-info font-weight-bold">Create New Tenant</h1>
+                                <a href="{{ route('manage_tenants.index') }}" class="d-none d-sm-inline-block btn-sm btn-danger shadow-sm"><i class="fa fa-backward mr-2"></i>
                                     Back
                                 </a>
                             </div>
@@ -42,33 +42,47 @@
             <!-- column -->
             <div class="col-md-12 mt-4">
                 <div class="card card-body">
-                    {!! Form::model($permission, ['method' => 'PATCH','route' => ['manage_permissions.update', $permission->id]]) !!}
+                    {!! Form::open(array('route' => 'manage_tenants.store','method'=>'POST')) !!}
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Name:</strong>
-                                {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control','class' => 'select2')) !!}
+                                {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
                             </div>
                         </div>
-                        {{-- <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>Permission:</strong>
-                                <br/>
-                                <br/>
-                                @foreach($permission as $value)
-                                    <label>
-                                        {{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
-                                        <span class="ml-2">{{ $value->name }}</span>
-                                    </label>
-                                    <br/>
-                                @endforeach
-                            </div>
-                        </div> --}}
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
                     {!! Form::close() !!}
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped zero-configuration">
+                        <thead>
+                        <tr class="text-white font-weight-bold" style="background: linear-gradient(to right, #ec2F4B, #009FFF);">
+                            <th>No</th>
+                            <th>Tenant Name</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ($tenants as $key => $tenant)
+                            <tr>
+                                <td>{{ $loop -> index + 1}}</td>
+                                <td>{{ $tenant->name }}</td>
+                                <td class="text-center">
+                                    {{-- <a class="btn btn-sm btn-success" href="{{ route('manage_roles.show',$role->id) }}">Show</a> --}}
+                                    @can('superadmin-can')
+                                        <a class="btn btn-sm btn-warning" href="{{ route('manage_tenants.edit',$tenant->id) }}">Edit</a>
+                                        {!! Form::open(['method' => 'DELETE','route' => ['manage_tenants.destroy', $tenant->id],'style'=>'display:inline']) !!}
+                                        {!! Form::submit('Delete', ['class' => 'btn btn-sm btn-danger']) !!}
+                                        {!! Form::close() !!}
+                                    @endcan
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

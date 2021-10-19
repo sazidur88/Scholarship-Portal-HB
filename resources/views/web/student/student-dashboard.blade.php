@@ -46,6 +46,8 @@
                 {{-- Student Dashboard Section --}}
 
                 <div class="col-lg-8">
+                    @include('include.messages')
+
                     <div class="candidate-profile">
                         <div class="profile-thumb">
                             <img src="{{ asset('assets/img/account.jpg') }}" alt="account holder image">

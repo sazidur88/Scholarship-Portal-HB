@@ -35,6 +35,7 @@ class User extends Authenticatable
         'phone',
         'password',
         'photo_url',
+        'tenant_id',
 
     ];
 

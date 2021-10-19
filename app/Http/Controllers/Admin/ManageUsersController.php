@@ -103,16 +103,20 @@ class ManageUsersController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request->all());
+        
         $this->validate($request, [
             'name' => 'required',
             'email' => 'email|unique:users,email,'.$id,
             'phone' => 'required|numeric|unique:users,phone,'.$id,
             'password' => 'same:confirm-password',
             'roles' => 'required',
-            'tenant' => 'required'
+            'tenant_id' => 'required'
         ]);
 
         $input = $request->all();
+
+        // dd($input);
         if(empty($input['password'])){
             $input = Arr::except($input,array('password'));
         }

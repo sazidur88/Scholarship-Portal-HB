@@ -28,8 +28,8 @@
                         <div class="col-md-12 mt-lg-4 mt-4">
                             <!-- Page Heading -->
                             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                                <h1 class="h2 mb-0 text-gray-800 text-info font-weight-bold">Edit Permission</h1>
-                                <a href="{{ route('manage_permissions.index') }}" class="d-none d-sm-inline-block btn-sm btn-danger shadow-sm"><i class="fa fa-backward"></i>
+                                <h1 class="h2 mb-0 text-gray-800 text-info font-weight-bold">Edit Tenant</h1>
+                                <a href="{{ route('manage_tenants.index') }}" class="d-none d-sm-inline-block btn-sm btn-danger shadow-sm"><i class="fa fa-backward"></i>
                                     Back
                                 </a>
                             </div>
@@ -42,12 +42,12 @@
             <!-- column -->
             <div class="col-md-12 mt-4">
                 <div class="card card-body">
-                    {!! Form::model($permission, ['method' => 'PATCH','route' => ['manage_permissions.update', $permission->id]]) !!}
+                    {!! Form::model($tenant, ['method' => 'PATCH','route' => ['manage_tenants.update', $tenant->id]]) !!}
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Name:</strong>
-                                {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control','class' => 'select2')) !!}
+                                {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
                             </div>
                         </div>
                         {{-- <div class="col-xs-12 col-sm-12 col-md-12">

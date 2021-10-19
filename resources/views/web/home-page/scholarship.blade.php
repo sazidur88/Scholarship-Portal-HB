@@ -26,10 +26,10 @@
                                         <i class='bx bx-briefcase'></i>
                                         Grant + Other benefits
                                     </li>
-{{--                                    <li>--}}
-{{--                                        <i class='bx bx-briefcase'></i>--}}
-{{--                                        $35000-$38000--}}
-{{--                                    </li>--}}
+                                    {{-- <li> --}}
+                                    {{-- <i class='bx bx-briefcase'></i> --}}
+                                    {{-- $35000-$38000 --}}
+                                    {{-- </li> --}}
                                     <li>
                                         <i class='bx bx-location-plus'></i>
                                         Wellesley Rd, London
@@ -72,10 +72,10 @@
                                         <i class='bx bx-briefcase'></i>
                                         Up to 100% of the tuition fee
                                     </li>
-{{--                                    <li>--}}
-{{--                                        <i class='bx bx-briefcase'></i>--}}
-{{--                                        $3000-$8000--}}
-{{--                                    </li>--}}
+                                    {{-- <li> --}}
+                                    {{-- <i class='bx bx-briefcase'></i> --}}
+                                    {{-- $3000-$8000 --}}
+                                    {{-- </li> --}}
                                     <li>
                                         <i class='bx bx-location-plus'></i>
                                         Garden Road, UK
@@ -118,10 +118,10 @@
                                         <i class='bx bx-briefcase'></i>
                                         Full cost of tuition fees
                                     </li>
-{{--                                    <li>--}}
-{{--                                        <i class='bx bx-briefcase'></i>--}}
-{{--                                        $3000-$4000--}}
-{{--                                    </li>--}}
+                                    {{-- <li> --}}
+                                    {{-- <i class='bx bx-briefcase'></i> --}}
+                                    {{-- $3000-$4000 --}}
+                                    {{-- </li> --}}
                                     <li>
                                         <i class='bx bx-location-plus'></i>
                                         State City, USA
@@ -164,10 +164,10 @@
                                         <i class='bx bx-briefcase'></i>
                                         15000 GBP in cash
                                     </li>
-{{--                                    <li>--}}
-{{--                                        <i class='bx bx-briefcase'></i>--}}
-{{--                                        $5000-$8000--}}
-{{--                                    </li>--}}
+                                    {{-- <li> --}}
+                                    {{-- <i class='bx bx-briefcase'></i> --}}
+                                    {{-- $5000-$8000 --}}
+                                    {{-- </li> --}}
                                     <li>
                                         <i class='bx bx-location-plus'></i>
                                         Drive Post NY 676
@@ -210,10 +210,10 @@
                                         <i class='bx bx-briefcase'></i>
                                         Up to 5000 Euro
                                     </li>
-{{--                                    <li>--}}
-{{--                                        <i class='bx bx-briefcase'></i>--}}
-{{--                                        $35000-$38000--}}
-{{--                                    </li>--}}
+                                    {{-- <li> --}}
+                                    {{-- <i class='bx bx-briefcase'></i> --}}
+                                    {{-- $35000-$38000 --}}
+                                    {{-- </li> --}}
                                     <li>
                                         <i class='bx bx-location-plus'></i>
                                         Wellesley Rd, London

@@ -49,6 +49,16 @@
                     </a>
                 </li>
                 @endcan
+                @can('superadmin-can')
+                <li class="nav-item">
+                    <a href="{{route('manage_tenants.index')}}" class="nav-link">
+                        <i class="nav-icon fas fa-user-check"></i>
+                        <p>
+                            Manage Tenants
+                        </p>
+                    </a>
+                </li>
+                @endcan
                 @can('role-list')
                 <li class="nav-item">
                     <a href="{{route('manage_roles.index')}}" class="nav-link">
@@ -59,6 +69,7 @@
                     </a>
                 </li>
                 @endcan
+                @can('admin-can')
                 <li class="nav-item">
                     <a href="{{route('manage_permissions.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-user-secret"></i>
@@ -67,6 +78,17 @@
                         </p>
                     </a>
                 </li>
+                @endcan
+                {{-- @can('admin-can	') --}}
+                <li class="nav-item">
+                    <a href="{{route('manage_scholarships_index')}}" class="nav-link">
+                        <i class="nav-icon fas fa-user-secret"></i>
+                        <p>
+                            Manage Scholarships
+                        </p>
+                    </a>
+                </li>
+                {{-- @endcan --}}
 
 
 {{--                <li class="nav-item">--}}

@@ -45,6 +45,11 @@ class Student extends Model
         return $this->hasOne(Degree::class);
     }
 
+    public function scholarship_application()
+    {
+        return $this->hasMany(TenantScholarship::class);
+    }
+
     
     
     protected static function booted()

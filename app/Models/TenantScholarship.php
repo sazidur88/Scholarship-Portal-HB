@@ -1,11 +1,11 @@
 <?php
 
-namespace {{ namespace }};
+namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Scopes\TenantScope;
+use Illuminate\Database\Eloquent\Model;
 
-class {{ class }} extends Model
+class TenantScholarship extends Model
 {
     protected static function booted()
     {
