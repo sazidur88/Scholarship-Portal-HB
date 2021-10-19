@@ -38,7 +38,7 @@
                 </a>
             </li> --}}
             <li>
-                <a href="#">
+                <a href="{{ route('student_applications_index')}}">
                     <i class='bx bx-briefcase'></i>
                     Applied Scholarships
                 </a>

@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class StudentApplication extends Model
 {
-    public function student_information()
+    public function applications()
     {
-        return $this->belongsTo(Student::class);
-    }
+        return $this->belongsTo(TenantScholarship::class);
+    }   
     
     
     
@@ -24,4 +24,5 @@ class StudentApplication extends Model
             }
         });
     }
+
 }

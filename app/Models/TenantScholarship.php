@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class TenantScholarship extends Model
 {
+
+    public function applications()
+    {
+        return $this->hasMany(StudentApplication::class);
+    }
+
+    
     protected static function booted()
     {
         static::addGlobalScope(new TenantScope);

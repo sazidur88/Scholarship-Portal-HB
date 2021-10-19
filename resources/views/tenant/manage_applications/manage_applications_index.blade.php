@@ -85,7 +85,7 @@
                                 </thead>
                                 <tbody>
                                     @forelse($applications as $application)
-                                    @php $student_data = \App\Models\Student::where('id',$application->student_id)->get(); @endphp
+                                    {{-- @php $student_data = \App\Models\Student::where('id',$application->student_id)->get(); @endphp --}}
 
 
                                         <tr>

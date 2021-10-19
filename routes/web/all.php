@@ -3,6 +3,7 @@
 use App\Http\Controllers\CommonControllers\DashboardController;
 use App\Http\Controllers\student\RegisterStudentController;
 use App\Http\Controllers\student\StudentDocumentController;
+use App\Http\Controllers\student\StudentApplicationController;
 use App\Http\Controllers\Web\ScholarshipApplicationController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +24,8 @@ Route::GET('/student/student-document', [StudentDocumentController::class, 'Crea
 Route::POST('/student/student-document-upload', [StudentDocumentController::class, 'store'])->name('student_document_upload')->middleware('auth');
 Route::POST('/student/student-document-delete',[StudentDocumentController::class, 'destroy'])->name('student_document_delete')->middleware('auth');
 
+
+Route::GET('/student/student-applications', [StudentApplicationController::class, 'index'])->name('student_applications_index')->middleware('auth');
 
 
 /*
