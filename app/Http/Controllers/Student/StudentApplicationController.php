@@ -3,33 +3,27 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
-use App\Models\StudentApplication;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Models\TenantScholarship;
 
 class StudentApplicationController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function index()   {        
+    public function index()   {
 
-        $student_data = User::find(Auth::user()->id)->student_information;
-        $student_id = $student_data->id;
 
-        return $applications = StudentApplication::where('student_id', $student_id)->get();
-        // $academic_data = TenantScholarship::find(5)->applications;
-        // return $applications_data = TenantScholarship::find($academic_data->id)->get();
+        $student = User::find(Auth::user()->id)->student_information;
+        $applied_scholarships = $student->scholarships;
 
-       
 
-        // return view('web.student.student-scholarships', [
-        //     'applications' => $applications,
-        // ]);
+         return view('web.student.student-scholarships', [
+             'applied_scholarships' => $applied_scholarships,
+         ]);
     }
 
     /**

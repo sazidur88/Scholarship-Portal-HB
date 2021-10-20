@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Tenant;
 
 use App\Http\Controllers\Controller;
-use App\Models\StudentApplication;
+use App\Models\Scholarship;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -12,19 +12,16 @@ class ManageApplicationController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index($scholarship_id)
     {
-        // $applications = StudentApplication::where('tenant_scholarship_id', $scholarship_id)->Student()->get();    
-        return $applications = StudentApplication::join('students', 'student.id' ,'=', 'student_applications.student_id')
-        ->get();
+        $scholarship = Scholarship::find($scholarship_id);
 
-
-
+        $applied_students = $scholarship->students;
 
         return view('tenant.manage_applications.manage_applications_index', [
-            'applications' => $applications,
+            'applied_students' => $applied_students,
         ]);
     }
 

@@ -42,10 +42,7 @@ class LoginController extends Controller
 
         $user = Auth::user();
 
-        if ($user->hasRole('SUPER_ADMIN')) {
-            $this->redirectTo = '/dashboard';
-            return $this->redirectTo;
-        } else if ($user->hasRole('TENANT')){
+        if ($user->hasRole('SUPER_ADMIN') || $user->hasRole('TENANT')) {
             $this->redirectTo = '/dashboard';
             return $this->redirectTo;
         } else

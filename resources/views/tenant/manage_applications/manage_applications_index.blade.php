@@ -75,26 +75,20 @@
                                     <tr class="color">
                                         <th>SL#</th>
                                         <th>Applicant Name</th>
-                                        {{-- <th>Eligibility</th> --}}
                                         <th>Phone</th>
                                         <th>Email</th>
-                                        {{-- <th>Status</th>
-                                        <th>View Applicants</th> --}}
-                                        <th>Action</th>
+                                        <th>View Applicants</th>
+{{--                                        <th>Action</th>--}}
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse($applications as $application)
-                                    {{-- @php $student_data = \App\Models\Student::where('id',$application->student_id)->get(); @endphp --}}
-
-
+                                    @forelse($applied_students as $applied_student)
                                         <tr>
                                             <td>{{ $loop ->index + 1}}</td>
-                                            <td>{{$application->student_id}}</td>
-                                            {{-- <td>{{ $scholarship->eligibility }}</td> --}}
-                                            <td>01674</td>
-                                            <td>XYZ@GMAIL.COM</td>
-                                            
+                                            <td>{{$applied_student->name}}</td>
+                                            <td>{{$applied_student->phone}}</td>
+                                            <td>{{$applied_student->email}}</td>
+
 
                                             <td class="text-center align-top">
                                                 <a class="btn btn-sm btn-primary" href="" data-toggle="tooltip"

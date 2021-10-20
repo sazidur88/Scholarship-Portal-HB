@@ -141,17 +141,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="theme-btn">
-                                <form class="" action="{{ route('available_scholarships_apply') }}" method="POST">
-                                    @csrf
-                                    {{-- <input type="hidden" name="user_id" value="{{ auth()->user()->id }}"> --}}
-                                    <input type="hidden" name="tenant_id" value="{{ $scholarship->tenant_id }}">
-                                    <input type="hidden" name="scholarship_id" value="{{ $scholarship->id }}">
-                                <button class="default-btn">
-                                    Apply Now
-                                </button>
-                                </form>
-                            </div>
+                            @if(App\Helpers\Helper::is_applied_for_scholarship($scholarship->id))
+                                <div class="theme-btn">
+                                    <form class="" action="{{ route('available_scholarships_apply') }}" method="POST">
+                                        @csrf
+                                        {{-- <input type="hidden" name="user_id" value="{{ auth()->user()->id }}"> --}}
+                                        <input type="hidden" name="tenant_id" value="{{ $scholarship->tenant_id }}">
+                                        <input type="hidden" name="scholarship_id" value="{{ $scholarship->id }}">
+                                           <button class="default-btn ">
+                                                Apply Now
+                                            </button>
+                                    </form>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

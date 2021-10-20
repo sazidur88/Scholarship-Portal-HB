@@ -45,9 +45,14 @@ class Student extends Model
         return $this->hasOne(Degree::class);
     }
 
+    public function scholarships()
+    {
+        return $this->belongsToMany(Scholarship::class, 'scholarship_student')->withoutGlobalScopes();
+    }
 
-    
-    
+
+
+
     protected static function booted()
     {
         static::addGlobalScope(new TenantScope);

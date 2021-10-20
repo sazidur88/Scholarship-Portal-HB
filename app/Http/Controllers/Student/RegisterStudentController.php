@@ -61,7 +61,7 @@ class RegisterStudentController extends Controller
             'father_name' => 'required',
             'mother_name' => 'required',
             'gender' => 'required',
-            // 'same_as_parmanent'=>'required',       
+            // 'same_as_parmanent'=>'required',
         ]);
 
         // Generating Student Unique ID
@@ -184,8 +184,9 @@ class RegisterStudentController extends Controller
         $user = User::find($request->user_id);
         $role = Role::findOrCreate('STUDENT');
         $permission = Permission::findOrCreate('student-can');
-        
+
         $role->givePermissionTo($permission);
+        $role->givePermissionTo('apply-scholarship');
         $user->assignRole($role);
 
 

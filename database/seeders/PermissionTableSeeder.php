@@ -30,6 +30,7 @@ class PermissionTableSeeder extends Seeder
             'manage-student-list',
             'superadmin-can',
             'tenant-can',
+            'apply-scholarship'
         ];
 
         foreach ($permissions as $permission) {

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Tenant;
 
 use App\Http\Controllers\Controller;
-use App\Models\TenantScholarship;
+use App\Models\Scholarship;
 use Illuminate\Http\Request;
 
 class TenantScholarshipController extends Controller
@@ -11,11 +11,11 @@ class TenantScholarshipController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
-        $scholarships = TenantScholarship::where('tenant_id', session()->get('tenant_id'))->orderBy('id', 'DESC')->get();
+        $scholarships = Scholarship::all();
 
         return view('tenant.manage_scholarships.manage_scholarships_index', [
             'scholarships' => $scholarships,
@@ -26,7 +26,7 @@ class TenantScholarshipController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function create()
     {
@@ -37,7 +37,7 @@ class TenantScholarshipController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -48,9 +48,9 @@ class TenantScholarshipController extends Controller
             'deadline' => 'required',
         ]);
 
-        $scholarship = new TenantScholarship();
+        $scholarship = new Scholarship();
 
-    
+
         $scholarship->tenant_id = session()->get('tenant_id');
         $scholarship->scholarship_title = $request->scholarship_title;
         $scholarship->eligibility = $request->eligibility;
@@ -82,11 +82,11 @@ class TenantScholarshipController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function edit($scholarship_id)
     {
-        $scholarship = TenantScholarship::find($scholarship_id);
+        $scholarship = Scholarship::find($scholarship_id);
 
         return View('tenant.manage_scholarships.manage_scholarships_edit',[
             'scholarship' => $scholarship,
@@ -99,7 +99,7 @@ class TenantScholarshipController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request)
     {
@@ -110,7 +110,7 @@ class TenantScholarshipController extends Controller
             'deadline' => 'required',
         ]);
 
-        $scholarship = TenantScholarship::find($request->scholarship_id);
+        $scholarship = Scholarship::find($request->scholarship_id);
 
         $scholarship->scholarship_title = $request->scholarship_title;
         $scholarship->eligibility = $request->eligibility;
