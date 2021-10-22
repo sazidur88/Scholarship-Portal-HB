@@ -10,7 +10,7 @@
             <h2>Scholarship Details</h2>
             <ul>
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="{{ route('home') }}">Home</a>
                 </li>
                 <li>Scholarship Details</li>
             </ul>
@@ -43,20 +43,20 @@
                                             <ul>
                                                 <li>
                                                     <i class='bx bx-location-plus'></i>
-                                                    Wellesley Rd, London
+                                                    Bangladesh
                                                 </li>
                                                 <li>
                                                     <i class='bx bx-filter-alt'></i>
-                                                    Accountancy
+                                                    Announcements
                                                 </li>
                                                 <li>
                                                     <i class='bx bx-briefcase'></i>
-                                                    Freelance
+                                                    Monthly
                                                 </li>
                                             </ul>
                                             <span>
                                                 <i class='bx bx-paper-plane'></i>
-                                                Deadline:  {{ (new DateTime($scholarship->deadline))->format('d-M-Y') }}
+                                                Application Deadline:  {{ (new DateTime($scholarship->deadline))->format('d-M-Y') }}
                                             </span>
                                         </div>
                                     </div>
@@ -100,7 +100,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td><span>Organization:  </span></td>
-                                                    <td> Tourt Design LTD</td>
+                                                    <td> Hridoye Bangladesh</td>
                                                 </tr>
                                                 <tr>
                                                     <td><span>Scholarship Type: </span></td>
@@ -164,7 +164,7 @@
                     <div class="posted-by">
                         <img src="{{asset('assets/img/client-1.png')}}" alt="client image">
                         <h4>Manager</h4>
-                        <span>ABC Organization</span>
+                        <span>Hridoye Bangladesh</span>
                     </div>
                 </div>
                 <div class="job-sidebar">

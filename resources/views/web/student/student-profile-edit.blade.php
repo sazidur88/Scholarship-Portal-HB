@@ -11,7 +11,7 @@
                 <h2>Student Create</h2>
                 <ul>
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="{{ route('home') }}">Home</a>
                     </li>
                     <li>Account</li>
                 </ul>
@@ -53,7 +53,7 @@
                                     <div class="form-group">
                                         <label>Your Full Name</label>
                                         <input type="text" name="name" class="form-control" placeholder="Your Name"
-                                            value="{{ $student_data->name }}">
+                                            value="{{ $student_data->name }}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -120,7 +120,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="gender">Gender</label>
-                                        <select class="form-control" name="gender" id="gender">
+                                        <select class="form-control" name="gender" id="gender" required>
                                             {{-- <option value="">Select</option> --}}
                                             <option value="Male"
                                                 {{ old('gender', $student_data->gender) == 'Male' ? 'selected' : '' }}>
@@ -142,7 +142,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="level">Level <span class="text-danger font-weight-bold">*</span></label>
-                                        <select class="form-control" name="level" id="level">
+                                        <select class="form-control" name="level" id="level" required>
                                             {{-- <option value="">Select</option> --}}
                                             <option value="School"
                                                 {{ old('level', $academic_data->level) == 'School' ? 'selected' : '' }}>
@@ -206,21 +206,21 @@
                                         <label for="institution">Institution</label>
                                         <input type="text" name="institution" class="form-control"
                                             placeholder="Your Institution" id="institution"
-                                            value="{{ $academic_data->institution }}">
+                                            value="{{ $academic_data->institution }}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6" id="position">
                                     <div class="form-group">
-                                        <label>Class Position</label>
-                                        <input type="number" name="position" class="form-control"
+                                        <label>Class Position/Roll/ID</label>
+                                        <input type="text" name="position" class="form-control"
                                             placeholder="Your Class Position" value="{{ $academic_data->position }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Marks/CGPA</label>
+                                        <label>Marks/GPA/CGPA</label>
                                         <input type="number" step=0.01 name="marks_cgpa" class="form-control"
-                                            placeholder="CGPA" value="{{ $academic_data->marks_cgpa }}">
+                                            placeholder="CGPA" value="{{ $academic_data->marks_cgpa }}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -234,7 +234,7 @@
                                     <div class="form-group">
                                         <label>Year</label>
                                         <input type="text" class="form-control" name="year" id="datepicker"
-                                            value="{{ $academic_data->year }}" />
+                                            value="{{ $academic_data->year }}" required/>
 
                                     </div>
                                 </div>
@@ -388,7 +388,7 @@
                                         <div class="form-group">
                                             <input type="hidden" id="form_type_present" value="EDIT">
                                             <label>Division:</label>
-                                            <select class="form-control" id="division_present" name="division_present">
+                                            <select class="form-control" id="division_present" name="division_present" required>
                                                 <option selected="selected" name="division_present">
                                                     {{ $present->division }}</option>
                                             </select>
@@ -397,7 +397,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>District:</label>
-                                            <select class="form-control" id="district_present" name="district_present">
+                                            <select class="form-control" id="district_present" name="district_present" required>
                                                 <option selected="selected">{{ $present->district }}</option>
                                             </select>
                                         </div>
@@ -405,7 +405,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Upazila:</label>
-                                            <select class="form-control" id="upazila_present" name="upazila_present">
+                                            <select class="form-control" id="upazila_present" name="upazila_present" required>
                                                 <option selected="selected">{{ $present->upazila }}</option>
                                             </select>
                                         </div>
@@ -415,7 +415,7 @@
                                         <div class="form-group">
                                             <label>Area</label>
                                             <input type="text" name="area_present" class="form-control"
-                                                placeholder="House and Area details" value="{{ $present->area }}">
+                                                placeholder="House and Area details" value="{{ $present->area }}" required>
                                         </div>
                                     </div>
 

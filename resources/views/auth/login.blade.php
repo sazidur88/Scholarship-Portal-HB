@@ -58,7 +58,7 @@
                         <div class="signin-btn text-center">
                             <button type="submit">Sign In</button>
                         </div>
-                        <div class="other-signin text-center">
+                        {{-- <div class="other-signin text-center">
                             <span>Or sign in with</span>
                             <ul>
                                 <li>
@@ -82,7 +82,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> --}}
                         <div class="create-btn text-center">
                             <p>Not have an account?
                                 <a href="{{ route('register') }}">
@@ -103,8 +103,8 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="section-title">
-                        <h2>Get New Job Notifications</h2>
-                        <p>Subscribe & get all related jobs notification</p>
+                        <h2>Get New Scholarship Notifications</h2>
+                        <p>Subscribe & get all related scholarships notification</p>
                     </div>
                 </div>
                 <div class="col-md-6">

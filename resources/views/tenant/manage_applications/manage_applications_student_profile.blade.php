@@ -12,7 +12,7 @@
                 <h2>Candidate Details</h2>
                 <ul>
                     <li>
-                        <a href="{{ route('home') }}">Home</a>
+                        <a href="index.html">Home</a>
                     </li>
                     <li>Candidate Details</li>
                 </ul>
@@ -32,7 +32,7 @@
 
 
                 {{-- Student Dashboard Section --}}
-                @include('web.student.sidebar-menu')
+                {{-- @include('web.student.sidebar-menu') --}}
                 {{-- Student Dashboard Section --}}
 
 
@@ -137,14 +137,14 @@
                                     <p>{{ $student_data->reference_phone }}</p>
                                 </div>
                             </div>
-                            {{-- @if ($academic_data->position)
+                            @if ($academic_data->position)
                                 <div class="col-md-6">
                                     <div class="education-info">
                                         <h4>Position</h4>
                                         <p>{{ $academic_data->position }}</p>
                                     </div>
                                 </div>
-                            @endif --}}
+                            @endif
 
                         </div>
                     </div>

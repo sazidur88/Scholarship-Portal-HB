@@ -19,11 +19,16 @@ class Helper
             if($user->hasPermissionTo('apply-scholarship'))
             {
                 $student = $user->student_information;
-                $applied_scholarships = $student->scholarships->where('id',$scholarship_id)->count();
-                if(!$applied_scholarships)
+                if($student){
+                    $applied_scholarships = $student->scholarships->where('id',$scholarship_id)->count();
+                    if(!$applied_scholarships)
                     return true;
                 else
                     return false;
+                }else {
+                    return true;
+                }
+                
 
             }else if($user->hasRole('TENANT'))
                 return false;

@@ -23,37 +23,37 @@
                     <h3>For Candidate</h3>
                     <ul>
                         <li>
-                            <a href="job-grid.html">
+                            <a href="{{route('available_scholarships')}}">
                                 <i class='bx bx-chevrons-right bx-tada'></i>
-                                Browse Jobs
+                                Browse Scholarship
                             </a>
                         </li>
                         <li>
-                            <a href="account.html">
+                            <a href="{{route('login')}}">
                                 <i class='bx bx-chevrons-right bx-tada'></i>
                                 Account
                             </a>
                         </li>
                         <li>
-                            <a href="catagories.html">
+                            <a href="{{route('available_scholarships')}}">
                                 <i class='bx bx-chevrons-right bx-tada'></i>
                                 Browse Categories
                             </a>
                         </li>
                         <li>
-                            <a href="resume.html">
+                            <a href="{{route('login')}}">
                                 <i class='bx bx-chevrons-right bx-tada'></i>
-                                Resume
+                                Profile
                             </a>
                         </li>
-                        <li>
-                            <a href="job-list.html">
+                        {{-- <li>
+                            <a href="{{route('login')}}">
                                 <i class='bx bx-chevrons-right bx-tada'></i>
                                 Job List
                             </a>
-                        </li>
+                        </li> --}}
                         <li>
-                            <a href="sign-up.html">
+                            <a href="{{route('register')}}">
                                 <i class='bx bx-chevrons-right bx-tada'></i>
                                 Sign Up
                             </a>
@@ -66,24 +66,24 @@
                     <h3>Quick Links</h3>
                     <ul>
                         <li>
-                            <a href="index.html">
+                            <a href="{{route('home')}}">
                                 <i class='bx bx-chevrons-right bx-tada'></i>
                                 Home
                             </a>
                         </li>
                         <li>
-                            <a href="about.html">
+                            <a href="#">
                                 <i class='bx bx-chevrons-right bx-tada'></i>
                                 About
                             </a>
                         </li>
                         <li>
-                            <a href="faq.html">
+                            <a href="#">
                                 <i class='bx bx-chevrons-right bx-tada'></i>
                                 FAQ
                             </a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="pricing.html">
                                 <i class='bx bx-chevrons-right bx-tada'></i>
                                 Pricing
@@ -94,9 +94,9 @@
                                 <i class='bx bx-chevrons-right bx-tada'></i>
                                 Privacy
                             </a>
-                        </li>
-                        <li>
-                            <a href="contact.html">
+                        </li>--}}
+                        <li> 
+                            <a href="#">
                                 <i class='bx bx-chevrons-right bx-tada'></i>
                                 Contact
                             </a>
@@ -113,8 +113,8 @@
                                 <i class='bx bxs-phone'></i>
                                 Phone:
                             </span>
-                            <a href="tel:882569756">
-                                +101 984 754
+                            <a href="tel: +88 01792 806811 ">
+                                +88 01792 806811 
                             </a>
                         </li>
                         <li>
@@ -122,10 +122,8 @@
                                 <i class='bx bxs-envelope'></i>
                                 Email:
                             </span>
-                            <a
-                                href="https://templates.hibootstrap.com/cdn-cgi/l/email-protection#b8d1d6ded7f8d2d7ced1dd96dbd7d5">
-                                <span class="__cf_email__"
-                                    data-cfemail="20494e464f604a4f5649450e434f4d">[email&#160;protected]</span>
+                            <a href = "mailto: contact@hilinkz.com">
+                                contact@hilinkz.com
                             </a>
                         </li>
                         <li>
@@ -133,7 +131,7 @@
                                 <i class='bx bx-location-plus'></i>
                                 Address:
                             </span>
-                            123, Denver, USA
+                            Basundhara R/A, Dhaka, Bangladesh
                         </li>
                     </ul>
                 </div>
@@ -142,6 +140,6 @@
     </div>
 </footer>
 <div class="copyright-text text-center">
-    <p>Copyright @2021 HB Scholarship Portal. All Rights Reserved By <a href="#"
-            target="_blank">hilinkz.com</a></p>
+    <p>Copyright @2021 Shikkha Britti. All Rights Reserved By <a href="https://hilinkz.com/"
+            target="_blank">HiLinkz Ltd.</a></p>
 </div>

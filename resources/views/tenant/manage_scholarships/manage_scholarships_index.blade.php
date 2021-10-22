@@ -108,7 +108,7 @@
                                                 </td>
                                             @endif
 
-                                            <td class="text-center"><a class="btn btn-primary" href="{{ route('manage_applications_index',[$scholarship->id])}}" role="button">50</a>
+                                            <td class="text-center"><a class="btn btn-primary btn-sm" href="{{ route('manage_applications_index',[$scholarship->id])}}" role="button">View</a>
                                             </td>
 
                                             <td class="text-center align-top">

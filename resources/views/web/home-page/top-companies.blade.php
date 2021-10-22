@@ -1,9 +1,9 @@
 <section class="company-section pt-100 pb-70">
     <div class="container">
         <div class="section-title text-center">
-            <h2>Top Companies</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
+            <h2>Top Organizations</h2>
+            {{-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p> --}}
         </div>
         <div class="row">
             <div class="col-lg-3 col-sm-6">
@@ -14,14 +14,14 @@
                         </a>
                     </div>
                     <div class="company-text">
-                        <h3>Trophy & Sans</h3>
+                        <h3>Hridoye Bangladesh</h3>
                         <p>
                             <i class='bx bx-location-plus'></i>
-                            Green Lanes, London
+                            Bangladesh
                         </p>
-                        <a href="#" class="company-btn">
-                            25 Open Position
-                        </a>
+                        {{-- <a href="#" class="company-btn">
+                            25 Open Scholarships
+                        </a> --}}
                     </div>
                 </div>
             </div>
@@ -33,14 +33,14 @@
                         </a>
                     </div>
                     <div class="company-text">
-                        <h3>Trout Design</h3>
+                        <h3>Hridoye Bangladesh</h3>
                         <p>
                             <i class='bx bx-location-plus'></i>
-                            Park Avenue, Mumbai
+                            Bangladesh
                         </p>
-                        <a href="#" class="company-btn">
+                        {{-- <a href="#" class="company-btn">
                             35 Open Position
-                        </a>
+                        </a> --}}
                     </div>
                 </div>
             </div>
@@ -52,14 +52,14 @@
                         </a>
                     </div>
                     <div class="company-text">
-                        <h3>Resland LTD</h3>
+                        <h3>Hridoye Bangladesh</h3>
                         <p>
                             <i class='bx bx-location-plus'></i>
-                            Betas Quence, London
+                            Bangladesh
                         </p>
-                        <a href="#" class="company-btn">
+                        {{-- <a href="#" class="company-btn">
                             20 Open Position
-                        </a>
+                        </a> --}}
                     </div>
                 </div>
             </div>
@@ -71,14 +71,14 @@
                         </a>
                     </div>
                     <div class="company-text">
-                        <h3>Lawn Hopper</h3>
+                        <h3>Hridoye Bangladesh</h3>
                         <p>
                             <i class='bx bx-location-plus'></i>
-                            Wellesley Rd, London
+                            Bangladesh
                         </p>
-                        <a href="#" class="company-btn">
+                        {{-- <a href="#" class="company-btn">
                             45 Open Position
-                        </a>
+                        </a> --}}
                     </div>
                 </div>
             </div>

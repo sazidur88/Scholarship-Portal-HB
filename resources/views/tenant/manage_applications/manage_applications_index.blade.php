@@ -91,7 +91,7 @@
 
 
                                             <td class="text-center align-top">
-                                                <a class="btn btn-sm btn-primary" href="" data-toggle="tooltip"
+                                                <a class="btn btn-sm btn-primary" href="#" data-toggle="tooltip"
                                                     data-placement="top" title="View"><i class="fa fa-eye"></i></a>
 
                                                 {{-- <a class="btn btn-sm btn-warning"

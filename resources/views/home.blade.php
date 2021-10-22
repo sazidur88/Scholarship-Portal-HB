@@ -32,10 +32,10 @@
     {{-- @include('web.home-page.featured-candidates') --}}
 
     {{-- Counter Section  --}}
-    @include('web.home-page.counter-section')
+    {{-- @include('web.home-page.counter-section') --}}
 
     {{-- testimonial  --}}
-    @include('web.home-page.testimonial')
+    {{-- @include('web.home-page.testimonial') --}}
 
     {{-- pricing plan  --}}
     {{-- @include('web.home-page.pricing-plan') --}}

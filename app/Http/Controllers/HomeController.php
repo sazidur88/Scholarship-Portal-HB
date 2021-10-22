@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Scholarship;
 
 use Illuminate\Http\Request;
 
@@ -11,10 +12,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -23,6 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $scholarships = Scholarship::where('status', "ACTIVE")->orderBy('id', 'DESC')->paginate(100);
+
+        return view('home', [
+            'scholarships' => $scholarships,
+        ]);
     }
 }

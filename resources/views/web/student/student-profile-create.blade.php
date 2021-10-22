@@ -13,7 +13,7 @@
                 <h2>Student Create</h2>
                 <ul>
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="{{ route('home') }}">Home</a>
                     </li>
                     <li>Account</li>
                 </ul>
@@ -44,7 +44,7 @@
                         <hr>
 
                         <h3>Basic Information</h3>
-                        <form class="basic-info" action="{{ route('store_student_information') }}" method="POST">
+                        <form class="basic-info needs-validation" action="{{ route('store_student_information') }}" method="POST">
                             @csrf
                             <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
 
@@ -60,7 +60,7 @@
                                     <div class="form-group">
                                         <label>Your Email</label>
                                         <input type="email" name="email" class="form-control" placeholder="Your Email"
-                                            value="{{ auth()->user()->email }}" required>
+                                            value="{{ auth()->user()->email }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -115,7 +115,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="gender">Gender</label>
-                                        <select class="form-control" name="gender" id="gender">
+                                        <select class="form-control" name="gender" id="gender" required>
                                             <option value="">Select</option>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
@@ -134,7 +134,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="level">Level <span class="text-danger font-weight-bold">*</span></label>
-                                        <select class="form-control" name="level" id="level">
+                                        <select class="form-control" name="level" id="level" required>
                                             {{-- <option value="">Select</option> --}}
                                             <option value="School">School</option>
                                             <option value="College">College</option>
@@ -191,21 +191,21 @@
                                     <div class="form-group">
                                         <label for="institution">Institution</label>
                                         <input type="text" name="institution" class="form-control"
-                                            placeholder="Your Institution" id="institution">
+                                            placeholder="Your Institution" id="institution" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6" id="position">
                                     <div class="form-group">
-                                        <label>Class Position/Roll</label>
-                                        <input type="number" name="position" class="form-control"
-                                            placeholder="Your Class Position">
+                                        <label>Class Position/Roll/ID</label>
+                                        <input type="text" name="position" class="form-control"
+                                            placeholder="Your Class Position" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Marks/GPA/CGPA</label>
                                         <input type="number" step=0.01 name="marks_cgpa" class="form-control"
-                                            placeholder="CGPA">
+                                            placeholder="CGPA" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -217,7 +217,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Year</label>
-                                        <input type="text" class="form-control" name="year" id="datepicker" />
+                                        <input type="text" class="form-control" name="year" id="datepicker" required/>
                                     </div>
                                 </div>
 
@@ -396,7 +396,7 @@
                                     <div class="form-group">
                                         <label>Area</label>
                                         <input type="text" name="area_present" class="form-control"
-                                            placeholder="House and Area details">
+                                            placeholder="House and Area details" required>
                                     </div>
                                 </div>
 

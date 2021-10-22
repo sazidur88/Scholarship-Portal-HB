@@ -7,43 +7,38 @@
             <p>Scholarship Candidate</p>
         </div>
         <ul>
+            <li>
+                <a href="{{ route('student_dashboard') }}"
+                    class="{{ \Request::route()->getName() == 'student_dashboard' ? 'active' : '' }}">
+                    <i class='bx bxs-dashboard'></i>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('student_profile', auth()->user()->id) }}"
+                    class="{{ \Request::route()->getName() == 'student_profile' ? 'active' : '' }}">
+                    <i class='bx bx-user'></i>
+                    My Profile
+                </a>
+            </li>
+            @role('STUDENT')
                 <li>
-                    <a href="{{ route('student_dashboard') }}"
-                        class="{{ \Request::route()->getName() == 'student_dashboard' ? 'active' : '' }}">
-                        <i class='bx bxs-dashboard'></i>
-                        Dashboard
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('student_profile', auth()->user()->id) }}"
-                        class="{{ \Request::route()->getName() == 'student_profile' ? 'active' : '' }}">
-                        <i class='bx bx-user'></i>
-                        My Profile
-                    </a>
-                </li>
-            @can('student-can')
-                <li>
-                    <a href="{{ route('student_document')}}"
+                    <a href="{{ route('student_document') }}"
                         class="{{ \Request::route()->getName() == 'student_document' ? 'active' : '' }}">
                         <i class='bx bx-user'></i>
                         Documents
                     </a>
                 </li>
 
-            {{-- <li>
-                <a href="{{ route('student_edit')}}"
-                    class="{{ \Request::route()->getName() == 'student_edit' ? 'active' : '' }}">
-                    <i class='bx bx-user'></i>
-                    Edit Profile
-                </a>
-            </li> --}}
-            <li>
-                <a href="{{ route('student_applications_index')}}">
-                    <i class='bx bx-briefcase'></i>
-                    Applied Scholarships
-                </a>
-            </li>
-            @endcan
+
+                <li>
+                    <a href="{{ route('student_applications_index') }}">
+                        <i class='bx bx-briefcase'></i>
+                        Applied Scholarships
+                    </a>
+                </li>
+            @endrole
+
 
             <li>
                 <a href="{{ route('edit_user_info') }}"

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\ManageRolesController;
 use App\Http\Controllers\Admin\ManageUsersController;
 use App\Http\Controllers\Admin\ManagePermissionsController;
@@ -22,7 +23,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::view('/','home');
+// Route::view('/','home');
+Route::GET('/', [HomeController::class,'index'])->name('home');
+
 
 require base_path('/routes/web/all.php');
 
@@ -104,6 +107,7 @@ Route::POST('/manage-scholarships-status-change', [TenantScholarshipController::
 -----------------------------------------------------------
 */
 Route::GET('/manage-applications-index/{scholarship_id}', [ManageApplicationController::class, 'index'])->name('manage_applications_index')->middleware('auth');
+Route::GET('/manage-applications-profile/{student_id}', [ManageApplicationController::class, 'show_profile'])->name('manage_applications_profile')->middleware('auth');
 
 
 

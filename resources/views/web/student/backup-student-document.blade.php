@@ -13,7 +13,7 @@
                 <h2>Student Create</h2>
                 <ul>
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="{{ route('home') }}">Home</a>
                     </li>
                     <li>Account</li>
                 </ul>

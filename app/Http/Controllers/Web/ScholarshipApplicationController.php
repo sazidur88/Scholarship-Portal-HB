@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Document;
 use App\Models\Scholarship;
 use App\Models\Student;
 use App\Models\User;
@@ -47,14 +48,20 @@ class ScholarshipApplicationController extends Controller
         $user = User::find(auth()->user()->id);
         $student = $user->student_information;
 
+        // dd($student->id);
+
 
         if (!$student)
-            return redirect()->route('student_profile_create')->with('warning','Complete your profile to apply for scholarships.');
+            return redirect()->route('student_profile_create')->with('warning', 'Complete your profile to apply for scholarships.');
 
+        elseif (Document::where('documentable_id', $student->id)->exists()) {
+            $student->scholarships()->attach($request->scholarship_id);
 
-        $student->scholarships()->attach($request->scholarship_id);
-
-        return redirect()->route('student_dashboard')->with('success', 'Scholarship Application submitted successfully. We will contact you soon.');
+            return redirect()->route('student_applications_index')->with('success', 'Scholarship Application submitted successfully. We will contact you soon.');
+        }
+        else {
+            return redirect()->route('student_document')->with('warning', 'Please upload your necessary documents.');
+        }
     }
 
     /**

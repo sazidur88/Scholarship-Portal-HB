@@ -22,7 +22,7 @@
                 <h2>Dashboard</h2>
                 <ul>
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="{{ route('home') }}">Home</a>
                     </li>
                     <li>Dashboard</li>
                 </ul>
@@ -87,8 +87,8 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="section-title">
-                        <h2>Get New Job Notifications</h2>
-                        <p>Subscribe & get all related jobs notification</p>
+                        <h2>Get New Scholarship Notifications</h2>
+                        <p>Subscribe & get all related scholarships notification</p>
                     </div>
                 </div>
                 <div class="col-md-6">

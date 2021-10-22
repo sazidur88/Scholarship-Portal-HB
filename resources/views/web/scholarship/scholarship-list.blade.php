@@ -10,7 +10,7 @@
                 <h2>Available Scholarship</h2>
                 <ul>
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="{{ route('home') }}">Home</a>
                     </li>
                     <li>Available Scholarship</li>
                 </ul>
@@ -37,7 +37,7 @@
                             <div class="col-md-1">
                                 <div class="company-logo">
                                     <a href="#">
-                                        <img src="assets/img/company-logo/1.png" alt="logo">
+                                        <img src="{{asset('assets/img/company-logo/1.png')}}" alt="logo">
                                     </a>
                                 </div>
                             </div>
@@ -47,24 +47,25 @@
                                         <a href="{{route('available_scholarships_details',$scholarship->id)}}">{{$scholarship->scholarship_title}}</a>
                                     </h3>
                                     <ul>
-                                        <li>
+                                        {{-- <li>
                                             <i class='bx bx-briefcase'></i>
                                             Grant + Other benefits
-                                        </li>
-                                        {{-- <li> --}}
-                                        {{-- <i class='bx bx-briefcase'></i> --}}
-                                        {{-- $35000-$38000 --}}
-                                        {{-- </li> --}}
+                                        </li> --}}
+                                        
                                         <li>
                                             <i class='bx bx-location-plus'></i>
-                                            Wellesley Rd, London
+                                            Bangladesh
                                         </li>
+                                        <li>
+                                            <i class='bx bx-briefcase'></i>
+                                            Monthly
+                                            </li>
                                         <li>
                                             <i class='bx bx-stopwatch'></i>
                                             {{ (new DateTime($scholarship->deadline))->format('d-M-Y') }}
                                         </li>
                                     </ul>
-                                    <span>Bachelor</span>
+                                    <span>Level</span>
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -80,6 +81,7 @@
               
             </div>
             @empty
+            <h3 class="text-center text-danger">Sorry! No scholarships available for this time. 
             @endforelse
 
 

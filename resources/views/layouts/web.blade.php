@@ -19,12 +19,61 @@
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/font-awesome.min.css')}}">
-    <title>HB Scholarship Portal</title>
+    <title>Shikkha Britti</title>
 
     <link rel="icon" type="image/png" href="{{asset('assets/img/favicon.png')}}">
 
     {{-- Custom Styles  --}}
     @yield('custom_styles')
+
+
+    <style>
+
+        /* .student_name{
+            display: none;
+        } */
+        @media (max-width: 767px) {
+            /*.navbar-area .other-option {*/
+            /*    display: block;*/
+            /*    background-color: #04112e;*/
+            /*    text-align: center;*/
+            /*}*/
+
+
+            .signin-btn{
+                color: #fff;
+                font-family: catamaran, sans-serif;
+                font-size: 16px;
+                font-weight: 600;
+                padding: 5px 20px;
+                background: #fd1616;
+                border-radius: 5px;
+            }
+            .signup-btn{
+                color: #fff;
+                font-family: catamaran, sans-serif;
+                font-size: 16px;
+                font-weight: 600;
+                padding: 5px 20px;
+                background: #fd1616;
+                border-radius: 5px;
+            }
+            .navbar-area .other-option {
+                display: block;
+                background-color: #04112e;
+                text-align: center;
+            }
+
+            .student_name{
+                display: block;
+            }
+
+            .navbar-expand-lg .navbar-nav {
+                flex-direction: row;
+                display: block;
+            }
+        }
+    </style>
 
 
 </head>
@@ -85,7 +134,7 @@
     <script src="{{asset('assets/js/custom.js')}}"></script>
     <script src="{{asset('assets/js/fontawesome.min.js')}}"></script>
 
-    
+
     {{-- Custom js  --}}
     @yield('custom_js')
 </body>

@@ -5,7 +5,7 @@
                 <div class="col-lg-3">
                     <div class="form-group">
                         <input type="text" class="form-control" id="exampleInputEmail1"
-                            placeholder="Job Title or Keyword">
+                            placeholder="Scholarship Title or Keyword">
                         <i class="bx bx-search-alt"></i>
                     </div>
                 </div>

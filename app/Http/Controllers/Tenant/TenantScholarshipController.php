@@ -120,7 +120,7 @@ class TenantScholarshipController extends Controller
         $scholarship->save();
 
         return redirect()->route('manage_scholarships_index')
-            ->with('success', 'Scholarship created successfully');
+            ->with('success', 'Scholarship Updated successfully');
     }
 
     /**
@@ -136,10 +136,10 @@ class TenantScholarshipController extends Controller
         ]);
 
         $scholarship_id = $request->scholarship_id_d;
-        $scholarship =  TenantScholarship::find($scholarship_id);
+        $scholarship =  Scholarship::find($scholarship_id);
         $scholarship->delete();
 
-        return back()->with('success', 'Status Changed Successfully');
+        return back()->with('error', 'Sholarship post deleted Successfully');
     }
 
     /**
@@ -155,7 +155,7 @@ class TenantScholarshipController extends Controller
         ]);
 
         $scholarship_id = $request->scholarship_id_u;
-        $scholarship =  TenantScholarship::find($scholarship_id);
+        $scholarship =  Scholarship::find($scholarship_id);
 
         if ($scholarship->status == "ACTIVE") {
             $scholarship->status = "INACTIVE";

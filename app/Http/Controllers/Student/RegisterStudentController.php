@@ -148,6 +148,7 @@ class RegisterStudentController extends Controller
             'institution' => 'required',
             'marks_cgpa' => 'required',
             'year' => 'required',
+            'position' => 'required',
         ]);
 
         $level = $request->level;
@@ -156,7 +157,7 @@ class RegisterStudentController extends Controller
             $degree_level = $request->class_degree_sch;
         } else if ($level == "College") {
             $degree_level = $request->class_degree_col;
-        } else if ($level == "University/Diploma") {
+        } else {
             $degree_level = $request->class_degree_uni;
         }
 
@@ -302,10 +303,10 @@ class RegisterStudentController extends Controller
 
         $this->validate($request, [
             'level' => 'required',
-            // 'class_degree' => 'required',
             'institution' => 'required',
             'marks_cgpa' => 'required',
             'year' => 'required',
+            'position' => 'required',
         ]);
 
 
