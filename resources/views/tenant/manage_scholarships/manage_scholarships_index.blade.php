@@ -120,11 +120,11 @@
                                                     data-toggle="tooltip" data-placement="top" title="Edit"><i
                                                         class="fa fa-edit"></i></a>
 
-                                                <span data-toggle="tooltip" data-placement="top" title="Delete"><button
+                                                {{-- <span data-toggle="tooltip" data-placement="top" title="Delete"><button
                                                         class="btn btn-sm btn-danger delete_warning_modal" type="button"
                                                         data-toggle="modal" data-target="#delete_warning_modal"
                                                         data-scholarship_id_d="{{ $scholarship->id }}"><i
-                                                            class="fa fa-trash"></i></button></span>
+                                                            class="fa fa-trash"></i></button></span> --}}
                                             </td>
                                         </tr>
                                     @empty

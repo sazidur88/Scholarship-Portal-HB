@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\CommonControllers\DashboardController;
-use App\Http\Controllers\student\RegisterStudentController;
-use App\Http\Controllers\student\StudentDocumentController;
-use App\Http\Controllers\student\StudentApplicationController;
+use App\Http\Controllers\Student\RegisterStudentController;
+use App\Http\Controllers\Student\StudentDocumentController;
+use App\Http\Controllers\Student\StudentApplicationController;
 use App\Http\Controllers\Web\ScholarshipApplicationController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;

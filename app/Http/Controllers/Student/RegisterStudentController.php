@@ -65,16 +65,16 @@ class RegisterStudentController extends Controller
         ]);
 
         // Generating Student Unique ID
-        // $ldate = date('ym');
-        // $latest_user = User::latest()->first();
-        // $latest_user_id = $latest_user->id + 1;
-        // $last_digit = sprintf("%03d", $latest_user_id);
-        // $sid = $ldate . $last_digit;
+        $ldate = date('ym');
+        $latest_user = User::latest()->first();
+        $latest_user_id = $latest_user->id + 1;
+        $last_digit = sprintf("%03d", $latest_user_id);
+        $sid = $ldate . $last_digit;
 
 
         $student = new Student();
         $student->user_id = $request->user_id;
-        // $student->sid = $sid;
+        $student->sid = $sid;
         $student->name = $request->name;
         $student->email = $request->email;
         $student->phone = $request->phone;
