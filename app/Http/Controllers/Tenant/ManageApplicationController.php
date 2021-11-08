@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Scholarship;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use App\Models\User;
+
 
 class ManageApplicationController extends Controller
 {
@@ -25,6 +27,41 @@ class ManageApplicationController extends Controller
         ]);
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show_profile(Request $request, $student_id)
+    {
+
+        $student_data = Student::find($student_id);
+
+        dd($student_data);
+
+
+        // $applied_students = $student_data->students;
+
+
+        $addresses_present = $student_data->address->where("address_type", "PRESENT");
+        $addresses_permanent = $student_data->address->where("address_type", "PERMANENT");
+
+        $academic_data = Student::find($student_data->id)->degree_information;
+        $achievements = Student::find($student_data->id)->achievements;
+
+        // dd($academic_data);
+
+        return view('tenant.manage_applications.manage_applications_student_profile', [
+            'student_data' => $student_data,
+            'academic_data' => $academic_data,
+            'addresses_present' => $addresses_present,
+            'addresses_permanent' => $addresses_permanent,
+            'achievements' => $achievements,
+        ]);
+
+    }
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -46,35 +83,6 @@ class ManageApplicationController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show_profile(Request $request, $student_id)
-    {
-        $student_data = Student::find($student_id);
-        dd($student_data);
-
-
-        $addresses_present = $student_data->address->where("address_type", "PRESENT");
-        $addresses_permanent = $student_data->address->where("address_type", "PERMANENT");
-
-        $academic_data = Student::find($student_data->id)->degree_information;
-        $achievements = Student::find($student_data->id)->achievements;
-
-        // dd($academic_data);
-
-        return view('tenant.manage_applications.manage_applications_student_profile', [
-            'student_data' => $student_data,
-            'academic_data' => $academic_data,
-            'addresses_present' => $addresses_present,
-            'addresses_permanent' => $addresses_permanent,
-            'achievements' => $achievements,
-        ]);
-
-    }
     /**
      * Display the specified resource.
      *

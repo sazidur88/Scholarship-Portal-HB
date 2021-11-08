@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateScholarshipStudentTable extends Migration
+class CreateApprovedApplicationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateScholarshipStudentTable extends Migration
      */
     public function up()
     {
-        Schema::create('scholarship_student', function (Blueprint $table) {
+        Schema::create('approved_application', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('student_id')->references('id')->on('students')->onDelete('cascade');
-            $table->foreignId('scholarship_id')->references('id')->on('scholarships')->onDelete('cascade');
-            $table->boolean('is_approved');
 
+            $table->timestamps();
         });
     }
 
@@ -28,6 +28,6 @@ class CreateScholarshipStudentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('scholarship_student');
+        Schema::dropIfExists('approved_application');
     }
 }

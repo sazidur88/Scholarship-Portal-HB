@@ -91,9 +91,10 @@
 
 
                                             <td class="text-center align-top">
-                                                <a class="btn btn-sm btn-primary" href="#" data-toggle="tooltip"
+                                                <a class="btn btn-sm btn-primary" href="{{ route('manage_applications_profile',[$applied_student->id])}}" data-toggle="tooltip"
                                                     data-placement="top" title="View"><i class="fa fa-eye"></i></a>
-
+                                                    
+                                                    
                                                 {{-- <a class="btn btn-sm btn-warning"
                                                     href="{{ route('manage_scholarships_edit', $scholarship->id) }}"
                                                     data-toggle="tooltip" data-placement="top" title="Edit"><i

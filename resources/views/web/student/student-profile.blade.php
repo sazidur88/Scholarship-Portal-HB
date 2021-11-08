@@ -47,7 +47,7 @@
                             but also the leap into electronic typesetting, remaining essentially unchanged.</p>
                     </div> --}}
                     <div class="candidate-info-text candidate-education">
-                        <h3><i class='bx bx-user-circle'></i> Personal Information</h3>
+                        <h3><i class='bx bx-user-circle candidate-heading'></i> Personal Information</h3>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="education-info">
@@ -106,6 +106,14 @@
                                     </div>
                                 </div>
                             @endif
+                            @if ($student_data->aim_in_life)
+                                <div class="col-md-12">
+                                    <div class="education-info">
+                                        <h4>Aim in Life</h4>
+                                        <p>{{ $student_data->aim_in_life }}</p>
+                                    </div>
+                                </div>
+                            @endif
                             <div class="col-md-6">
                                 <div class="education-info">
                                     <h4>Gender</h4>
@@ -117,7 +125,7 @@
                     </div>
 
                     <div class="candidate-info-text candidate-education">
-                        <h3><i class='bx bx-link'></i> Reference Information</h3>
+                        <h3><i class='bx bx-link candidate-heading'></i> Reference Information</h3>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="education-info">
@@ -150,7 +158,7 @@
                     </div>
 
                     <div class="candidate-info-text candidate-education">
-                        <h3><i class='bx bx-money'></i> Financial Information</h3>
+                        <h3><i class='bx bx-money candidate-heading'></i> Financial Information</h3>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="education-info">
@@ -184,7 +192,7 @@
                     </div>
 
                     <div class="candidate-info-text candidate-education">
-                        <h3><i class='bx bx-book-reader'></i> Educational Information</h3>
+                        <h3><i class='bx bx-book-reader candidate-heading'></i> Educational Information</h3>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="education-info">
@@ -283,7 +291,7 @@
                     </div>
 
                     <div class="candidate-info-text candidate-education">
-                        <h3><i class='bx bx-home'></i> Present Address</h3>
+                        <h3><i class='bx bx-home candidate-heading'></i> Present Address</h3>
                         @forelse ($addresses_present as $address)
                             <div class="row">
                                 <div class="col-md-6">
@@ -313,7 +321,7 @@
                             </div>
 
 
-                            <h3><i class='bx bx-home'></i> Permanent Address</h3>
+                            <h3><i class='bx bx-home candidate-heading'></i> Permanent Address</h3>
                             @if ($address->same_as_present == 1)
                                 <div class="col-md-6">
                                     <div class="education-info">

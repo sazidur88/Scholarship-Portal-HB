@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/theme.css')}}">
     <title>Shikkha Britti</title>
 
     <link rel="icon" type="image/png" href="{{asset('assets/img/favicon.png')}}">

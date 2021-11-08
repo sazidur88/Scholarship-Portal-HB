@@ -112,6 +112,13 @@
                                             style="max-height: 80px; height: 80px"></textarea>
                                     </div>
                                 </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Your Aim in Life</label>
+                                        <textarea name="aim_in_life" class="form-control" placeholder="Write details"
+                                            style="max-height: 80px; height: 80px" required></textarea>
+                                    </div>
+                                </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="gender">Gender</label>

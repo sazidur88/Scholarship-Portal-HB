@@ -60,6 +60,7 @@ class RegisterStudentController extends Controller
             'dob' => 'required',
             'father_name' => 'required',
             'mother_name' => 'required',
+            'aim_in_life' => 'required',
             'gender' => 'required',
             // 'same_as_parmanent'=>'required',
         ]);
@@ -85,6 +86,7 @@ class RegisterStudentController extends Controller
         $student->mother_name = $request->mother_name;
         $student->mother_profession = $request->mother_profession;
         $student->siblings = $request->siblings;
+        $student->aim_in_life = $request->aim_in_life;
 
         $student->gender = $request->gender;
 
@@ -273,6 +275,7 @@ class RegisterStudentController extends Controller
             'father_name' => 'required',
             'mother_name' => 'required',
             'gender' => 'required',
+            'aim_in_life' => 'required',
         ]);
 
         $student_id = $request->input('student_id');
@@ -288,6 +291,7 @@ class RegisterStudentController extends Controller
         $student->mother_name = $request->mother_name;
         $student->mother_profession = $request->mother_profession;
         $student->siblings = $request->siblings;
+        $student->aim_in_life = $request->aim_in_life;
 
         $student->gender = $request->gender;
 

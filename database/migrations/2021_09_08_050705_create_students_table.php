@@ -27,6 +27,7 @@ class CreateStudentsTable extends Migration
             $table->string('mother_name')->nullable();
             $table->string('mother_profession')->nullable();
             $table->string('siblings')->nullable();
+            $table->string('aim_in_life')->nullable();
             $table->string('gender')->nullable();
             $table->boolean('same_as_parmanent')->default(1);
 
