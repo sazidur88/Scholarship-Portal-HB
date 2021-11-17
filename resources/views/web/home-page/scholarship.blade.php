@@ -27,20 +27,21 @@
                                         <i class='bx bx-briefcase'></i>
                                         Grant + Other benefits
                                     </li> --}}
-                                    {{-- <li> --}}
-                                    {{-- <i class='bx bx-briefcase'></i> --}}
-                                    {{-- $35000-$38000 --}}
-                                    {{-- </li> --}}
+                                    
                                     <li>
                                         <i class='bx bx-location-plus'></i>
                                         Bangladesh
                                     </li>
                                     <li>
+                                        <i class='bx bx-briefcase'></i>
+                                        {{$scholarship->payment_type}}
+                                        </li>
+                                    <li>
                                         <i class='bx bx-stopwatch'></i>
                                         {{ (new DateTime($scholarship->deadline))->format('d-M-Y') }}
                                     </li>
                                 </ul>
-                                <span>Level</span>
+                                <span>Level: {{$scholarship->level}}</span>
                             </div>
                         </div>
                         <div class="col-md-3">

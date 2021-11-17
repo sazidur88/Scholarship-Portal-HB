@@ -1,20 +1,23 @@
-<footer class="footer-area pt-100 pb-70">
+{{-- <footer class="footer-area pt-100 pb-70"> --}}
+<footer class="footer-area pt-50 pb-50">
+
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-sm-6">
                 <div class="footer-widget">
                     <div class="footer-logo">
                         <a href="index.html">
-                            <img src="{{asset('assets/img/logo.png')}}" alt="logo">
+                            <img src="{{ asset('assets/img/logo.png') }}" alt="logo">
                         </a>
                     </div>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incididunt ut
                         labore et dolore magna. Sed eiusmod tempor incididunt ut.</p>
                     <div class="footer-social">
-                        <a href="#" target="_blank"><i class='bx bxl-facebook'></i></a>
-                        <a href="#" target="_blank"><i class='bx bxl-twitter'></i></a>
-                        <a href="#" target="_blank"><i class='bx bxl-pinterest-alt'></i></a>
-                        <a href="#" target="_blank"><i class='bx bxl-linkedin'></i></a>
+                        <a href="https://www.facebook.com/hilinkz" target="_blank"><i class='bx bxl-facebook'></i></a>
+                        {{-- <a href="#" target="_blank"><i class='bx bxl-twitter'></i></a> --}}
+                        {{-- <a href="#" target="_blank"><i class='bx bxl-pinterest-alt'></i></a> --}}
+                        <a href="https://www.linkedin.com/company/hilinkz" target="_blank"><i
+                                class='bx bxl-linkedin'></i></a>
                     </div>
                 </div>
             </div>
@@ -23,25 +26,25 @@
                     <h3>For Candidate</h3>
                     <ul>
                         <li>
-                            <a href="{{route('available_scholarships')}}">
+                            <a href="{{ route('available_scholarships') }}">
                                 <i class='bx bx-chevrons-right bx-tada'></i>
                                 Browse Scholarship
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('login')}}">
+                            <a href="{{ route('login') }}">
                                 <i class='bx bx-chevrons-right bx-tada'></i>
                                 Account
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('available_scholarships')}}">
+                            <a href="{{ route('available_scholarships') }}">
                                 <i class='bx bx-chevrons-right bx-tada'></i>
                                 Browse Categories
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('login')}}">
+                            <a href="{{ route('login') }}">
                                 <i class='bx bx-chevrons-right bx-tada'></i>
                                 Profile
                             </a>
@@ -53,7 +56,7 @@
                             </a>
                         </li> --}}
                         <li>
-                            <a href="{{route('register')}}">
+                            <a href="{{ route('register') }}">
                                 <i class='bx bx-chevrons-right bx-tada'></i>
                                 Sign Up
                             </a>
@@ -66,7 +69,7 @@
                     <h3>Quick Links</h3>
                     <ul>
                         <li>
-                            <a href="{{route('home')}}">
+                            <a href="{{ route('home') }}">
                                 <i class='bx bx-chevrons-right bx-tada'></i>
                                 Home
                             </a>
@@ -94,8 +97,8 @@
                                 <i class='bx bx-chevrons-right bx-tada'></i>
                                 Privacy
                             </a>
-                        </li>--}}
-                        <li> 
+                        </li> --}}
+                        <li>
                             <a href="#">
                                 <i class='bx bx-chevrons-right bx-tada'></i>
                                 Contact
@@ -114,7 +117,7 @@
                                 Phone:
                             </span>
                             <a href="tel: +88 01792 806811 ">
-                                +88 01792 806811 
+                                +88 01792 806811
                             </a>
                         </li>
                         <li>
@@ -122,7 +125,7 @@
                                 <i class='bx bxs-envelope'></i>
                                 Email:
                             </span>
-                            <a href = "mailto: contact@hilinkz.com">
+                            <a href="mailto: contact@hilinkz.com">
                                 contact@hilinkz.com
                             </a>
                         </li>
@@ -140,6 +143,6 @@
     </div>
 </footer>
 <div class="copyright-text text-center">
-    <p>Copyright @2021 Shikkha Britti. All Rights Reserved By <a href="https://hilinkz.com/"
-            target="_blank">HiLinkz Ltd.</a></p>
+    <p>Copyright @2021 Shikkha Britti. All Rights Reserved By <a href="https://hilinkz.com/" target="_blank">HiLinkz
+            Ltd.</a></p>
 </div>

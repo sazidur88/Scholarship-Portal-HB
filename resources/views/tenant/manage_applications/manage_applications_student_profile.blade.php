@@ -12,7 +12,7 @@
                 <h2>Candidate Details</h2>
                 <ul>
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="/">Home</a>
                     </li>
                     <li>Candidate Details</li>
                 </ul>
@@ -28,7 +28,7 @@
 
     <section class="candidate-details  resume-section pt-100 pb-100">
         <div class="container">
-            <div class="row">
+            <div class="row d-flex justify-content-center">
 
 
                 {{-- Student Dashboard Section --}}
@@ -37,17 +37,8 @@
 
 
                 <div class="col-lg-8">
-                    @include('include.messages')
-
-                    {{-- <div class="candidate-info-text">
-                        <h3>About Me</h3>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                            the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                            of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-                            but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                    </div> --}}
                     <div class="candidate-info-text candidate-education">
-                        <h3><i class='bx bx-user-circle'></i> Personal Information</h3>
+                        <h3><i class='bx bx-user-circle candidate-heading'></i> Personal Information</h3>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="education-info">
@@ -106,6 +97,14 @@
                                     </div>
                                 </div>
                             @endif
+                            @if ($student_data->aim_in_life)
+                                <div class="col-md-12">
+                                    <div class="education-info">
+                                        <h4>Aim in Life</h4>
+                                        <p>{{ $student_data->aim_in_life }}</p>
+                                    </div>
+                                </div>
+                            @endif
                             <div class="col-md-6">
                                 <div class="education-info">
                                     <h4>Gender</h4>
@@ -117,7 +116,7 @@
                     </div>
 
                     <div class="candidate-info-text candidate-education">
-                        <h3><i class='bx bx-link'></i> Reference Information</h3>
+                        <h3><i class='bx bx-link candidate-heading'></i> Reference Information</h3>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="education-info">
@@ -150,7 +149,7 @@
                     </div>
 
                     <div class="candidate-info-text candidate-education">
-                        <h3><i class='bx bx-money'></i> Financial Information</h3>
+                        <h3><i class='bx bx-money candidate-heading'></i> Financial Information</h3>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="education-info">
@@ -184,7 +183,7 @@
                     </div>
 
                     <div class="candidate-info-text candidate-education">
-                        <h3><i class='bx bx-book-reader'></i> Educational Information</h3>
+                        <h3><i class='bx bx-book-reader candidate-heading'></i> Educational Information</h3>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="education-info">
@@ -283,82 +282,76 @@
                     </div>
 
                     <div class="candidate-info-text candidate-education">
-                        <h3><i class='bx bx-home'></i> Present Address</h3>
-                        @forelse ($addresses_present as $address)
+                        <h3><i class='bx bx-home candidate-heading'></i> Present Address</h3>
+
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="education-info">
                                         <h4>Division</h4>
-                                        <p>{{ $address->division }}</p>
+                                        <p>{{ $addresses_present->division }}</p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="education-info">
                                         <h4>District</h4>
-                                        <p>{{ $address->district }}</p>
+                                        <p>{{ $addresses_present->district }}</p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="education-info">
                                         <h4>Upazila</h4>
-                                        <p>{{ $address->upazila }}</p>
+                                        <p>{{ $addresses_present->upazila }}</p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="education-info">
                                         <h4>Area</h4>
-                                        <p>{{ $address->area }}</p>
+                                        <p>{{ $addresses_present->area }}</p>
                                     </div>
                                 </div>
                             </div>
 
 
-                            <h3><i class='bx bx-home'></i> Permanent Address</h3>
-                            @if ($address->same_as_present == 1)
+                            <h3><i class='bx bx-home candidate-heading'></i> Permanent Address</h3>
+                            @if ($addresses_present->same_as_present)
                                 <div class="col-md-6">
                                     <div class="education-info">
                                         <h4>Same as Present Address</h4>
                                     </div>
                                 </div>
                             @endif
-                        @empty
-                        @endforelse
 
 
-                        @forelse ($addresses_permanent as $address)
+
+                        @if ($addresses_permanent)
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="education-info">
                                         <h4>Division</h4>
-                                        <p>{{ $address->division }}</p>
+                                        <p>{{ $addresses_permanent->division }}</p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="education-info">
                                         <h4>District</h4>
-                                        <p>{{ $address->district }}</p>
+                                        <p>{{ $addresses_permanent->district }}</p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="education-info">
                                         <h4>Upazila</h4>
-                                        <p>{{ $address->upazila }}</p>
+                                        <p>{{ $addresses_permanent->upazila }}</p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="education-info">
                                         <h4>Area</h4>
-                                        <p>{{ $address->area }}</p>
+                                        <p>{{ $addresses_permanent->area }}</p>
                                     </div>
                                 </div>
                             </div>
-                        @empty
-                        @endforelse
+                        @endif
 
-                    </div>
-                    <div class="col-md-12">
-                        <a href="{{ route('student_edit', ['student_id' => $student_data->id]) }}"><button type="submit"
-                                class="profile-btn"><i class="bx bxs-edit"></i> Edit</button></a>
                     </div>
                 </div>
             </div>

@@ -12,9 +12,9 @@
                 <h2>Sign Up</h2>
                 <ul>
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="index.html">Sign Up</a>
                     </li>
-                    <li>Sign Up</li>
+                    <li>Verify Your Phone Number</li>
                 </ul>
             </div>
         </div>
@@ -29,63 +29,30 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-8 offset-md-2 offset-lg-3">
-                    <form class="signup-form" method="POST" action="{{ route('sendotp') }}">
+                    @if (session('message'))
+                        <div class="alert alert-danger text-center" role="alert">
+                            {{ session('message') }}
+                        </div>
+                    @endif
+                    <form class="signup-form" method="POST" action="{{ route('registeruser') }}">
                         @csrf
+
                         <div class="form-group">
-                            <label for="name">Name <span class="text-danger font-weight-bold">*</span></label>
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                                name="name" value="{{ old('name') }}" required autocomplete="name" autofocus
-                                placeholder="Enter Your Name">
-                            @error('name')
+                            <label for="otp">Enter OTP <span class="text-danger font-weight-bold">*</span></label>
+                            <input id="otp" type="phone" class="form-control @error('otp') is-invalid @enderror"
+                                name="otp" value="{{ old('otp') }}" required autocomplete="otp"
+                                placeholder="Enter Your OTP">
+                            @error('otp')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
 
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                name="email" value="{{ old('email') }}" autocomplete="email"
-                                placeholder="Enter Your Email">
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
 
-                        <div class="form-group">
-                            <label for="phone">Phone<span class="text-danger font-weight-bold">*</span></label>
-                            <input id="phone" type="phone" class="form-control @error('phone') is-invalid @enderror"
-                                name="phone" value="{{ old('phone') }}" required autocomplete="phone"
-                                placeholder="Example: 01X12345678">
-                            @error('phone')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
 
-                        <div class="form-group">
-                            <label for="password">Enter Password <span class="text-danger font-weight-bold">*</span></label>
-                            <input id="password" type="password"
-                                class="form-control @error('password') is-invalid @enderror" name="password" required
-                                autocomplete="new-password" placeholder="Enter Password">
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password-confirm">Confirm Password <span class="text-danger font-weight-bold">*</span></label>
-                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
-                                required autocomplete="new-password" placeholder="Retype Password">
-                        </div>
                         <div class="signup-btn text-center">
-                            <button type="submit">Sign Up</button>
+                            <button type="submit">Verify</button>
                         </div>
                         {{-- <div class="other-signup text-center">
                             <span>Or sign up with</span>
@@ -114,7 +81,11 @@
                         </div> --}}
                         <div class="create-btn text-center">
                             <p>
-                                Have an Account?
+                                Don't receive OTP?
+                                <button onClick="history.go(0);">Resend OTP</button><i class="bx bx-refresh"></i>
+                            </p>
+                            <p>
+                                Already have an account?
                                 <a href="{{route('login')}}">
                                     Sign In
                                     <i class='bx bx-chevrons-right bx-fade-right'></i>

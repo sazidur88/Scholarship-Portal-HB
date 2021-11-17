@@ -11,16 +11,16 @@ class Achievement extends Model
     {
         return $this->belongsTo(Student::class);
     }
-    
-    
-    protected static function booted()
-    {
-        static::addGlobalScope(new TenantScope);
 
-        static::creating(function ($model){
-            if (session()->has('tenant_id')) {
-                $model->tenant_id = session()->get('tenant_id');
-            }
-        });
-    }
+
+//    protected static function booted()
+//    {
+//        static::addGlobalScope(new TenantScope);
+//
+//        static::creating(function ($model){
+//            if (session()->has('tenant_id')) {
+//                $model->tenant_id = session()->get('tenant_id');
+//            }
+//        });
+//    }
 }

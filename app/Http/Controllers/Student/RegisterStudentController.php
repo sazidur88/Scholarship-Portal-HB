@@ -26,8 +26,12 @@ class RegisterStudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {        
+        $student_data = User::FindOrFail(Auth::user()->id)->student_information;
+
+        return view('web.student.student-dashboard', [
+            'student_data' => $student_data,
+        ]);
     }
 
     /**
@@ -37,8 +41,11 @@ class RegisterStudentController extends Controller
      */
     public function create()
     {
-        // $user_id = Auth::user()->id;
-        return view('web.student.student-profile-create');
+        $student_data = User::find(Auth::user()->id)->student_information;
+
+        return view('web.student.student-profile-create', [
+            'student_data' => $student_data
+        ]);
     }
 
     /**
@@ -55,7 +62,6 @@ class RegisterStudentController extends Controller
         $this->validate($request, [
             'user_id' => 'required',
             'name' => 'required',
-            'email' => 'required',
             'phone' => 'required',
             'dob' => 'required',
             'father_name' => 'required',
@@ -204,9 +210,7 @@ class RegisterStudentController extends Controller
      */
     public function show($id)
     {
-        $user_id = Auth::user()->id;
-        $student_data = User::find($user_id)->student_information;
-
+        $student_data = User::find(Auth::user()->id)->student_information;
 
         if (!$student_data)
             return redirect()->route('student_profile_create');
@@ -269,7 +273,6 @@ class RegisterStudentController extends Controller
 
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required',
             'phone' => 'required',
             'dob' => 'required',
             'father_name' => 'required',

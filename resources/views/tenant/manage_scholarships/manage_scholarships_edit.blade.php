@@ -46,31 +46,57 @@
                 <div class="card card-body">
                     <form method="post" action="{{ route('manage_scholarships_update') }}">
                         @csrf
-                        <input type="hidden" id="scholarship_id" name="scholarship_id" value="{{$scholarship->id}}">
+                        <input type="hidden" id="scholarship_id" name="scholarship_id" value="{{ $scholarship->id }}">
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="scholarship_title">Scholarship Title<span
                                         class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="scholarship_title" name="scholarship_title"
-                                    placeholder="Enter Scholarship Title" autocomplete="off" value="{{$scholarship->scholarship_title}}" required>
+                                    placeholder="Enter Scholarship Title" autocomplete="off"
+                                    value="{{ $scholarship->scholarship_title }}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Level<span class="text-danger">*</span></label>
+                                <select class="form-control" name="level" id="level" required>
+                                    <option value="School">School</option>
+                                    <option value="College">College</option>
+                                    <option value="University/Diploma">University/Diploma</option>
+                                    <option value="All">All</option>
+                                </select>
                             </div>
 
                             <div class="form-group">
                                 <label for="eligibility">Eligibility</label><span class="text-danger">*</span></label>
                                 <textarea type="textarea" class="form-control" id="eligibility" name="eligibility"
-                                    placeholder="Please write details eligibility..." required>{{$scholarship->eligibility}}</textarea>
+                                    placeholder="Please write details eligibility..."
+                                    required>{{ $scholarship->eligibility }}</textarea>
+                            </div>
+
+                            <!-- select -->
+                            <div class="form-group">
+                                <label>Payment Type<span class="text-danger">*</span></label>
+                                <select class="form-control" name="payment_type" id="payment_type" required>
+                                    <option value="">Select</option>
+                                    <option value="One Time">One Time</option>
+                                    <option value="Monthly">Monthly</option>
+                                    <option value="Yearly">Yearly</option>
+                                </select>
                             </div>
 
 
                             <div class="form-group">
                                 <label for="amount">Amount (Tk.)<span class="text-danger">*</span></label>
                                 <input type="number" class="form-control" id="amount" name="amount"
-                                    placeholder="Enter amountin Tk." value="{{$scholarship->amount}}">
+                                    placeholder="Enter amountin Tk." value="{{ $scholarship->amount }}">
                             </div>
+
+                            
 
                             <div class="form-group">
                                 <label>Application Deadline</label>
-                                <input type="date" name="deadline" class="form-control"  value="{{ (new DateTime($scholarship->deadline))->format('Y-m-d') }}" required>
+                                <input type="date" name="deadline" class="form-control"
+                                    value="{{ (new DateTime($scholarship->deadline))->format('Y-m-d') }}" required>
                             </div>
 
 
@@ -93,4 +119,11 @@
     <script src="{{ asset('/plugins/tables/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('/plugins/tables/js/datatable/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('/plugins/tables/js/datatable-init/datatable-basic.min.js') }}"></script>
+    {{-- Alternative JS for picking OLD VALUES in dropdown --}}
+    <script>
+        $(window).on('load', function() {
+            document.getElementById("level").value = "{{ $scholarship->level }}";
+            document.getElementById("payment_type").value = "{{ $scholarship->payment_type }}";
+        });
+    </script>
 @endsection

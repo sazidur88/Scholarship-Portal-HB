@@ -39,4 +39,25 @@ class Helper
         }else
             return true;
     }
+
+    public static function sendSMS($contracts,$message)
+    {
+        $url = "https://msg.elitbuzz-bd.com/smsapi";
+        $data = [
+          "api_key" => "C2008095618587fd616629.30891805",
+          "type" => "text",
+          "contacts" => $contracts,
+          "senderid" => "8809612436577",
+          "msg" => $message,
+        ];
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        $response = curl_exec($ch);
+        curl_close($ch);
+        return $response;
+    }
 }

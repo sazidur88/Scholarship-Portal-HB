@@ -61,14 +61,20 @@
                                             <div class="col-lg-4 col-md-6">
                                                 <div class="job-info">
 
-                                                    <a class="text-light default-btn btn btn-secondary"
+                                                    <a class="text-light default-btn btn-sm btn btn-secondary"
                                                         href="{{ route('available_scholarships_details', ['scholarship_id' => $applied_scholarship->id]) }}">View</a>
 
 
-                                                    <button type="button" class="btn btn-danger delete_document_modal"
-                                                        data-target="#delete_document_modal" data-document_id="1"
-                                                        disabled>Delete
+                                                        @if ($applied_scholarship->pivot->is_approve == 1)
+                                                        <button type="button" class="btn btn-sm btn-success pe-none">Approved
                                                     </button>
+                                                        @else
+                                                        <button type="button" class="btn btn-sm btn-danger withdraw_modal"
+                                                        data-target="#withdraw_modal" data-scholarship_id="{{$applied_scholarship->id}}">Withdraw
+                                                    </button>
+                                                        @endif
+
+                                                        
                                                 </div>
                                             </div>
                                         </div>
@@ -89,7 +95,7 @@
 
 
     {{-- ------------------------Delete User Modal---------------------------- --}}
-    <div class="modal fade" id="delete_document_modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="withdraw_modal" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-md">
             <div class="modal-content">
@@ -98,7 +104,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="#" method="POST">
+                    <form action="{{route('withdraw_scholarship')}}" method="POST">
                         @csrf
                         <div class="text-center my-3">
                             <i class="fas fa-trash fa-4x text-danger" aria-hidden="true"></i>
@@ -107,7 +113,7 @@
                             Are You Sure ?
                         </div>
 
-                        <input type="hidden" id="document_id" name="document_id" value="">
+                        <input type="hidden" id="scholarship_id" name="scholarship_id" value="">
                         <div class="modal-footer justify-content-center">
                             {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
                             <button type="submit" class="btn btn-danger">Delete</button>
@@ -127,10 +133,10 @@
     <script src="{{ asset('assets/js/jquery.nice-select.min.js') }}"></script>
     {{-- ------------Delete Payment Script-------------- --}}
     <script>
-        $(document).on('click', '.delete_document_modal', function() {
-            var document_id = $(this).attr('data-document_id');
-            $('#document_id').val(document_id);
-            $('#delete_document_modal').modal('show');
+        $(document).on('click', '.withdraw_modal', function() {
+            var scholarship_id = $(this).attr('data-scholarship_id');
+            $('#scholarship_id').val(scholarship_id);
+            $('#withdraw_modal').modal('show');
         });
     </script>
 

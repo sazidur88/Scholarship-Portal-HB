@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Rules\MatchOldPassword;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EditProfileController extends Controller
 {
@@ -16,7 +17,11 @@ class EditProfileController extends Controller
 
     public function user_info_edit()
     {
-        return view('web.student.student-profile-settings');
+        $student_data = User::find(Auth::user()->id)->student_information;
+
+        return view('web.student.student-profile-settings', [
+            'student_data' => $student_data
+        ]);
     }
 
 

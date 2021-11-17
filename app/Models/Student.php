@@ -14,10 +14,21 @@ class Student extends Model
     {
         return $this->morphMany(Address::class, 'addressable');
     }
-    public function student_address()
+
+    public function present_address()
     {
-        return  $this->address();
+        return $this->morphOne(Address::class, 'addressable')->where('address_type','PRESENT');
     }
+
+    public function permanent_address()
+    {
+        return $this->morphOne(Address::class, 'addressable')->where('address_type','PERMANENT');
+    }
+
+//    public function student_address()
+//    {
+//        return  $this->address();
+//    }
 
     public function documents()
     {
@@ -47,20 +58,20 @@ class Student extends Model
 
     public function scholarships()
     {
-        return $this->belongsToMany(Scholarship::class, 'scholarship_student')->withoutGlobalScopes();
+        return $this->belongsToMany(Scholarship::class, 'scholarship_student')->withoutGlobalScopes()->withPivot('is_approve');
     }
 
 
 
 
-    protected static function booted()
-    {
-        static::addGlobalScope(new TenantScope);
-
-        static::creating(function ($model){
-            if (session()->has('tenant_id')) {
-                $model->tenant_id = session()->get('tenant_id');
-            }
-        });
-    }
+//    protected static function booted()
+//    {
+//        static::addGlobalScope(new TenantScope);
+//
+//        static::creating(function ($model){
+//            if (session()->has('tenant_id')) {
+//                $model->tenant_id = session()->get('tenant_id');
+//            }
+//        });
+//    }
 }

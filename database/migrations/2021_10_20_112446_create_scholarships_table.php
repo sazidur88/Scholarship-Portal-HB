@@ -17,10 +17,13 @@ class CreateScholarshipsTable extends Migration
             $table->id();
             $table->foreignId('tenant_id')->nullable()->constrained();
             $table->string('scholarship_title');
+            $table->string('level');
             $table->string('eligibility');
             $table->double('amount');
+            $table->string('payment_type')->nullable();
             $table->dateTime('deadline')->nullable();
             $table->string('status');
+            $table->boolean('is_delete')->default(0);
             $table->timestamps();
         });
     }

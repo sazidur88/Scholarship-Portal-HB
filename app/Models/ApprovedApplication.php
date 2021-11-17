@@ -5,20 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Scopes\TenantScope;
 
-class Scholarship extends Model
+class ApprovedApplication extends Model
 {
-
-//    public function scholarship_details()
-//    {
-//        return $this->belongsToMany(Student::class)->withoutGlobalScopes();
-//    }
-
-    public function students()
-    {
-        return $this->belongsToMany(Student::class, 'scholarship_student')->withoutGlobalScopes()->withPivot('is_approve');
-    }
-
-
     protected static function booted()
     {
         static::addGlobalScope(new TenantScope);

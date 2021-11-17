@@ -91,12 +91,19 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Tenant:</strong>
+                                <select class="form-control" id="tenant" name="tenant_id">
+                                    <option value="">SELECT</option>
+                                    @forelse($tenants as $tenant)
+                                        <option value="{{ $tenant->id }}">{{ $tenant->name }}</option>
+                                    @empty
+                                    @endforelse
+                                </select>
 
-                                @if ($tenant_id)
+                                {{-- @if ($tenant_id)
                                     {!! Form::select('tenant_id', $tenants, $tenant_id, ['class' => 'form-control']) !!}
                                 @else
                                     {!! Form::select('tenant_id', $tenants, null, ['class' => 'form-control']) !!}
-                                @endif
+                                @endif --}}
 
                             </div>
                         </div>
@@ -113,6 +120,12 @@
 @endsection
 
 @section('extra_js')
+    {{-- Alternative JS for picking OLD VALUES in dropdown --}}
+    <script>
+        $(window).on('load', function() {
+            document.getElementById("tenant").value = "{{$tenant_id}}";
+        });
+    </script>
     {{-- <script src="{{ asset('/plugins/tables/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('/plugins/tables/js/datatable/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('/plugins/tables/js/datatable-init/datatable-basic.min.js') }}"></script> --}}

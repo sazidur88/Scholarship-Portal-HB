@@ -51,11 +51,6 @@
                                 <!-- Page Heading -->
                                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                                     <h1 class="h2 mb-0 text-gray-800 text-info font-weight-bold">Application List</h1>
-                                    {{-- <a href="{{ route('manage_scholarships_create') }}"
-                                        class="d-none d-sm-inline-block btn-sm btn-primary shadow-sm"><i
-                                            class="fa fa-list"></i>
-                                        Create New Scholarship</a>
-                                    </a> --}}
                                 </div>
                             </div>
                             <!-- title -->
@@ -75,47 +70,57 @@
                                     <tr class="color">
                                         <th>SL#</th>
                                         <th>Applicant Name</th>
+                                        <th>Student ID</th>
                                         <th>Phone</th>
                                         <th>Email</th>
-                                        <th>View Applicants</th>
-{{--                                        <th>Action</th>--}}
+                                        <th>Approval</th>
+                                        <th class="text-center">View/Action</th>
+                                        {{-- <th>Action</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @forelse($applied_students as $applied_student)
                                         <tr>
-                                            <td>{{ $loop ->index + 1}}</td>
-                                            <td>{{$applied_student->name}}</td>
-                                            <td>{{$applied_student->phone}}</td>
-                                            <td>{{$applied_student->email}}</td>
+                                            <td>{{ $loop->index + 1 }}</td>
+                                            <td>{{ $applied_student->name }}</td>
+                                            <td>{{ $applied_student->sid }}</td>
+                                            <td>{{ $applied_student->phone }}</td>
+                                            <td>{{ $applied_student->email }}</td>
+
+                                            <td class="text-center">
+                                                @if ($applied_student->pivot->is_approve == 1)
+                                                    <h5><span class="badge badge-success">Approved</span></h5>
+
+                                                @else
+
+                                                    <a class="btn btn-info btn-sm"
+                                                        href="{{ route('manage_applications', [$scholarship_id, $applied_student->id]) }}"
+                                                        role="button">Approve</a>
+                                                @endif
+                                            </td>
 
 
-                                            <td class="text-center align-top">
-                                                <a class="btn btn-sm btn-primary" href="{{ route('manage_applications_profile',[$applied_student->id])}}" data-toggle="tooltip"
-                                                    data-placement="top" title="View"><i class="fa fa-eye"></i></a>
-                                                    
-                                                    
-                                                {{-- <a class="btn btn-sm btn-warning"
-                                                    href="{{ route('manage_scholarships_edit', $scholarship->id) }}"
-                                                    data-toggle="tooltip" data-placement="top" title="Edit"><i
-                                                        class="fa fa-edit"></i></a>
+                                            <td class="text-center">
+                                                <a class="btn btn-primary btn-sm"
+                                                    href="{{ route('manage_applications_profile', [$applied_student->id]) }}" target="_blank"
+                                                    role="button"><i class='far fa-user'></i> Profile</a>
 
-                                                <span data-toggle="tooltip" data-placement="top" title="Delete"><button
-                                                        class="btn btn-sm btn-danger delete_warning_modal" type="button"
-                                                        data-toggle="modal" data-target="#delete_warning_modal"
-                                                        data-scholarship_id_d="{{ $scholarship->id }}"><i
-                                                            class="fa fa-trash"></i></button></span> --}}
+                                                @if ($applied_student->pivot->is_approve == 1)
+
+                                                    <a class="btn btn-success btn-sm"
+                                                        href="{{ route('manage_applications_scholarship_details', [$applied_student->pivot->scholarship_id, $applied_student->id]) }}"
+                                                        role="button"><i class="fas fa-info"></i> Details</a>
+                                                @else
+                                                @endif
+
+
+                                            </td>
                                             </td>
                                         </tr>
                                     @empty
                                     @endforelse
-
                                 </tbody>
                             </table>
-
-
-
-
                         </div>
                         <!-- /.card-body -->
                     </div>

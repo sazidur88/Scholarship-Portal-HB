@@ -58,14 +58,14 @@
                                         </li>
                                         <li>
                                             <i class='bx bx-briefcase'></i>
-                                            Monthly
+                                            {{$scholarship->payment_type}}
                                             </li>
                                         <li>
                                             <i class='bx bx-stopwatch'></i>
                                             {{ (new DateTime($scholarship->deadline))->format('d-M-Y') }}
                                         </li>
                                     </ul>
-                                    <span>Level</span>
+                                    <span>Level: {{$scholarship->level}}</span>
                                 </div>
                             </div>
                             <div class="col-md-3">

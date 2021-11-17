@@ -47,7 +47,7 @@
 
                     <div class="form-group">
                         <label for="email">Enter Email</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email"  value="{{auth()->user()->email}}" required>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email"  value="{{auth()->user()->email}}">
                     </div>
 
                     <div class="form-group">

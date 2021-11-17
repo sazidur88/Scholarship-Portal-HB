@@ -54,10 +54,32 @@
                                     placeholder="Enter Scholarship Title" autocomplete="off" required>
                             </div>
 
+                            <!-- select -->
+                            <div class="form-group">
+                                <label>Level<span class="text-danger">*</span></label>
+                                <select class="form-control" name="level" id="level" required>
+                                    <option value="School">School</option>
+                                    <option value="College">College</option>
+                                    <option value="University/Diploma">University/Diploma</option>
+                                    <option value="All">All</option>
+                                </select>
+                            </div>
+
                             <div class="form-group">
                                 <label for="eligibility">Eligibility</label><span class="text-danger">*</span></label>
                                 <textarea type="textarea" class="form-control" id="eligibility" name="eligibility"
                                     placeholder="Please write details eligibility..." required></textarea>
+                            </div>
+
+                            <!-- select -->
+                            <div class="form-group">
+                                <label>Payment Type<span class="text-danger">*</span></label>
+                                <select class="form-control" name="payment_type" id="payment_type" required>
+                                    <option value="">Select</option>
+                                    <option value="One Time">One Time</option>
+                                    <option value="Monthly">Monthly</option>
+                                    <option value="Yearly">Yearly</option>
+                                </select>
                             </div>
 
 
@@ -66,6 +88,8 @@
                                 <input type="number" class="form-control" id="amount" name="amount"
                                     placeholder="Enter amountin Tk.">
                             </div>
+
+                            
 
                             <div class="form-group">
                                 <label>Application Deadline</label>

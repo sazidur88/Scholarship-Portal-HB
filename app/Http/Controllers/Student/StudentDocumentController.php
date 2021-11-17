@@ -29,10 +29,7 @@ class StudentDocumentController extends Controller
      */
     public function create(Request $request)
     {
-
-        $user_id = Auth::user()->id;
-
-        $student_data = User::FindOrFail($user_id)->student_information;
+        $student_data = User::FindOrFail(Auth::user()->id)->student_information;
 
         if (!$student_data)
             return redirect()->route('student_profile_create');
@@ -41,6 +38,7 @@ class StudentDocumentController extends Controller
             
         return view('web.student.student-document', [
             'documents' => $documents,
+            'student_data' => $student_data,
         ]);
     }
 

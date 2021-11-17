@@ -33,7 +33,7 @@
         /* .student_name{
             display: none;
         } */
-        @media (max-width: 767px) {
+        @media (max-width: 768px) {
             /*.navbar-area .other-option {*/
             /*    display: block;*/
             /*    background-color: #04112e;*/
@@ -60,7 +60,8 @@
                 border-radius: 5px;
             }
             .navbar-area .other-option {
-                display: block;
+                /* display: block; */
+                display: none;
                 background-color: #04112e;
                 text-align: center;
             }

@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Admin\ManageRolesController;
-use App\Http\Controllers\Admin\ManageUsersController;
 use App\Http\Controllers\Admin\ManagePermissionsController;
+use App\Http\Controllers\Admin\ManageRolesController;
 use App\Http\Controllers\Admin\ManageTenantsController;
-use App\Http\Controllers\Tenant\TenantScholarshipController;
-use App\Http\Controllers\Tenant\ManageApplicationController;
+use App\Http\Controllers\Admin\ManageUsersController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CommonControllers\DashboardController;
 use App\Http\Controllers\CommonControllers\EditProfileController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Tenant\ManageApplicationController;
+use App\Http\Controllers\Tenant\TenantScholarshipController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -45,6 +46,10 @@ Route::get('/clear-all/{id}', function($id) {
 
 
 Auth::routes();
+Route::POST('/verify-otp', [RegisterController::class,'sendOtp'])->name('sendotp');
+Route::GET('/verify-otp', [RegisterController::class,'otpVerify']);
+// Route::POST('/verify-otp', [RegisterController::class,'otpVerify']);
+Route::POST('/register', [RegisterController::class,'create'])->name('registeruser');
 
 /*
 -----------------------------------------------------------
@@ -108,6 +113,10 @@ Route::POST('/manage-scholarships-status-change', [TenantScholarshipController::
 */
 Route::GET('/manage-applications-index/{scholarship_id}', [ManageApplicationController::class, 'index'])->name('manage_applications_index')->middleware('auth');
 Route::GET('/manage-applications-profile/{student_id}', [ManageApplicationController::class, 'show_profile'])->name('manage_applications_profile')->middleware('auth');
+Route::GET('/manage-applications/{scholarship_id}/{student_id}', [ManageApplicationController::class, 'create'])->name('manage_applications')->middleware('auth');
+
+Route::POST('/manage-applications-approval', [ManageApplicationController::class, 'store'])->name('manage_applications_approval')->middleware('auth');
+Route::GET('/manage-applications-scholarship-details/{scholarship_id}/{student_id}', [ManageApplicationController::class, 'application_scholarship_details'])->name('manage_applications_scholarship_details')->middleware('auth');
 
 
 

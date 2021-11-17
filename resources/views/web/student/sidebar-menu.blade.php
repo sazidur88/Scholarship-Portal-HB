@@ -4,7 +4,11 @@
             <img src="{{ asset('assets/img/account.jpg') }}" alt="account holder image"><br>
             <h2><i class="bx bxs-camera"></i></h2>
             <h3>{{ auth()->user()->name }}</h3>
-            <p>Scholarship Candidate</p>
+            @if ($student_data)
+                <p class="fw-bold">Student ID: {{ $student_data->sid }}</p>
+            @endif
+            <p class="pt-2">Scholarship Candidate</p>
+
         </div>
         <ul>
             <li>
@@ -22,10 +26,19 @@
                 </a>
             </li>
             @role('STUDENT')
+            <li>
+                <a href="{{ route('student_edit', ['student_id' => $student_data->id]) }}"
+                    class="{{ \Request::route()->getName() == 'student_edit' ? 'active' : '' }}">
+                    <i class='bx bxs-edit'></i>
+                    Edit Profile
+                </a>
+                {{-- <a href="{{ route('student_edit', ['student_id' => $student_data->id]) }}"><button type="submit"
+                    class="profile-btn"><i class="bx bxs-edit"></i> Edit</button></a> --}}
+            </li>
                 <li>
                     <a href="{{ route('student_document') }}"
                         class="{{ \Request::route()->getName() == 'student_document' ? 'active' : '' }}">
-                        <i class='bx bx-user'></i>
+                        <i class='bx bx-file'></i>
                         Documents
                     </a>
                 </li>

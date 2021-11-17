@@ -31,11 +31,22 @@
                 <div class="col-lg-6 col-md-8 offset-md-2 offset-lg-3">
                     <form class="signin-form" method="POST" action="{{ route('login') }}">
                         @csrf
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="email">Enter Email or Phone</label>
                             <input id="email" type="text" class="form-control @error('email') is-invalid @enderror"
                                 name="email" value="{{ old('email') }}" required autocomplete="email" autofocus
                                 placeholder="Enter Your Email or Phone No.">
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div> --}}
+                        <div class="form-group">
+                            <label for="email">Enter Phone</label>
+                            <input id="email" type="text" class="form-control @error('email') is-invalid @enderror"
+                                name="email" value="{{ old('email') }}" required autocomplete="email" autofocus
+                                placeholder="Enter Your Phone No.">
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

@@ -1,7 +1,7 @@
 <div class="navbar-area">
 
     <div class="mobile-nav">
-        <a href="index.html" class="logo">
+        <a href="{{route('home')}}" class="logo">
             <img src="{{ asset('assets/img/logo.png') }}" alt="logo">
         </a>
     </div>
@@ -15,17 +15,7 @@
                 </a>
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav m-auto">
-                        {{-- <li class="nav-item">
-                            <a href="#" class="nav-link dropdown-toggle active">Home</a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    <a href="index.html" class="nav-link">Home One</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="index-two.html" class="nav-link active">Home Two</a>
-                                </li>
-                            </ul>
-                        </li> --}}
+                        
                         <li class="nav-item">
                             <a href="{{ route('home') }}"
                                 class="{{ \Request::route()->getName() == 'home' ? 'nav-link active' : 'nav-link' }}">Home</a>
@@ -48,66 +38,82 @@
                             <a href="#" class="nav-link">Contact Us</a>
                         </li>
 
-                        {{-- extranav --}}
-                        {{-- @auth
-
-                            <div class="student_name">
-                                <li class="nav-item" id="student_name">
-                                    <a href="#" class="nav-link dropdown-toggle">{{ Auth::user()->name }}</a>
-                                    <ul class="dropdown-menu">
-                                        @if (!$user->hasRole('TENANT'))
-                                            <li class="nav-item">
-                                                <a href="{{ route('student_dashboard') }}" class="nav-link">
-                                                    Dashboard</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="{{ route('student_profile', auth()->user()->id) }}"
-                                                    class="nav-link">My
-                                                    Profile</a>
-                                            </li>
-                                        @endif
-                                        @can('tenant-can')
-                                            <li class="nav-item">
-                                                <a href="{{ route('dashboard') }}" class="nav-link">
-                                                    Dashboard</a>
-                                            </li>
-                                        @endcan
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();">Logout</a>
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                class="d-none">
-                                                @csrf
-                                            </form>
-                                        </li>
-                                    </ul>
+                        @guest
+                        <li class="nav-item d-md-block d-lg-none">
+                            <a href="#" class="nav-link dropdown-toggle"><b>Account</b></a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    <a href="{{ route('login') }}" class="{{ \Request::route()->getName() == 'login' ? 'nav-link active' : 'nav-link' }}">Sign In</a>
                                 </li>
-                            </div>
-                        @endauth --}}
+                                <li class="nav-item">
+                                    <a href="{{ route('register') }}" class="{{ \Request::route()->getName() == 'register' ? 'nav-link active' : 'nav-link' }}">Sign Up</a>
+                                </li>
+                            </ul>
+                        </li>
+                        @else
+                        <li class="nav-item d-md-block d-lg-none">
+                            <a href="#" class="nav-link dropdown-toggle"><b>{{ Auth::user()->name }}</b></a>
+                            <ul class="dropdown-menu">
+                                @cannot('tenant-can')
+                                    <li class="nav-item">
+                                        <a href="{{ route('student_dashboard') }}" class="nav-link">
+                                            Dashboard</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('student_profile', auth()->user()->id) }}"
+                                            class="nav-link">My Profile</a>
+                                    </li>
+                                @endcan
+                                @can('tenant-can')
+                                    <li class="nav-item">
+                                        <a href="{{ route('dashboard') }}" class="nav-link">
+                                            Dashboard</a>
+                                    </li>
+                                @endcan
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                            document.getElementById('logout-form').submit();">Logout</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        class="d-none">
+                                        @csrf
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    @endguest
+
+
                     </ul>
 
                     @guest
-                        <div class="other-option">
+                        <div class="other-option d-md-none d-lg-block">
 
-                            {{-- @if (Route::has('login'))
-                                <a href="{{ route('login') }}" class="signin-btn">Sign In</a>
+                            @if (\Request::route()->getName() == 'login' || \Request::route()->getName() == 'register')
+                                <a href="{{ route('login') }}"
+                                    class="{{ \Request::route()->getName() == 'login' ? 'signin-btn' : 'signup-btn' }}">Sign
+                                    In</a>
+
+                                <a href="{{ route('register') }}"
+                                    class="{{ \Request::route()->getName() == 'register' ? 'signin-btn' : 'signup-btn' }}">Sign
+                                    Up</a>
+
+                            @else
+                                <a href="{{ route('login') }}"
+                                    class="{{ \Request::route()->getName() == 'login' ? 'signin-btn' : 'signin-btn' }}">Sign
+                                    In</a>
+
+                                <a href="{{ route('register') }}"
+                                    class="{{ \Request::route()->getName() == 'register' ? 'signin-btn' : 'signin-btn' }}">Sign
+                                    Up</a>
                             @endif
-
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="signup-btn">Sign Up</a>
-                            @endif --}}
-                            <a href="{{ route('login') }}"
-                                class="{{ \Request::route()->getName() == 'login' ? 'signin-btn' : 'signup-btn' }}">Sign In</a>
-
-                            <a href="{{ route('register') }}"
-                                class="{{ \Request::route()->getName() == 'register' ? 'signin-btn' : 'signup-btn' }}">Sign Up</a>
 
 
                         </div>
                     @else
                         <ul class="navbar-nav m-auto">
                             <li class="nav-item" id="student_name">
-                                <a href="#" class="nav-link dropdown-toggle">{{ Auth::user()->name }}</a>
+                                <a href="#" class="nav-link dropdown-toggle"><b>{{ Auth::user()->name }}</b></a>
                                 <ul class="dropdown-menu">
                                     @cannot('tenant-can')
                                         <li class="nav-item">
@@ -126,8 +132,9 @@
                                         </li>
                                     @endcan
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                            document.getElementById('logout-form').submit();">Logout</a>
+                                        <a class="nav-link" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                                document.getElementById('logout-form').submit();">Logout</a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                             class="d-none">
                                             @csrf

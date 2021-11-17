@@ -45,10 +45,10 @@ class ManageUsersController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'email|unique:users,email',
+            // 'email' => 'email|unique:users,email',
             'phone' => 'required|numeric|unique:users,phone',
             'password' => 'required|same:confirm-password',
-            'roles' => 'required'
+            // 'roles' => 'required'
         ]);
 
         $input = $request->all();
@@ -83,11 +83,11 @@ class ManageUsersController extends Controller
         $roles = Role::pluck('name','name')->all();
         $userRole = $user->roles->pluck('name','name')->all();
         
-        $tenants = Tenant::pluck('name','id')->all();
+        $tenants = Tenant::all();
         $tenant_id = $user->tenant_id;
 
 
-        // dd($userTenants);   
+        // dd($tenants);   
 
 
 
@@ -107,11 +107,11 @@ class ManageUsersController extends Controller
         
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'email|unique:users,email,'.$id,
+            // 'email' => 'email|unique:users,email,'.$id,
             'phone' => 'required|numeric|unique:users,phone,'.$id,
             'password' => 'same:confirm-password',
-            'roles' => 'required',
-            'tenant_id' => 'required'
+            // 'roles' => 'required',
+            // 'tenant_id' => 'required'
         ]);
 
         $input = $request->all();

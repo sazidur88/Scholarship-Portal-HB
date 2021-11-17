@@ -81,6 +81,14 @@
                 @endcan
                 {{-- @can('admin-can	') --}}
                 <li class="nav-item">
+                    <a href="{{ route('manage_scholarships_create') }}" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Create Scholarships
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('manage_scholarships_index')}}" class="nav-link">
                         <i class="nav-icon fas fa-user-secret"></i>
                         <p>

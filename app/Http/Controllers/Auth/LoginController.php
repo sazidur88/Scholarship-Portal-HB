@@ -75,17 +75,18 @@ class LoginController extends Controller
 
             return $this->sendLockoutResponse($request);
         }
-
+        $user = NULL;
 
         if (is_numeric($request->input('email'))) {
             $user = User::wherePhone($request->input('email'))
                 ->wherePassword($request->input('password'))
                 ->first();
-        } else {
-            $user = User::whereEmail($request->input('email'))
-                ->wherePassword($request->input('password'))
-                ->first();
-        }
+        } 
+        // else {
+        //     $user = User::whereEmail($request->input('email'))
+        //         ->wherePassword($request->input('password'))
+        //         ->first();
+        // }
 
 
         if ($user !== null) {

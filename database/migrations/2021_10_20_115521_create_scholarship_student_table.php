@@ -14,10 +14,9 @@ class CreateScholarshipStudentTable extends Migration
     public function up()
     {
         Schema::create('scholarship_student', function (Blueprint $table) {
-            $table->foreignId('student_id')->references('id')->on('students')->onDelete('cascade');
-            $table->foreignId('scholarship_id')->references('id')->on('scholarships')->onDelete('cascade');
-            $table->boolean('is_approved');
-
+            $table->foreignId('student_id')->references('id')->on('students');
+            $table->foreignId('scholarship_id')->references('id')->on('scholarships');
+            $table->boolean('is_approve')->default(0);
         });
     }
 

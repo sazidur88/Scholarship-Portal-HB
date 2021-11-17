@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::view('/student/student-dashboard','web.student.student-dashboard')->name('student_dashboard')->middleware('auth');
+// Route::view('/student/student-dashboard','web.student.student-dashboard')->name('student_dashboard')->middleware('auth');
+Route::GET('/student/student-dashboard',[RegisterStudentController::class, 'index'])->name('student_dashboard')->middleware('auth');
 Route::GET('/student/student-profile-create',[RegisterStudentController::class, 'create'])->name('student_profile_create')->middleware('auth');
 Route::POST('student/store-information',[RegisterStudentController::class, 'store'])->name('store_student_information')->middleware('auth');
 Route::GET('/student/student-profile/{student_id}',[RegisterStudentController::class, 'show'])->name('student_profile')->middleware('auth');
@@ -36,3 +37,4 @@ Route::GET('/student/student-applications', [StudentApplicationController::class
 Route::GET('/available-scholarships', [ScholarshipApplicationController::class, 'index'])->name('available_scholarships');
 Route::GET('/available-scholarships-details/{scholarship_id}', [ScholarshipApplicationController::class, 'show'])->name('available_scholarships_details');
 Route::POST('/available-scholarships-apply', [ScholarshipApplicationController::class, 'store'])->name('available_scholarships_apply')->middleware('auth');
+Route::POST('/withdraw-scholarship', [ScholarshipApplicationController::class, 'destroy'])->name('withdraw_scholarship')->middleware('auth');

@@ -15,12 +15,10 @@ class TenantScholarshipController extends Controller
      */
     public function index()
     {
-        $scholarships = Scholarship::all();
-
+        $scholarships = Scholarship::all()->where('is_delete', 0);
         return view('tenant.manage_scholarships.manage_scholarships_index', [
             'scholarships' => $scholarships,
         ]);
-        // dd($scholarships);
     }
 
     /**
@@ -43,25 +41,24 @@ class TenantScholarshipController extends Controller
     {
         $this->validate($request, [
             'scholarship_title' => 'required',
+            'level' => 'required',
             'eligibility' => 'required',
             'amount' => 'required',
+            'payment_type' => 'required',
             'deadline' => 'required',
         ]);
 
         $scholarship = new Scholarship();
 
-
-        $scholarship->tenant_id = session()->get('tenant_id');
+        // $scholarship->tenant_id = session()->get('tenant_id');
         $scholarship->scholarship_title = $request->scholarship_title;
+        $scholarship->level = $request->level;
         $scholarship->eligibility = $request->eligibility;
         $scholarship->amount = $request->amount;
+        $scholarship->payment_type = $request->payment_type;
         $scholarship->deadline = $request->deadline;
         $scholarship->status = "ACTIVE";
         $scholarship->save();
-
-        // return "SUCCESS";
-
-
 
         return redirect()->route('manage_scholarships_index')
             ->with('success', 'Scholarship created successfully');
@@ -88,10 +85,9 @@ class TenantScholarshipController extends Controller
     {
         $scholarship = Scholarship::find($scholarship_id);
 
-        return View('tenant.manage_scholarships.manage_scholarships_edit',[
+        return View('tenant.manage_scholarships.manage_scholarships_edit', [
             'scholarship' => $scholarship,
         ]);
-
     }
 
     /**
@@ -105,16 +101,20 @@ class TenantScholarshipController extends Controller
     {
         $this->validate($request, [
             'scholarship_title' => 'required',
+            'level' => 'required',
             'eligibility' => 'required',
             'amount' => 'required',
+            'payment_type' => 'required',
             'deadline' => 'required',
         ]);
 
         $scholarship = Scholarship::find($request->scholarship_id);
 
         $scholarship->scholarship_title = $request->scholarship_title;
+        $scholarship->level = $request->level;
         $scholarship->eligibility = $request->eligibility;
         $scholarship->amount = $request->amount;
+        $scholarship->payment_type = $request->payment_type;
         $scholarship->deadline = $request->deadline;
         // $scholarship->status = "ACTIVE";
         $scholarship->save();
@@ -137,7 +137,8 @@ class TenantScholarshipController extends Controller
 
         $scholarship_id = $request->scholarship_id_d;
         $scholarship =  Scholarship::find($scholarship_id);
-        $scholarship->delete();
+        $scholarship->is_delete = 1;
+        $scholarship -> save();
 
         return back()->with('error', 'Sholarship post deleted Successfully');
     }

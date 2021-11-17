@@ -50,13 +50,17 @@
 
                     <div class="candidate-profile">
                         <div class="profile-thumb">
-                            <img src="{{ asset('assets/img/account.jpg') }}" alt="account holder image">
+                            <img src="{{ asset('assets/img/account.jpg') }}" alt="shikkha britti">
                             <h3>{{ Auth::user()->name }}</h3>
+                            @if($student_data)
+                            <p>Student ID: {{$student_data->sid}}</p>
+                            @endif
                             <p>Scholarship Candidate</p>
+
                         </div>
                         <ul>
                             <li>
-                                <a href="tel:+100230342">
+                                <a href="">
                                     <i class='bx bxs-phone'></i>
                                     {{ Auth::user()->phone }}
                                 </a>

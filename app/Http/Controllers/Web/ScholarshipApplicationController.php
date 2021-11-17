@@ -19,7 +19,7 @@ class ScholarshipApplicationController extends Controller
      */
     public function index()
     {
-        $scholarships = Scholarship::where('status', "ACTIVE")->orderBy('id', 'DESC')->paginate(100);
+        $scholarships = Scholarship::where('status', "ACTIVE")->orderBy('id', 'DESC')->get();
 
         return view('web.scholarship.scholarship-list', [
             'scholarships' => $scholarships,
@@ -108,8 +108,14 @@ class ScholarshipApplicationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        // dd($request->all());
+        $user = User::find(auth()->user()->id);
+        $student = $user->student_information;
+
+        $student->scholarships()->detach($request->scholarship_id);
+
+            return redirect()->route('student_applications_index')->with('success', 'Scholarship Application withdrawn successfully');
     }
 }

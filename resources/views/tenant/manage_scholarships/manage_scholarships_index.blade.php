@@ -93,38 +93,33 @@
                                             <td>{{ $scholarship->amount }}</td>
                                             <td>{{ (new DateTime($scholarship->deadline))->format('d-M-Y') }}</td>
                                             @if ($scholarship->status == 'ACTIVE')
-                                                <td><button type="button" class="btn btn-success btn-sm align-top" data-toggle="modal"
-                                                        data-target="#status_change_modal"
+                                                <td><button type="button" class="btn btn-success btn-sm align-top"
+                                                        data-toggle="modal" data-target="#status_change_modal"
                                                         data-scholarship_id_u="{{ $scholarship->id }}"
                                                         data-placement="top"
                                                         title="Change Status">{{ $scholarship->status }}</button>
                                                 </td>
                                             @else
-                                                <td><button type="button" class="btn btn-danger  btn-sm align-top" data-toggle="modal"
-                                                        data-target="#status_change_modal"
+                                                <td><button type="button" class="btn btn-danger  btn-sm align-top"
+                                                        data-toggle="modal" data-target="#status_change_modal"
                                                         data-scholarship_id_u="{{ $scholarship->id }}"
                                                         data-placement="top"
                                                         title="Change Status">{{ $scholarship->status }}</button>
                                                 </td>
                                             @endif
 
-                                            <td class="text-center"><a class="btn btn-primary btn-sm" href="{{ route('manage_applications_index',[$scholarship->id])}}" role="button">View</a>
+                                            <td class="text-center"><a class="btn btn-primary btn-sm"
+                                                    href="{{ route('manage_applications_index', [$scholarship->id]) }}"
+                                                    role="button">View</a>
                                             </td>
 
                                             <td class="text-center align-top">
                                                 <a class="btn btn-sm btn-primary" href="" data-toggle="tooltip"
                                                     data-placement="top" title="View"><i class="fa fa-eye"></i></a>
 
-                                                <a class="btn btn-sm btn-warning"
-                                                    href="{{ route('manage_scholarships_edit', $scholarship->id) }}"
-                                                    data-toggle="tooltip" data-placement="top" title="Edit"><i
-                                                        class="fa fa-edit"></i></a>
+                                                <a class="btn btn-sm btn-warning" href="{{ route('manage_scholarships_edit', $scholarship->id) }}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
 
-                                                {{-- <span data-toggle="tooltip" data-placement="top" title="Delete"><button
-                                                        class="btn btn-sm btn-danger delete_warning_modal" type="button"
-                                                        data-toggle="modal" data-target="#delete_warning_modal"
-                                                        data-scholarship_id_d="{{ $scholarship->id }}"><i
-                                                            class="fa fa-trash"></i></button></span> --}}
+                                                <span data-toggle="tooltip" data-placement="top" title="Delete"><button class="btn btn-sm btn-danger delete_warning_modal" type="button" data-toggle="modal" data-target="#delete_warning_modal" data-scholarship_id_d="{{ $scholarship->id }}"><i class="fa fa-trash"></i></button></span>
                                             </td>
                                         </tr>
                                     @empty

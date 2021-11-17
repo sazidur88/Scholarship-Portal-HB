@@ -82,7 +82,8 @@
                                             <div class="col-md-8">
                                                 <div class="form-group">
                                                     <label>Choose Document</label>
-                                                    <input type="file" id="document" name="document" class="form-control" required>
+                                                    <input type="file" id="document" name="document" class="form-control"
+                                                        required>
 
 
                                                 </div>
@@ -130,7 +131,7 @@
                                         </div>
                                     </div>
                                 @empty
-                                <h5 class="text-center text-danger" style="margin-top: 30px;">No document found!</h5>
+                                    <h5 class="text-center text-danger" style="margin-top: 30px;">No document found!</h5>
                                 @endforelse
 
                             </div>

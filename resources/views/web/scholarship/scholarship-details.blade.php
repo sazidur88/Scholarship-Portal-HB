@@ -47,11 +47,11 @@
                                                 </li>
                                                 <li>
                                                     <i class='bx bx-filter-alt'></i>
-                                                    Announcements
+                                                    Level: {{$scholarship->level}}
                                                 </li>
                                                 <li>
                                                     <i class='bx bx-briefcase'></i>
-                                                    Monthly
+                                                    {{$scholarship->payment_type}}
                                                 </li>
                                             </ul>
                                             <span>
@@ -100,11 +100,11 @@
                                             <tbody>
                                                 <tr>
                                                     <td><span>Organization:  </span></td>
-                                                    <td> Hridoye Bangladesh</td>
+                                                    <td> Hridoya Bangladesh</td>
                                                 </tr>
                                                 <tr>
                                                     <td><span>Scholarship Type: </span></td>
-                                                    <td>Monthly</td>
+                                                    <td>{{$scholarship->payment_type}}</td>
                                                 </tr>
                                                 {{-- <tr>
                                                     <td><span>Job Type</span></td>

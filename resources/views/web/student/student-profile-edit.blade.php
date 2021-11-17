@@ -60,7 +60,7 @@
                                     <div class="form-group">
                                         <label>Your Email</label>
                                         <input type="email" name="email" class="form-control" placeholder="Your Email"
-                                            value="{{ $student_data->email }}" required>
+                                            value="{{ $student_data->email }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -640,8 +640,8 @@
                 var fieldHTML =
                     '<div class="col-md-6"><div class="form-group"><label>Significant Achievement ' +
                     clicks +
-                    '</label><textarea  id="" name="achievement[]" class="form-control" placeholder=" (e.g., athlete, debater, organizer, etc.)"></textarea></div><a href="javascript:void(0);" class="remove_button"><i class="fa fa-close text-danger">Remove</i></a></div>'; //New input field html
-                //Check maximum number of input fields
+                    '</label><textarea  id="" name="achievement[]" class="form-control" placeholder=" (e.g., athlete, debater, organizer, etc.)"></textarea></div><a href="javascript:void(0);" class="remove_button"><i class="bx bx-trash-alt text-danger"> Delete</i></a></div>'; //New input field html
+                //Check maximum number of input fields bx-trash-alt
                 if (x < maxField) {
                     x++; //Increment field counter
                     $(more).append(fieldHTML); //Add field html

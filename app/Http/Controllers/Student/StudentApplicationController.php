@@ -14,16 +14,16 @@ class StudentApplicationController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function index()   {
+    public function index()
+    {
 
+        $student_data = User::find(Auth::user()->id)->student_information;
+        $applied_scholarships = $student_data->scholarships;
 
-        $student = User::find(Auth::user()->id)->student_information;
-        $applied_scholarships = $student->scholarships;
-
-
-         return view('web.student.student-scholarships', [
-             'applied_scholarships' => $applied_scholarships,
-         ]);
+        return view('web.student.student-scholarships', [
+            'applied_scholarships' => $applied_scholarships,
+            'student_data' => $student_data,
+        ]);
     }
 
     /**
